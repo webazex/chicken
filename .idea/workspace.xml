@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd80b667-9769-4d8a-bed3-59f1c283111d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/chicken/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/chicken/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/chicken/front-page.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/chicken/front-page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/chicken/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/chicken/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/chicken/back/cpt.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/chicken/back/cpt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/chicken/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/chicken/functions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2B9vvlCha52TzrB77k3orjnscGw" />
@@ -67,6 +71,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WordPressConfiguration" enabled="true">
     <wordpressPath>E:\web\OpenServer\domains\chicken.loc</wordpressPath>
