@@ -5,6 +5,7 @@
 # "mu-plugins", "plugins", "themes" directory
 wp-content/*
 .idea/*
+.idea/workspace.xml
 !wp-content/mu-plugins/
 !wp-content/plugins/
 !wp-content/themes/
