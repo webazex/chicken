@@ -8,6 +8,8 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', get_template_directory_uri().'/js/jQuery360.js' );
-    wp_register_script( 'slick', get_template_directory_uri().'/js/slick.js' );
     wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'slick', get_template_directory_uri().'/js/slick.js' );
+    wp_enqueue_script( 'main', get_template_directory_uri().'/js/main.js' );
+
 });
