@@ -11,14 +11,14 @@
     <div class="site-size">
         <div class="site-size__header-container">
             <a href="<?php echo get_home_url();?>">
-                <img src="<?php echo getMainLogo();?>" class="header-container__logo" alt="logo" data-patch="img/">
+               <?php echo getLogos(); ?>
             </a>
             <?php 
                 get_template_part('front/components/header-menu');
                 get_template_part('front/components/search-field');
                 get_template_part('front/components/header-contacts');
             ?>
-            <div class="header-container__lang-switcher">lang</div>
+            <div class="header-container__lang-switcher"><?php //pll_the_languages(['hide_current' => 1]);?></div>
             <button class="header-container__burger">
                 <span></span>
                 <span></span>

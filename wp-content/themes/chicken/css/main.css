@@ -141,6 +141,9 @@ header.main .contact-box__text-desc {
 	justify-content: space-between;
 	align-items: center;
 }
+.header-container__menu a {
+	color: white;
+}
 .header-container__lang-switcher {display: none;}
 .header-container__burger, .header-container__search-box {
 	width: 34px;

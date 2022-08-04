@@ -24,9 +24,11 @@ define( 'DB_NAME', 'chicken' );
 
 /** Database username */
 define( 'DB_USER', 'root' );
+//define( 'DB_USER', 'chiken' );
 
 /** Database password */
 define( 'DB_PASSWORD', '' );
+//define( 'DB_PASSWORD', 'Chicken*001' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );

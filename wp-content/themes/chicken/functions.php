@@ -19,3 +19,15 @@ function getMainLogo(){
         }
     }
 }
+
+function getLogos(){
+    if(!empty(getThemeSettings()['general'])){
+        $data = getThemeSettings()['general'];
+        if(!empty($data['logos-group'])){
+            $logos = $data['logos-group'];
+            if(!empty($logos['main-logo'])){
+                echo '<img src="'.$logos['secondary-logo'].'" class="header-container__logo" alt="logo-main" data-path="'.$logos['secondary-logo'].'" data-s-path="'.$logos['main-logo'].'">';
+            }
+        }
+    }
+}
