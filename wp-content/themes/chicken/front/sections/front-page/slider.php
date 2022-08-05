@@ -1,3 +1,6 @@
+<?php
+    $slider = $args['slider'];
+?>
 <section>
     <div class="site-size">
         <div class="site-size__recipes-grid-container">
@@ -78,4 +81,3 @@
         </div>
     </div>
 </section>
-<?php
