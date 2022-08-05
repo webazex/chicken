@@ -144,7 +144,32 @@ header.main .contact-box__text-desc {
 .header-container__menu a {
 	color: white;
 }
-.header-container__lang-switcher {display: none;}
+.header-container__lang-switcher {
+	width: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.lang-item {
+	font-size: var(--default-font-size);
+	color: white;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+}
+.lang-item.active {color: #E50746;}
+.lang-item:after {
+	content: '';
+	width: 1px;
+	height: 20px;
+	background-color: white;
+	display: block;
+	margin: 0 5px;
+}
+.lang-item:last-child:after {
+	content: none;
+}
 .header-container__burger, .header-container__search-box {
 	width: 34px;
 	height: 34px;

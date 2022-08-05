@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title><?php _e(wp_get_document_title(), 'chicken');?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head();?>
@@ -17,8 +17,9 @@
                 get_template_part('front/components/header-menu');
                 get_template_part('front/components/search-field');
                 get_template_part('front/components/header-contacts');
+                get_template_part('front/components/lang-switcher');
             ?>
-            <div class="header-container__lang-switcher"><?php //pll_the_languages(['hide_current' => 1]);?></div>
+
             <button class="header-container__burger">
                 <span></span>
                 <span></span>

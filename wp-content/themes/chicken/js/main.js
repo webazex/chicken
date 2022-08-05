@@ -3,28 +3,27 @@ $(document).ready(function (){
 
    //change bg header for scrolling
    var scrolled;
-   let patchToMainLogo = $('.header-container__logo').attr('data-s-patch');
-   let patchToSecondLogo = $('.header-container__logo').attr('data-patch');
-   console.log($('header.main .header-container__logo').attr('src', patchToMainLogo));
+   let patchToMainLogo = $('.header-container__logo').attr('wl');
+   let patchToSecondLogo = $('.header-container__logo').attr('bl');
    window.onscroll = function() {
       scrolled = window.pageYOffset || document.documentElement.scrollTop;
       if(scrolled > 100){
          $("header.main").css({"background-color": "white"});
-         $('header.main .site-size__header-container .link__text').css({'color': '#232323'});
+         $('header.main .site-size__header-container a').css({'color': '#232323'});
          $('header.main .site-size__header-container .link-tel__text').css({'color': '#232323'});
          $('header .site-size__header-container .link-tel__text').css({'color': '#232323'});
          $('header.main .contact-box__text-desc').css({'color': '#E50746'});
          $('header .contact-box__text-desc').css({'color': '#E50746'});
          $('.contact-box__text-desc').css({'text-decoration': 'none'});
-         // $('header.main .header-container__logo').attr('src', patchToSecondLogo);
+         $('header.main .header-container__logo').attr('src', patchToSecondLogo);
       }
       if(scrolled < 100){
          $("header.main").css({"background-color": "transparent"});
-         // $('header.main .site-size__header-container .link__text, .contact-box__text-desc').css({'color': 'white'});
+         $('header.main .site-size__header-container a').css({'color': 'white'});
          $('header.main .site-size__header-container .link-tel__text').css({'color': 'white'});
          // $('header .site-size__header-container .link-tel__text').css({'color': 'white'});
          $('header.main .contact-box__text-desc').css({'text-decoration': 'underline'});
-         // $('header.main .header-container__logo').attr('src', patchToMainLogo);
+         $('header.main .header-container__logo').attr('src', patchToMainLogo);
       }
    }
    //slider on home

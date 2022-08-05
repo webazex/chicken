@@ -26,7 +26,7 @@ function getLogos(){
         if(!empty($data['logos-group'])){
             $logos = $data['logos-group'];
             if(!empty($logos['main-logo'])){
-                echo '<img src="'.$logos['secondary-logo'].'" class="header-container__logo" alt="logo-main" data-path="'.$logos['secondary-logo'].'" data-s-path="'.$logos['main-logo'].'">';
+                echo '<img src="'.$logos['main-logo'].'" class="header-container__logo" alt="logo-main" bl="'.$logos['secondary-logo'].'" wl="'.$logos['main-logo'].'">';
             }
         }
     }
