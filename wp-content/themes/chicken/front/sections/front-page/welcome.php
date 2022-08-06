@@ -1,15 +1,18 @@
 <?php
     $title = $args['title'];
     $desc = $args['desc'];
-    if(!empty($args['gradient'])){
-        $startColor = $args['gradient']['gradient-start'];
-        $endColor = $args['gradient']['gradient-end'];
+    print_r($args['gradient2']);
+    if(!empty($args['data-gradient'])){
+        $startColor = $args['data-gradient']['gradient-start'];
+        $startStyle = getGradient($startColor);
+        $endColor = $args['data-gradient']['gradient-end'];
+        $endStyle = getGradient($endColor);
     }else{
-        $startColor = 'blue';
-        $endColor = 'white';
+        $startStyle = 'blue';
+        $endStyle = 'white';
     }
 ?>
-<section class="main-gradient-bg" style="background: linear-gradient(167.9deg, <?php echo $startColor?>, <?php echo $endColor?>);">
+<section class="main-gradient-bg" style="background: linear-gradient(167.9deg, <?php echo $startStyle?>, <?php echo $endStyle;?>);">
     <div class="site-size">
         <div class="main-section-grid-container">
             <div class="main-section-grid-container__text-box">

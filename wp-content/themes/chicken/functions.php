@@ -31,3 +31,14 @@ function getLogos(){
         }
     }
 }
+
+function getGradient($gradientField){
+    if(!empty($gradientField)){
+        $str = "rgba(";
+        $str .= implode(", ", $gradientField);
+        $str .=")";
+    }else{
+        $str = "";
+    }
+    return $str;
+}
