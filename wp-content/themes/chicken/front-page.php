@@ -8,9 +8,10 @@ if(!empty($pageContent)):
             if(!empty($pageContent['welcome'])):
                 get_template_part('front/sections/front-page/welcome', '', $pageContent['welcome']);
             endif;
-        if(!empty($pageContent['slider'])):
-            get_template_part('front/sections/front-page/slider', '', $pageContent['slider']);
-        endif;
+            if(!empty($pageContent['slider'])):
+                get_template_part('front/sections/front-page/slider', '', $pageContent['slider']);
+            endif;
+
         ?>
         <section>
             <div class="site-size">

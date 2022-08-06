@@ -304,12 +304,12 @@ header.main .contact-box__text-desc {
 	border-radius: 15px;
 }
 .recipes-grid-container__new-receipes {
-	background: linear-gradient(180deg, rgba(0, 160, 54, 0.7) 0%, rgba(187, 161, 24, 0.7) 100%);
+	/*background: linear-gradient(180deg, rgba(0, 160, 54, 0.7) 0%, rgba(187, 161, 24, 0.7) 100%);*/
 	grid-area: nr;
 }
 
 .recipes-grid-container__marked-receipes {
-	background: linear-gradient(180deg, rgba(24, 89, 188, 0.7) 0%, rgba(24, 171, 187, 0.7) 100%);
+	/*background: linear-gradient(180deg, rgba(24, 89, 188, 0.7) 0%, rgba(24, 171, 187, 0.7) 100%);*/
 	grid-area: mr;
 }
 .new-receipes__img, .marked-receipes__img {
