@@ -380,13 +380,21 @@ header.main .contact-box__text-desc {
 .container-slide__slide {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	padding: 58px;
+	/*padding: 0 210px;*/
+}
+.container-slide__collage {
+	width: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
 }
 .slide__text-block {
 	max-width: 320px;
 	width: 100%;
+	margin-right: 50px;
 }
 .slide-title__text {
 	width: 100%;
@@ -407,8 +415,10 @@ header.main .contact-box__text-desc {
 	margin-bottom: 40px;
 }
 .slide__img {
-	min-width: 280px;
-	width: 50%;
+	/*min-width: 280px;*/
+	/*width: 50%;*/
+	height: 100%;
+	margin-left: 50px;
 }
 .text-block__link {
 	display: flex;
