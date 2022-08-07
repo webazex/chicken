@@ -45,7 +45,7 @@ function getReceipts($count = "all", $callbackType = 'html', $property = null, $
     if(!empty($obj->posts)){
         foreach ($obj->posts as $post){
             $data = get_field('receipt-group', $post->ID);
-            echo $data['properties']['complexity'].'<br>';
+            //echo $data['properties']['complexity'].'<br>';
         }
     }
 //    'receipt-group'

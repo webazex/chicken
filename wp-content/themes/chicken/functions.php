@@ -8,7 +8,9 @@ require_once 'back/settings.php';
 require_once 'back/remove-gutenberg.php';
 require_once 'back/customized.php';
 require_once 'back/receipts.php';
-getReceipts('3', 'html', 's');
+require_once 'back/products.php';
+//getReceipts('3', 'html', 's');
+//print_r(getProducts(1, 'html', [], 'DESC'));
 function getMainLogo(){
     if(!empty(getThemeSettings()['general'])){
         $data = getThemeSettings()['general'];

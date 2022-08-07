@@ -12,7 +12,11 @@ if(!empty($pageContent)):
                 get_template_part('front/sections/front-page/slider', '', $pageContent['slider']);
             endif;
             if(!empty($pageContent['products-group'])){
-                get_template_part('front/sections/front-page/slider', '', $pageContent['slider']);
+                $data = [
+                    'acf' => $pageContent['products-group'],
+                    'products' => getProducts(),
+                ];
+                get_template_part('front/sections/front-page/products-group', '', $pageContent['products-group']);
             }
         ?>
 
