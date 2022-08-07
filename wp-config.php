@@ -27,8 +27,8 @@ define( 'DB_USER', 'root' );
 //define( 'DB_USER', 'chiken' );
 
 /** Database password */
-//define( 'DB_PASSWORD', 'root' );
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'root' );
+//define( 'DB_PASSWORD', '' );
 //define( 'DB_PASSWORD', 'Chicken*001' );
 
 /** Database hostname */
