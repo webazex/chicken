@@ -621,7 +621,7 @@ header.main .contact-box__text-desc {
 	align-items: center;
 }
 .marks__mark-row {
-	display: flex;
+	display: none;
 	justify-content: flex-end;
 	align-items: center;
 }
