@@ -14,9 +14,11 @@ if(!empty($pageContent)):
             if(!empty($pageContent['products-group'])){
                 $data = [
                     'acf' => $pageContent['products-group'],
-                    'products' => getProducts(),
+                    'cats' => getTaxes('p-cats', true),
+                    'subcats' => getTaxes('p-cats'),
+                    'products' => getProducts(8, 'html', ['status'], 'DESC', ['p-cats' => 'zc'])
                 ];
-                get_template_part('front/sections/front-page/products-group', '', $pageContent['products-group']);
+                get_template_part('front/sections/front-page/products-group', '', $data);
             }
         ?>
 

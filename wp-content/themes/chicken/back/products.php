@@ -7,48 +7,33 @@ function __fetchProperties($properties){
     }
     return $result;
 }
-function getProducts($count = "all", $cType = 'html', array $property = [], $sorted = "DESC", $cat = ''){
+function getProducts($count = "all", $cType = 'html', array $property = [], $sorted = "DESC", $tax = []){
     if($count == "all"){
         $count = -1;
     }
-    if(empty($property)){
-        $obj = new WP_Query([
-            'posts_per_page' => $count,
-            'post_type' => 'products',
-            'order' => $sorted,
-        ]);
-    }elseif(empty($cat)){
+    $args = [
+        'posts_per_page' => $count,
+        'post_type' => 'products',
+        'order' => $sorted,
+    ];
+    if(!empty($tax)){
+        foreach ($tax as $k => $v){
+            $args[$k] = $v;
+        }
+    }
+    if(!empty($property)){
         $meta = [];
         foreach ($property as $prop){
             $key = 'product-group_product-'.$prop;
             array_push($meta, ['key' => $key]);
         }
-        $obj = new WP_Query([
-            'posts_per_page' => $count,
-            'post_type' => 'products',
-            'order' => $sorted,
-            'meta_query'	=> [
+        $args['meta_query']	= [
                 'relation' => 'AND',
                 $meta
-            ],
-            'orderby' => 'meta_value_num',
-        ]);
-    }else{
-        $obj = new WP_Query([
-            'posts_per_page' => $count,
-            'post_type' => 'products',
-            'order' => $sorted,
-            'cat' => $cat,
-            'meta_query'	=> [
-                'relation' => 'OR',
-                [
-                    'key' => 'product-group_product-status',
-//                    'key' => 'complexity',
-                ],
-            ],
-            'orderby' => 'meta_value_num',
-        ]);
+            ];
+        $args['orderby'] = 'meta_value_num';
     }
+    $obj = new WP_Query($args);
     if(!empty($obj->posts)){
         $posts = [];
         foreach ($obj->posts as $post){

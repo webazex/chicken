@@ -39,6 +39,44 @@ function register_post_types(){
 		// '_builtin'              => false,
 		//'update_count_callback' => '_update_post_term_count',
 	] );
+
+    register_taxonomy( 'p-tags', [ 'products' ], [
+        'label'                 => '', // определяется параметром $labels->name
+        'labels'                => [
+            'name'              => __('Tags', 'chicken'),
+            'singular_name'     => __('Tag', 'chicken'),
+            'search_items'      => __('Search tag', 'chicken'),
+            'all_items'         => __('All tags', 'chicken'),
+            'view_item '        => __('View tag', 'chicken'),
+            'parent_item'       => __('Parent tag', 'chicken'),
+            'parent_item_colon' => __('Parent tag:', 'chicken'),
+            'edit_item'         => __('Edit tag', 'chicken'),
+            'update_item'       => __('Update tag', 'chicken'),
+            'add_new_item'      => __('Add new tag', 'chicken'),
+            'new_item_name'     => __('New tag name', 'chicken'),
+            'menu_name'         => __('Products tags', 'chicken'),
+            'back_to_items'     => __('← Back to tags', 'chicken'),
+        ],
+        'description'           => __('Products tags', 'chicken'), // описание таксономии
+        'public'                => true,
+        // 'publicly_queryable'    => null, // равен аргументу public
+        // 'show_in_nav_menus'     => true, // равен аргументу public
+        // 'show_ui'               => true, // равен аргументу public
+        // 'show_in_menu'          => true, // равен аргументу show_ui
+        // 'show_tagcloud'         => true, // равен аргументу show_ui
+        // 'show_in_quick_edit'    => null, // равен аргументу show_ui
+        'hierarchical'          => false,
+
+        'rewrite'               => true,
+        //'query_var'             => $taxonomy, // название параметра запроса
+        'capabilities'          => array(),
+        'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+        'show_admin_column'     => true, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+        'show_in_rest'          => null, // добавить в REST API
+        'rest_base'             => null, // $taxonomy
+        // '_builtin'              => false,
+        //'update_count_callback' => '_update_post_term_count',
+    ] );
 	//products
 	register_post_type( 'products', [
 		'label'  => null,
@@ -80,7 +118,7 @@ function register_post_types(){
 	] );
 
 	//receipes-tags
-    register_taxonomy( 'r-cats', [ 'recipes' ], [
+    register_taxonomy( 'r-tags', [ 'recipes' ], [
         'label'                 => '', // определяется параметром $labels->name
         'labels'                => [
             'name'              => __('Types of dish', 'chicken'),

@@ -520,7 +520,8 @@ header.main .contact-box__text-desc {
 .this-tab .tab__text {
 	opacity: 1;
 }
-.tabs-row__tab svg {
+.tabs-row__tab svg,
+.tabs-row__tab img{
 	margin-right: 10px;
 }
 .tabs-row__tab.this-tab {
@@ -608,7 +609,8 @@ header.main .contact-box__text-desc {
 
 .card__image {width: 100%;}
 .card__marks {
-	width: 32px;
+	/*width: 32px;*/
+	width: auto;
 	height: 74px;
 	position: absolute;
 	top: 12px;
@@ -617,6 +619,15 @@ header.main .contact-box__text-desc {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+}
+.marks__mark-row {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.marks__mark-row .mark-row__text {
+	margin-right: 10px;
+	font-size: 14px;
 }
 .marks__mark {
 	width: 32px;
