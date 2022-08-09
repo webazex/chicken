@@ -7,7 +7,7 @@ function __fetchProperties($properties){
     }
     return $result;
 }
-function getProducts($count = "all", $cType = 'html', array $property = [], $sorted = "DESC", $tax = []){
+function getProducts($count = "all", array $property = [], $sorted = "DESC", $tax = []){
     if($count == "all"){
         $count = -1;
     }
@@ -63,4 +63,28 @@ function getProducts($count = "all", $cType = 'html', array $property = [], $sor
         $posts = [];
     }
     return $posts;
+}
+
+function getAllProductsCategory():array{
+    $terms = get_terms([
+        'taxonomy' => 'p-cats',
+        'hide_empty' => true,
+    ]);
+    $returned = [];
+    if(!empty($terms) and !is_wp_error($terms)){
+        foreach ($terms as $term) {
+            $icon = get_field('icon', $term->term_id);
+            if(empty($icon)){
+                $icon = false;
+            }
+            array_push($returned, [
+               'id' => $term->term_id,
+               'slug' => $term->slug,
+               'name' => $term->name,
+               'count' => $term->count,
+               'icon' => $icon,
+            ]);
+        }
+    }
+    return $returned;
 }

@@ -16,7 +16,7 @@ if(!empty($pageContent)):
                     'acf' => $pageContent['products-group'],
                     'cats' => getTaxes('p-cats', true),
                     'subcats' => getTaxes('p-cats'),
-                    'products' => getProducts(8, 'html', ['status'], 'DESC', ['p-cats' => 'zc'])
+                    'products' => getProducts(8, ['status'], 'DESC', ['p-cats' => 'zc'])
                 ];
                 get_template_part('front/sections/front-page/products-group', '', $data);
             }

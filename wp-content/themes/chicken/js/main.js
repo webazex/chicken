@@ -79,6 +79,18 @@ $(document).ready(function (){
    $('.tabs-row__tab').click(function (){
       $('.tabs-row__tab').removeClass('this-tab');
       $(this).addClass('this-tab');
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-products',
+            tax: $(this).attr('data-cat-s'),
+         },
+         success: function(data){
+            $('.tabs__tab-contents').html(data);
+            //alert(JSON.parse(data));
+         }
+      });
    });
 
    $('.subtabs__subtab').click(function (){

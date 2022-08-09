@@ -9,6 +9,7 @@ require_once 'back/remove-gutenberg.php';
 require_once 'back/customized.php';
 require_once 'back/receipts.php';
 require_once 'back/products.php';
+require_once 'back/ajax.php';
 //getReceipts('3', 'html', 's');
 //print_r(getProducts("all", 'html', [], 'DESC'));
 function getTaxes($tax, $parent = false){
@@ -22,12 +23,17 @@ function getTaxes($tax, $parent = false){
         $taxes = get_terms($args);
         $returned = [];
         foreach ($taxes as $tax) {
+            $icon = get_field('icon', $tax);
+            if(empty($icon)){
+                $icon = false;
+            }
             array_push($returned, [
                 'id'=>$tax->term_id,
                 'name'=>$tax->name,
                 'slug'=>$tax->slug,
                 'count'=>$tax->count,
                 'parent'=>$tax->parent,
+                'icon'=>$icon,
             ]);
             if(!empty(get_field('icon', $tax->term_id))){
                 $returned['icon'] = get_field('icon', $tax->term_id);

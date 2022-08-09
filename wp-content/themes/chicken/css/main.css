@@ -621,13 +621,19 @@ header.main .contact-box__text-desc {
 	align-items: center;
 }
 .marks__mark-row {
-	display: none;
+	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 }
 .marks__mark-row .mark-row__text {
 	margin-right: 10px;
 	font-size: 14px;
+	font-weight: 500;
+}
+.mark-row__text {
+	display: none;
+	padding: 5px 4px;
+	background-color: transparent;
 }
 .marks__mark {
 	width: 32px;
@@ -636,11 +642,14 @@ header.main .contact-box__text-desc {
 	border: 3px solid;
 }
 .cold {
-	background-color: #0AAE5E;
-	border-color: rgba(10, 174, 94, 0.25);
+	background-color: rgba(52, 115, 255, 0.15);
+	color: #0A246A;
+	border-radius: 10px;
 }
 .freeze {
-	border-color: rgba(52, 115, 255, 0.25);
+	background-color: rgba(10, 174, 94, 0.25);
+	border-radius: 10px;
+	color: #0AAE5E;
 }
 .card__title {
 	width: 100%;
@@ -692,6 +701,7 @@ header.main .contact-box__text-desc {
 }
 
 .tab-contents__card:hover .card__more {display: flex;}
+.tab-contents__card:hover .mark-row__text {display: block;}
 .property-row__property, .row__value, .box__property-name {
 	font-weight: 400;
 	font-size: 14px;
