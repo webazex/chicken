@@ -44,7 +44,7 @@
                     <div class="tabs__tab-contents">
                         <!--								==card-->
                         <?php foreach ($args['products'] as $product):
-                            get_template_part('front/components/product', '', $product);
+                            get_template_part('front/components/product-item', '', $product);
                         endforeach;?>
                         <!--								==card=end-->
                     </div>
