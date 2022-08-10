@@ -34,6 +34,7 @@ function getAjaxProducts(){
         $html .= get_template_part('front/components/product-item', '', $item);
     }
     echo $html;
+    wp_die();
 //    wp_send_json(getProducts($count, $property, $order, $tax));
 }
 
