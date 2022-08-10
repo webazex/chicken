@@ -12,13 +12,17 @@ require_once 'back/products.php';
 require_once 'back/ajax.php';
 //getReceipts('3', 'html', 's');
 //print_r(getProducts("all", 'html', [], 'DESC'));
-function getTaxes($tax, $parent = false){
+function getTaxes($tax, $parent = null){
     if(!empty($tax)){
         $args = [
             'taxonomy' => [$tax]
         ];
-        if($parent){
+        if(is_null($parent)){
             $args['parent'] = 0;
+        }elseif($parent == "showAll"){
+            $args['parent'] = '';
+        }else{
+            $args['parent'] = $parent;
         }
         $taxes = get_terms($args);
         $returned = [];

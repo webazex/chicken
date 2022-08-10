@@ -91,11 +91,52 @@ $(document).ready(function (){
             //alert(JSON.parse(data));
          }
       });
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-products-cats',
+            tcat: $(this).attr('data-cat-id'),
+         },
+         success: function(data){
+            $('.content__subtabs').html(data);
+            //alert(JSON.parse(data));
+         }
+      });
    });
-
+   $('.content__subtabs').on('click', '.subtabs__subtab', function (){
+      $('.subtabs__subtab').removeClass('current');
+      let thisTab = $(this);
+      console.log(thisTab);
+      thisTab.addClass('current');
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-products',
+            tax: thisTab.attr('data-tag-s'),
+         },
+         success: function(data){
+            $('.tabs__tab-contents').html(data);
+            //alert(JSON.parse(data));
+         }
+      });
+   });
    $('.subtabs__subtab').click(function (){
       $('.subtabs__subtab').removeClass('current');
       $(this).addClass('current');
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-products',
+            tax: $(this).attr('data-tag-s'),
+         },
+         success: function(data){
+            $('.tabs__tab-contents').html(data);
+            //alert(JSON.parse(data));
+         }
+      });
    });
 
    $('.contact-box__text-desc').click(function (){
