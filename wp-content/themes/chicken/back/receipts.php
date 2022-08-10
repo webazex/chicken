@@ -33,7 +33,6 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC'){
         ]);
     }
     if(is_null($property)){
-        echo "s";
         $obj = new WP_Query([
             'posts_per_page' => $count,
             'post_type' => 'recipes',

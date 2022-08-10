@@ -1,7 +1,6 @@
 <?php
     $title = $args['title'];
     $desc = $args['desc'];
-    print_r($args['gradient2']);
     if(!empty($args['data-gradient'])){
         $startColor = $args['data-gradient']['gradient-start'];
         $startStyle = getGradient($startColor);

@@ -107,7 +107,6 @@ $(document).ready(function (){
    $('.content__subtabs').on('click', '.subtabs__subtab', function (){
       $('.subtabs__subtab').removeClass('current');
       let thisTab = $(this);
-      console.log(thisTab);
       thisTab.addClass('current');
       $.ajax({
          url: rajax.url,
