@@ -8,6 +8,8 @@ function __fetchProperties($properties){
     return $result;
 }
 function getProducts($count = "all", array $property = [], $sorted = "DESC", $tax = []){
+//    $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     if($count == "all"){
         $count = -1;
     }
@@ -15,6 +17,7 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
         'posts_per_page' => $count,
         'post_type' => 'products',
         'order' => $sorted,
+        'paged' => $paged,
     ];
     if(!empty($tax)){
         foreach ($tax as $k => $v){

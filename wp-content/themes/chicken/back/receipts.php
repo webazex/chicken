@@ -1,21 +1,24 @@
 <?php
-function getReceipts($count = "all", $property = null, $sorted = 'DESC'){
+function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = []){
+    $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
     if($count == "all"){
         $count = -1;
     }
+
     if(is_string($property)){
         $obj = new WP_Query([
             'posts_per_page' => $count,
             'post_type' => 'recipes',
+            'paged' => $paged,
             'meta_query'	=> [
                 'relation' => 'OR',
                 [
-                    'key' => 'receipt-group_properties_complexity',
+                    'key' => 'receipt-group_properties_'.$property,
 //                    'key' => 'complexity',
                 ],
             ],
             'orderby' => 'meta_value_num',
-            'order' => 'ASC'
+            'order' => $sorted
         ]);
     }
     if(is_array($property)){
@@ -29,6 +32,7 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC'){
             'posts_per_page' => $count,
             'post_type' => 'recipes',
             'order' => $sorted,
+            'paged' => $paged,
             'meta_query' => $meta
         ]);
     }
@@ -36,8 +40,14 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC'){
         $obj = new WP_Query([
             'posts_per_page' => $count,
             'post_type' => 'recipes',
+            'paged' => $paged,
             'order' => $sorted
         ]);
+    }
+    if(!empty($tax)){
+        foreach ($tax as $k => $v){
+            $args[$k] = $v;
+        }
     }
 //    print_r($obj);
     if(!empty($obj->posts)){
@@ -46,71 +56,55 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC'){
             $dataPost = get_field('receipt-group', $post->ID);
             if(!empty($dataPost['general-info'])){
                 $generalInfo = $dataPost['general-info'];
-                array_push($posts, [
-                    'title' => $generalInfo['title'],
-                    'subtitle' => $generalInfo['subtitle'],
-                    'image' => $generalInfo['image'],
-                ]);
+                $posts[$post->ID]['title'] = $generalInfo['title'];
+                $posts[$post->ID]['subtitle'] = $generalInfo['subtitle'];
+                $posts[$post->ID]['image'] = $generalInfo['image'];
             }else{
-                array_push($posts, [
-                    'title' => '',
-                    'subtitle' => '',
-                    'image' => '',
-                ]);
+                $posts[$post->ID]['title'] = '';
+                $posts[$post->ID]['subtitle'] = '';
+                $posts[$post->ID]['image'] = '';
             }
             if(!empty($dataPost['properties'])){
                 $props = $dataPost['properties'];
-                array_push($posts, [
-                    'complexity' => $props['complexity'],
-                    'time' => $props['time'],
-                    'portioning' => $props['portioning'],
-                ]);
+                $posts[$post->ID]['complexity'] = $props['complexity'];
+                $posts[$post->ID]['time'] = $props['time'];
+                $posts[$post->ID]['portioning'] = $props['portioning'];
             }else{
-                array_push($posts, [
-                    'complexity' => 1,
-                    'time' => '',
-                    'portioning' => '',
-                ]);
+                $posts[$post->ID]['complexity'] = 1;
+                $posts[$post->ID]['time'] = '';
+                $posts[$post->ID]['portioning'] = '';
             }
             if(!empty($dataPost['ingridients'])){
                 $ingridients = $dataPost['ingridients'];
                 $ingridientsNotes = $dataPost['notes'];
-                array_push($posts, [
-                    'ingridients' => $ingridients,
-                    'notes' => $ingridientsNotes,
-                ]);
+
+                $posts[$post->ID]['ingridients'] = $ingridients;
+                $posts[$post->ID]['notes'] = $ingridientsNotes;
 
             }else{
-                array_push($posts, [
-                    'ingridients' => [],
-                    'notes' => "",
-                ]);
+                $posts[$post->ID]['ingridients'] = [];
+                $posts[$post->ID]['notes'] = "";
             }
 
             if(!empty($dataPost['receipe-group'])){
                 $receipeGroup = $dataPost['receipe-group'];
-                array_push($posts, [
-                    'file' => $receipeGroup['file'],
-                    'receipe' => $receipeGroup['receipe'],
-                ]);
+
+                $posts[$post->ID]['file'] = $receipeGroup['file'];
+                $posts[$post->ID]['receipe'] = $receipeGroup['receipe'];
             }else{
-                array_push($posts, [
-                    'file' => [],
-                    'receipe' => "",
-                ]);
+                $posts[$post->ID]['file'] = [];
+                $posts[$post->ID]['receipe'] = "";
             }
 
             if(!empty($dataPost['nutritional-group'])){
                 $nutritionalGroup = $dataPost['nutritional-group'];
-                array_push($posts, [
-                    'info' => $nutritionalGroup['info'],
-                    'short-info' => $nutritionalGroup['short_info'],
-                ]);
+
+                $posts[$post->ID]['info'] = $nutritionalGroup['info'];
+                $posts[$post->ID]['short-info'] = $nutritionalGroup['short-info'];
+
             }else{
-                array_push($posts, [
-                    'info' => '',
-                    'short-info' => [],
-                ]);
+                $posts[$post->ID]['info'] = '';
+                $posts[$post->ID]['short-info'] = [];
             }
         }
     }else{

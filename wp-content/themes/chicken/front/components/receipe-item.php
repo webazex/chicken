@@ -1,9 +1,9 @@
 <?php print_r($args);?>
 <div class="grid-default__item recipes">
-    <img src="img/photo.jpg" alt="" class="receipes__img">
+    <img src="<?php echo $args['image'];?>" alt="" class="receipes__img">
     <div class="receipes__info">
         <div class="info__title-row">
-            <span class="title-row__text">Курячий рамен</span>
+            <span class="title-row__text"><?php echo $args['title'];?></span>
             <div class="info__peppers"></div>
         </div>
 

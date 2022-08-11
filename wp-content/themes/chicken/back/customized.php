@@ -44,3 +44,11 @@ function customizedThemes()
 }
 
 add_action('after_setup_theme', 'customizedThemes');
+
+add_filter('navigation_markup_template', 'my_navigation_markup_template');
+function my_navigation_markup_template() {
+    return '
+     <nav class="navigation %1$s" role="navigation">
+         <div class="nav-links">%3$s</div>
+     </nav>';
+}

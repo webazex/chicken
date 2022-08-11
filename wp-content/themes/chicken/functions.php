@@ -10,8 +10,7 @@ require_once 'back/customized.php';
 require_once 'back/receipts.php';
 require_once 'back/products.php';
 require_once 'back/ajax.php';
-//getReceipts('3', 'html', 's');
-//print_r(getProducts("all", 'html', [], 'DESC'));
+require_once 'back/breadcrumbs.php';
 function getTaxes($tax, $parent = null){
     if(!empty($tax)){
         $args = [

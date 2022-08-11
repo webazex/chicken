@@ -1145,17 +1145,17 @@ footer {
 	color: white;
 }
 .item__crumb, .item__sep, .sep, .sep-item,
-.info-row__breadcrumbs-row span{
+.info-row__breadcrumbs-row span, .kama_breadcrumbs span{
 	font-style: normal;
 	font-weight: 400;
 	font-size: 17px;
 	color: white;
 }
 .sep, .sep-item,
-.info-row__breadcrumbs-row span{
+.info-row__breadcrumbs-row span, .kb_sep{
 	color: #676767;
 }
-.content-row__breadcrumbs-row {
+.content-row__breadcrumbs-row, .kama_breadcrumbs {
 	margin-bottom: 44px;
 }
 .default-grid-container__filters-row {
