@@ -324,6 +324,7 @@ header.main .contact-box__text-desc {
 	position: absolute;
 	width: auto;
 	height: 90%;
+	bottom: 0;
 }
 .new-receipes__content, .marked-receipes__content {
 	max-width: 230px;
