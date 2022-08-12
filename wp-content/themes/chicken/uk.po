@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Файний чікен\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-05 03:30+0000\n"
-"PO-Revision-Date: 2022-08-05 03:34+0000\n"
+"PO-Revision-Date: 2022-08-11 07:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -158,27 +158,27 @@ msgstr ""
 
 #: back/cpt.php:47
 msgid "Product"
-msgstr ""
+msgstr "Продукт"
 
 #: back/cpt.php:46 back/cpt.php:57
 msgid "Products"
-msgstr ""
+msgstr "Продукція"
 
 #: back/cpt.php:22
 msgid "Products Categories"
-msgstr ""
+msgstr "Категорії Продуктів"
 
 #: back/cpt.php:87
 msgid "Recipe"
-msgstr ""
+msgstr "Рецепт"
 
 #: back/cpt.php:86 back/cpt.php:97
 msgid "Recipes"
-msgstr ""
+msgstr "Рецепти"
 
 #: back/cpt.php:10
 msgid "Search Categories"
-msgstr ""
+msgstr "Пошук категорій"
 
 #: back/cpt.php:171
 msgid "Search news or promotion"

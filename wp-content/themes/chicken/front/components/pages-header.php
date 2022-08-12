@@ -7,7 +7,7 @@
     <?php wp_head();?>
 </head>
 <body>
-<header>
+<header class="second">
     <div class="site-size">
         <div class="site-size__header-container">
             <a href="<?php echo get_home_url();?>">

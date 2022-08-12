@@ -141,8 +141,11 @@ header.main .contact-box__text-desc {
 	justify-content: space-between;
 	align-items: center;
 }
-.header-container__menu a {
+header.main a {
 	color: white;
+}
+header.second a{
+	color: black;
 }
 .header-container__lang-switcher {
 	width: auto;

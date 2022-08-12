@@ -53,8 +53,8 @@ function getMainLogo(){
         $data = getThemeSettings()['general'];
         if(!empty($data['logos-group'])){
             $logos = $data['logos-group'];
-            if(!empty($logos['main-logo'])){
-                return $logos['main-logo'];
+            if(!empty($logos['secondary-logo'])){
+                return $logos['secondary-logo'];
             }
         }
     }
