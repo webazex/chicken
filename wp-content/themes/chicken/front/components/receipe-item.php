@@ -26,26 +26,33 @@
             </div>
             <?php endif;?>
         </div>
-        <?php var_dump($args['short-info']);?>
         <div class="info__hidden-block">
-            <p class="hidden-block__desc">На 100г готової страви</p>
+            <p class="hidden-block__desc"><?php echo $args['desc'];?></p>
+            <?php if(!empty($args['short-info'])):?>
             <div class="hidden-block__row-props">
+                <?php
+                    foreach ($args['short-info'] as $k => $info):
+                        if(!empty($info)): ?>
                 <div class="row-props__item">
-                    <span class="item__prop-name">243</span>
-                    <span class="item__prop-val">ккал</span>
-                    <span class="item__prop-text">колорії</span>
+                    <?php
+                        switch($k):
+                    case "cal":
+                        $text = __('калорії', 'chicken');
+                        break;
+                    case "prot":
+                        $text = __('протеїни', 'chicken');
+                        break;
+                    case "fats":
+                        $text = __('жири', 'chicken');
+                        break;
+                        endswitch;
+                    ?>
+                    <span class="item__prop-name"><?php echo $info; ?></span>
+                    <span class="item__prop-text"><?php echo $text; ?></span>
                 </div>
-                <div class="row-props__item">
-                    <span class="item__prop-name">243</span>
-                    <span class="item__prop-val">ккал</span>
-                    <span class="item__prop-text">колорії</span>
-                </div>
-                <div class="row-props__item">
-                    <span class="item__prop-name">243</span>
-                    <span class="item__prop-val">ккал</span>
-                    <span class="item__prop-text">колорії</span>
-                </div>
+                <?php  endif; endforeach;?>
             </div>
+            <?php endif;?>
         </div>
     </div>
 </div>

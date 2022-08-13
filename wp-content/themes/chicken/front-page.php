@@ -27,6 +27,13 @@ if(!empty($pageContent)):
                 ];
                 get_template_part('front/sections/front-page/receipes-group', '', $data);
             }
+            if(!empty($pageContent['receipes-group'])){
+                $data = [
+                    'acf' => $pageContent['np-group'],
+                    'posts' => getReceipts(4)
+                ];
+                get_template_part('front/sections/front-page/nap', '', $data);
+            }
         ?>
 
 

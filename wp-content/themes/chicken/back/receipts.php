@@ -66,6 +66,7 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
             }
             if(!empty($dataPost['properties'])){
                 $props = $dataPost['properties'];
+                $posts[$post->ID]['desc'] = $dataPost['properties-desc'];
                 $posts[$post->ID]['complexity'] = $props['complexity'];
                 $posts[$post->ID]['time'] = $props['time'];
                 $posts[$post->ID]['portioning'] = $props['portioning'];
@@ -98,9 +99,8 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
 
             if(!empty($dataPost['nutritional-group'])){
                 $nutritionalGroup = $dataPost['nutritional-group'];
-
                 $posts[$post->ID]['info'] = $nutritionalGroup['info'];
-                $posts[$post->ID]['short-info'] = $nutritionalGroup['short-info'];
+                $posts[$post->ID]['short-info'] = $nutritionalGroup['short_info'];
 
             }else{
                 $posts[$post->ID]['info'] = '';

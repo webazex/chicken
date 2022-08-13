@@ -11,6 +11,7 @@ require_once 'back/receipts.php';
 require_once 'back/products.php';
 require_once 'back/ajax.php';
 require_once 'back/breadcrumbs.php';
+require_once 'back/nap.php';
 function getTaxes($tax, $parent = null){
     if(!empty($tax)){
         $args = [
