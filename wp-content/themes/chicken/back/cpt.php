@@ -99,7 +99,7 @@ function register_post_types(){
 		// 'publicly_queryable'  => null, // зависит от public
 		// 'exclude_from_search' => null, // зависит от public
 		// 'show_ui'             => null, // зависит от public
-		// 'show_in_nav_menus'   => null, // зависит от public
+		 'show_in_nav_menus'   => true, // зависит от public
 		'show_in_menu'        => true, // показывать ли в меню адмнки
 		// 'show_in_admin_bar'   => null, // зависит от show_in_menu
 		'show_in_rest'        => null, // добавить в REST API. C WP 4.7

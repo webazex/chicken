@@ -16,6 +16,7 @@
                 <div class="our-production-container__content">
                     <div class="content__tabs-row">
                         <?php
+                        if(!empty($args['cats'])):
                         foreach ($args['cats'] as $k => $cat):
                             if($k == 0):
                                 $class='this-tab';
@@ -29,7 +30,7 @@
                                 <?php endif; ?>
                                 <span class="tab__text"><?php echo $cat['name']; ?></span>
                             </div>
-                        <?php endforeach; ?>
+                        <?php endforeach; endif;?>
                     </div>
                     <div class="default-grid-container__filters-row">
                         <div class="filters-row__group">
