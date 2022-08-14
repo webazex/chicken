@@ -1390,10 +1390,10 @@ footer {
 		". download";
 	align-items: center;
 }
-.serts__sert img {
-	width: 100%;
-	grid-area: icon;
-}
+/*.serts__sert img {*/
+/*	width: 100%;*/
+/*	grid-area: icon;*/
+/*}*/
 .serts__sert p {
 	text-align: left;
 	grid-area: text;
