@@ -1,6 +1,6 @@
 <?php
 get_header();
-var_dump(get_post_type());
+//var_dump(get_post_type());
 switch (get_post_type()){
     case "products":
         $data = [

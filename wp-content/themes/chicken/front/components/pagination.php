@@ -12,5 +12,5 @@ $pagination = get_the_posts_pagination( [
     'aria_label'         => __( '' ), // aria-label="" для nav элемента. С WP 5.3
     'class'              => 'pagination',  // class="" для nav элемента. С WP 5.5
 ] );
-var_dump($pagination);
+//var_dump($pagination);
 ?>
