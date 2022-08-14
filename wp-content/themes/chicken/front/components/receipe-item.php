@@ -1,4 +1,3 @@
-<?php ?>
 <div class="grid-default__item recipes">
     <img src="<?php echo $args['image'];?>" alt="" class="receipes__img">
     <div class="receipes__info">
