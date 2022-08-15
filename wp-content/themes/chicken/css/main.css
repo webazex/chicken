@@ -1155,6 +1155,9 @@ footer {
 	font-size: 17px;
 	color: white;
 }
+.info-row__breadcrumbs-row.contacts span, .kama_breadcrumbs span {
+	color: #232323;
+}
 .sep, .sep-item,
 .info-row__breadcrumbs-row span, .kb_sep{
 	color: #676767;
@@ -1703,6 +1706,65 @@ article p.desc {
 	font-size: var(--default-font-size);
 	margin: 40px 0;
 	border-radius: 15px;
+}
+/*====contacts=page===*/
+.site-size__container-contact {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr minmax(auto, 468px);
+	grid-row-gap: 40px;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-areas:
+			"phone adress img"
+		"mail worktime img"
+	"socials other img";
+}
+.line-section {
+	padding: 100px 0;
+}
+.lined {
+	width: 100%;
+	height: 1px;
+	background-color: #EFEFEF;
+	display: block;
+}
+.container-contact__img {
+	width: 100%;
+	grid-area: img;
+}
+.container-contact__block {
+	display: flex;
+	flex-direction: column;
+}
+.container-contact__block a,
+.container-contact__block p{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	color: #0036A0;
+	margin-bottom: 10px;
+}
+.container-contact__block a:last-child,
+.container-contact__block p:last-child{
+	margin-bottom: 0;
+}
+.container-contact__block:first-child {
+	grid-area: phone;
+}
+.container-contact__block:nth-child(2) {
+	grid-area: mail;
+}
+.container-contact__block:nth-child(3) {
+	grid-area: socials;
+}
+.container-contact__block:nth-child(4) {
+	grid-area: adress;
+}
+.container-contact__block:nth-child(5) {
+	grid-area: worktime;
+}
+.container-contact__block:nth-child(6) {
+	grid-area: other;
 }
 @media (max-width: 1790px) {
 	:root {
