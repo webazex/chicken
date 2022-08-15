@@ -5,7 +5,7 @@ switch (get_post_type()){
     case "products":
         $data = [
             'cats' => getTaxes('p-cats'),
-            'subcats' => getTaxes('p-cats', "showAll"),
+            'subcats' => getTaxes('p-cats', 2),
             //'products' => getProducts(get_option( 'posts_per_page' ))
             'products' => getProducts()
         ];

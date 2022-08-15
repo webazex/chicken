@@ -21,7 +21,12 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
     ];
     if(!empty($tax)){
         foreach ($tax as $k => $v){
-            $args[$k] = $v;
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => $k,
+                    'terms'    => $v
+                ]
+            ];
         }
     }
     if(!empty($property)){

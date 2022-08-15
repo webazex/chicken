@@ -87,7 +87,7 @@ $(document).ready(function (){
             tax: $(this).attr('data-cat-s'),
          },
          success: function(data){
-            $('.tabs__tab-contents').html(data);
+            $('.targeted').html(data);
             //alert(JSON.parse(data));
          }
       });
@@ -116,7 +116,7 @@ $(document).ready(function (){
             tax: thisTab.attr('data-tag-s'),
          },
          success: function(data){
-            $('.tabs__tab-contents').html(data);
+            $('.targeted').html(data);
             //alert(JSON.parse(data));
          }
       });
@@ -132,10 +132,63 @@ $(document).ready(function (){
             tax: $(this).attr('data-tag-s'),
          },
          success: function(data){
-            $('.tabs__tab-contents').html(data);
+            $('.targeted').html(data);
             //alert(JSON.parse(data));
          }
       });
+   });
+
+   $('.filters-row__filters').on('submit', '.filters__filter-form', function (e){
+      e.preventDefault();
+      var dataForm = $(this).serializeArray();
+      console.log(dataForm[0].name);
+      if((dataForm[0].name !== "status") && (dataForm[0].name !== "order")){
+         $.ajax({
+            url: rajax.url,
+            method: 'post',
+            data: {
+               action: 'get-products',
+               tax: dataForm[0].value,
+            },
+            success: function(data){
+               $('.targeted').html(data);
+               //alert(JSON.parse(data));
+            }
+         });
+      }else{
+         if(dataForm[0].name === "status"){
+            $.ajax({
+               url: rajax.url,
+               method: 'post',
+               data: {
+                  action: 'get-products-prop',
+                  prop: dataForm[0].name,
+                  val: dataForm[0].value,
+               },
+               success: function(data){
+                  $('.targeted').html(data);
+                  //alert(JSON.parse(data));
+               }
+            });
+         }
+         // ==desc==
+         if(dataForm[0].name === "order"){
+            $.ajax({
+               url: rajax.url,
+               method: 'post',
+               data: {
+                  action: 'get-products-prop',
+                  val: dataForm[0].name,
+                  prop: dataForm[0].value,
+               },
+               success: function(data){
+                  $('.targeted').html(data);
+                  //alert(JSON.parse(data));
+               }
+            });
+         }
+      }
+
    });
 
    $('.contact-box__text-desc').click(function (){

@@ -15,7 +15,7 @@
     <section>
         <div class="site-size">
             <div class="site-size__default-grid-container">
-                <div class="default-grid-container__filters-row" style="display: none!important;">
+                <div class="default-grid-container__filters-row" style="">
                     <div class="filters-row__group">
                         <div class="filters-row__filters">
                             <div class="filter__text-row">
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <?php if(!empty($args['recipes'])):?>
-                <div class="default-grid-container__grid-default">
+                <div class="default-grid-container__grid-default targeted">
                     <?php foreach ($args['recipes'] as $recipe):
                         get_template_part('front/components/receipe-item', '', $recipe);
                     endforeach;?>

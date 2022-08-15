@@ -15,7 +15,7 @@
                 </a>
                 <?php endif;?>
             </div>
-            <div class="default-grid-container__grid-default">
+            <div class="default-grid-container__grid-default targeted">
                 <?php foreach ($args['posts'] as $post) {
                     get_template_part('front/components/receipe-item', '', $post);
                 }?>

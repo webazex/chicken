@@ -34,6 +34,9 @@
                     </div>
                     <div class="default-grid-container__filters-row">
                         <div class="filters-row__group">
+                            <?php
+                                if(!empty($args['subcats'])):
+                            ?>
                             <div class="filters-row__filters">
                                 <div class="filter__text-row">
                                     <span>Тип продукту</span>
@@ -42,30 +45,17 @@
                                     </svg>
 
                                 </div>
-                                <form class="filters__filter-form">
+                                <form class="filters__filter-form" method="post">
+                                    <?php foreach ($args['subcats'] as $cat):?>
                                     <label>
-                                        <input type="radio" name="filter" value="date">
-                                        <span>Датою</span>
+                                        <input type="radio" name="filter" value="<?php echo $cat['id'];?>">
+                                        <span><?php echo $cat['name']; ?></span>
                                     </label>
-
-                                    <label>
-                                        <input type="radio" name="filter" value="timec">
-                                        <span>Часом приготування</span>
-                                    </label>
-
-                                    <label>
-                                        <input type="radio" name="filter" value="lvl">
-                                        <span>Складністю</span>
-                                    </label>
-
-                                    <label>
-                                        <input type="radio" name="filter" value="h">
-                                        <span>Популярністю</span>
-                                    </label>
-
+                                    <?php endforeach;?>
                                     <button type="submit">Застосувати</button>
                                 </form>
                             </div>
+                            <?php endif;?>
                             <div class="filters-row__filters">
                                 <div class="filter__text-row">
                                     <span>Стан</span>
@@ -76,25 +66,14 @@
                                 </div>
                                 <form class="filters__filter-form">
                                     <label>
-                                        <input type="radio" name="filter" value="date">
-                                        <span>Датою</span>
+                                        <input type="radio" name="status" value="1">
+                                        <span>Охолоджений</span>
                                     </label>
 
                                     <label>
-                                        <input type="radio" name="filter" value="timec">
-                                        <span>Часом приготування</span>
+                                        <input type="radio" name="status" value="2">
+                                        <span>Заморожений</span>
                                     </label>
-
-                                    <label>
-                                        <input type="radio" name="filter" value="lvl">
-                                        <span>Складністю</span>
-                                    </label>
-
-                                    <label>
-                                        <input type="radio" name="filter" value="h">
-                                        <span>Популярністю</span>
-                                    </label>
-
                                     <button type="submit">Застосувати</button>
                                 </form>
                             </div>
@@ -108,34 +87,29 @@
                                 </svg>
 
                             </div>
-                            <form class="filters__filter-form">
+<!--                            По алфавиту А-Я-->
+<!--                            По алфавиту Я-А-->
+<!--                            По дате добавления-->
+<!--                            По дате добавления-->
+<!--                            Времени приготовления-->
+<!--                            Времени приготовления-->
+                            <form class="filters__filter-form order">
                                 <label>
-                                    <input type="radio" name="filter" value="date">
-                                    <span>Датою</span>
+                                    <input type="radio" name="filter" value="DESC">
+                                    <span>Від більшого до меншого</span>
                                 </label>
 
                                 <label>
-                                    <input type="radio" name="filter" value="timec">
-                                    <span>Часом приготування</span>
+                                    <input type="radio" name="filter" value="ASC">
+                                    <span>Від меншого до більшого</span>
                                 </label>
-
-                                <label>
-                                    <input type="radio" name="filter" value="lvl">
-                                    <span>Складністю</span>
-                                </label>
-
-                                <label>
-                                    <input type="radio" name="filter" value="h">
-                                    <span>Популярністю</span>
-                                </label>
-
                                 <button type="submit">Застосувати</button>
                             </form>
                         </div>
                     </div>
                     <div class="content__tabs">
                         <div class="tabs__tab"></div>
-                        <div class="tabs__tab-contents">
+                        <div class="tabs__tab-contents targeted">
                             <?php foreach ($args['products'] as $product) {
                                 get_template_part('front/components/product-item', '', $product);
                             }?>
