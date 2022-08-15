@@ -65,7 +65,11 @@ function getAjaxProductsCats(){
 add_action('wp_ajax_get-products-prop', 'getAjaxProductsForProp');
 add_action('wp_ajax_nopriv_get-products-cats', 'getAjaxProductsForProp');
 function getAjaxProductsForProp(){
-    print_r($_POST);
+//    print_r($_POST);
+    if(!empty($_POST['prop']) and !empty($_POST['val'])){
+        $properties = [$_POST['prop'] => $_POST['val']];
+        $data = getProductsForVal("all", $properties);
+    }
     foreach ($data as $item) {
         $html .= get_template_part('front/components/product-item', '', $item);
     }

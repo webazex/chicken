@@ -190,7 +190,12 @@ $(document).ready(function (){
       }
 
    });
+   $('.filters__filter-form.order').click(function (e){
+      e.preventDefault();
+      let catId = $('input[name=filter]:checked').val();
+      let statusId = $('input[name=status]:checked').val();
 
+   });
    $('.contact-box__text-desc').click(function (){
       $('.popups').css({'display': 'flex'});
       $('.popups__callback-form').css({'display': 'block'});

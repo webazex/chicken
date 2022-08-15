@@ -95,12 +95,12 @@
 <!--                            Времени приготовления-->
                             <form class="filters__filter-form order">
                                 <label>
-                                    <input type="radio" name="filter" value="DESC">
+                                    <input type="radio" name="order" value="DESC">
                                     <span>Від більшого до меншого</span>
                                 </label>
 
                                 <label>
-                                    <input type="radio" name="filter" value="ASC">
+                                    <input type="radio" name="order" value="ASC">
                                     <span>Від меншого до більшого</span>
                                 </label>
                                 <button type="submit">Застосувати</button>
