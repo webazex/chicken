@@ -141,8 +141,8 @@ $(document).ready(function (){
    $('.filters-row__filters').on('submit', '.filters__filter-form', function (e){
       e.preventDefault();
       var dataForm = $(this).serializeArray();
-      console.log(dataForm[0].name);
       if((dataForm[0].name !== "status") && (dataForm[0].name !== "order")){
+         console.log("safsdf");
          $.ajax({
             url: rajax.url,
             method: 'post',

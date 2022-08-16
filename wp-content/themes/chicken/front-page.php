@@ -12,11 +12,26 @@ if(!empty($pageContent)):
                 get_template_part('front/sections/front-page/slider', '', $pageContent['slider']);
             endif;
             if(!empty($pageContent['products-group'])){
+                $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+                $args = [
+                    'posts_per_page' => 8,
+                    'post_type' => 'products',
+                    'order' => 'DESC',
+                    'tax_query' => [
+                        'relation' => 'AND',
+                        [
+                            'taxonomy' => 'p-cats',
+                            'field' => 'slug',
+                            'terms'    => 'zc',
+                        ],
+                    ]
+                ];
                 $data = [
                     'acf' => $pageContent['products-group'],
                     'cats' => getTaxes('p-cats'),
                     'subcats' => getTaxes('p-cats', "showAll"),
-                    'products' => getProducts(8, ['status'], 'DESC', ['p-cats' => 'zc'])
+//                    'products' => getProducts(8, ['status'], 'DESC', ['p-cats' => 'zc'])
+                    'products' => getDataPosts($args)
                 ];
                 get_template_part('front/sections/front-page/products-group', '', $data);
             }
