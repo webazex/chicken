@@ -17,16 +17,28 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
         'posts_per_page' => $count,
         'post_type' => 'products',
         'order' => $sorted,
-        'paged' => $paged,
+        //'paged' => $paged,
     ];
     if(!empty($tax)){
         foreach ($tax as $k => $v){
-            $args['tax_query'] = [
-                [
-                    'taxonomy' => $k,
-                    'terms'    => $v
-                ]
-            ];
+            if(intval($v) === 0){
+                $args['tax_query'] = [
+                    [
+                        'taxonomy' => $k,
+                        'field'    => 'slug',
+                        'terms'    => $v
+                    ]
+                ];
+            }else{
+                $args['tax_query'] = [
+                    [
+                        'taxonomy' => $k,
+                        'field'    => 'id',
+                        'terms'    => $v
+                    ]
+                ];
+            }
+
         }
     }
     if(!empty($property)){
@@ -41,7 +53,6 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
                 $meta
             ];
         $args['orderby'] = 'meta_value_num';
-        print_r($args);
     }
     $obj = new WP_Query($args);
     if(!empty($obj->posts)){
