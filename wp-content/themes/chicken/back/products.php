@@ -17,7 +17,7 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
         'posts_per_page' => $count,
         'post_type' => 'products',
         'order' => $sorted,
-        //'paged' => $paged,
+        'paged' => $paged,
     ];
     if(!empty($tax)){
         foreach ($tax as $k => $v){

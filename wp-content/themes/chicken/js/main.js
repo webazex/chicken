@@ -83,12 +83,13 @@ $(document).ready(function (){
          url: rajax.url,
          method: 'post',
          data: {
-            action: 'get-products',
+            action: 'get-data-posts',
             tax: $(this).attr('data-cat-s'),
          },
          success: function(data){
-            $('.targeted').html(data);
+            // $('.targeted').html(data);
             //alert(JSON.parse(data));
+            alert(data);
          }
       });
       $.ajax({
