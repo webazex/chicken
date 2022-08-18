@@ -83,3 +83,10 @@ function getGradient($gradientField){
     }
     return $str;
 }
+
+$myposts = get_posts( [
+    'posts_per_page' => -1,
+    'taxonomy_name' => 'p-cats',
+    'post_type' => 'tuska',
+] );
+var_dump($myposts);

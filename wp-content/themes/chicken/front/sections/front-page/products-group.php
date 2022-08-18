@@ -21,7 +21,7 @@
                                 $class = '';
                             endif;
                             ?>
-                            <div class="tabs-row__tab <?php echo $class;?>" data-cat-id="<?php echo $cat['id']; ?>" data-cat-s="<?php echo $cat['slug']; ?>">
+                            <div class="tabs-row__tab f <?php echo $class;?>" data-post-type="products" data-cat-id="<?php echo $cat['id']; ?>" data-cat-s="<?php echo $cat['slug']; ?>">
                                 <?php if(!empty($cat['icon'])):?>
                                     <img src="<?php echo $cat['icon']; ?>" alt="icon">
                                 <?php endif; ?>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="content__tabs">
                     <div class="tabs__tab"></div>
-                    <div class="tabs__tab-contents targeted">
+                    <div class="tabs__tab-contents targeted-product">
                         <!--								==card-->
                         <?php foreach ($args['products'] as $product):
                             get_template_part('front/components/product-item', '', $product);

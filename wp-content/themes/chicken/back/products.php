@@ -77,7 +77,6 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
                'status' => $dataPost['product-status'],
                 'conditions' => $conditions,
                 'nutritional' => $nutritional,
-
             ]);
         }
     }else{

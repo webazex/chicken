@@ -76,7 +76,7 @@ $(document).ready(function (){
       }
    });
 
-   $('.tabs-row__tab').click(function (){
+   $('.tabs-row__tab.f').click(function (){
       $('.tabs-row__tab').removeClass('this-tab');
       $(this).addClass('this-tab');
       $.ajax({
@@ -85,25 +85,26 @@ $(document).ready(function (){
          data: {
             action: 'get-data-posts',
             tax: $(this).attr('data-cat-s'),
+            ptype: $(this).attr('data-post-type'),
          },
          success: function(data){
-            // $('.targeted').html(data);
+            $('.targeted-product').html(data);
             //alert(JSON.parse(data));
-            alert(data);
+            // alert(data);
          }
       });
-      $.ajax({
-         url: rajax.url,
-         method: 'post',
-         data: {
-            action: 'get-products-cats',
-            tcat: $(this).attr('data-cat-id'),
-         },
-         success: function(data){
-            $('.content__subtabs').html(data);
-            //alert(JSON.parse(data));
-         }
-      });
+      // $.ajax({
+      //    url: rajax.url,
+      //    method: 'post',
+      //    data: {
+      //       action: 'get-products-cats',
+      //       tcat: $(this).attr('data-cat-id'),
+      //    },
+      //    success: function(data){
+      //       $('.content__subtabs').html(data);
+      //       //alert(JSON.parse(data));
+      //    }
+      // });
    });
    $('.content__subtabs').on('click', '.subtabs__subtab', function (){
       $('.subtabs__subtab').removeClass('current');
