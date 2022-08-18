@@ -1,10 +1,10 @@
 <?php
-get_header('product');
+wp_head();
 switch (get_post_type()){
     case "products":
         $dataProduct = get_field('product-group', $post->ID);
         get_template_part('front/single/product', '', $dataProduct);
         break;
 }
-get_footer('product');
+wp_footer();
 ?>
