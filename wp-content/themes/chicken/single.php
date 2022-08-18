@@ -1,9 +1,10 @@
 <?php
-get_header();
+get_header('product');
 switch (get_post_type()){
     case "products":
-        get_template_part('front/catalog/products', '', $data);
+        $dataProduct = get_field('product-group', $post->ID);
+        get_template_part('front/single/product', '', $dataProduct);
         break;
 }
-
-get_footer();
+get_footer('product');
+?>
