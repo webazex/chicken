@@ -192,6 +192,9 @@ $(document).ready(function (){
       }
 
    });
+   $('.form-column__c-form').submit(function (){
+      alert("Unexpected JSON position at 0 <");
+   });
    $('.filters__filter-form.order').click(function (e){
       e.preventDefault();
       let catId = $('input[name=filter]:checked').val();

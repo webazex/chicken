@@ -4,7 +4,7 @@
             <h2 class="about-welcome-section__title"><?php echo $args['welcome']['title'];?></h2>
             <div class="about-welcome-section__content">
                 <p>
-                    <?php echo $args['welcome']['desc'];?>
+                    <?php echo $args['welcome']['content'];?>
                 </p>
                 <img src="<?php echo $args['welcome']['image'];?>" alt="">
             </div>

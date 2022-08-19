@@ -4,7 +4,7 @@
             <img src="<?php echo $args['image']; ?>" alt="">
             <div class="control-section__text-block">
                 <h2><?php echo $args['title'];?></h2>
-                <?php echo $args['content'];?>
+                <p><?php echo $args['content'];?></p>
             </div>
         </div>
     </div>

@@ -30,16 +30,16 @@ if(!empty($dataContent)):?>
             </div>
         </section>
         <?php
-            if(!empty($dataContent['welcome-section'])){
+            if(!empty($dataContent['welcome'])){
                 $data = [
-                    'welcome' => $dataContent['welcome-section'],
+                    'welcome' => $dataContent['welcome'],
                     'advantages' => $dataContent['advantages'],
                     'banner' => $dataContent['banner'],
                 ];
                 get_template_part('front/sections/about/welcome', '', $data);
             }
             if(!empty($dataContent['cirle'])){
-                get_template_part('front/sections/about/welcome', '', $dataContent['cirle']);
+                get_template_part('front/sections/about/circle', '', $dataContent['cirle']);
             }
             if(!empty($dataContent['certificates'])){
                 get_template_part('front/sections/about/serts', '', $dataContent['certificates']);
