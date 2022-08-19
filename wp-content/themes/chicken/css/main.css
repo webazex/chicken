@@ -607,6 +607,9 @@ header.second a{
 .properties__property-row:last-child {
 	display: none;
 }
+.properties__property-row.product{
+	display: flex;
+}
 .tab-contents__card:hover .properties__property-row:last-child {
 	display: flex;
 }
@@ -1772,13 +1775,14 @@ article p.desc {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding: 80px 0;
+	padding-top: 80px;
 	margin: 0 auto;
 }
 .container-product__img {
 	max-width: 480px;
 	width: 100%;
 	margin-right: 70px;
+	align-self: flex-start;
 }
 .container-product__info-box {
 	width: 100%;
@@ -1786,11 +1790,77 @@ article p.desc {
 	flex-direction: column;
 	justify-content: flex-start;
 }
+.info-box__title {
+	margin-top: 20px;
+	font-weight: 500;
+	line-height: 150%;
+	margin-bottom: 20px;
+}
+.properties__title {
+	font-weight: 500;
+	font-size: var(--default-font-size);
+	color: #232323;
+	margin-bottom: 10px;
+}
+.info-box__sku {
+	font-weight: 400;
+	font-size: var(--default-font-size);
+	color: #676767;
+}
 .info-box__properties {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+}
+span.line, span.line-section-product {
+	width: 100%;
+	display: block;
+	height: 1px;
+	background-color: #EFEFEF;
+	margin: 25px 0;
+}
+span.line-section-product {
+	margin: 50px 0;
+}
+.properties__property-row.product {
+	justify-content: flex-start;
+	margin-bottom: 10px;
+}
+.properties__property-row.product:last-child {
+	margin: 0;
+}
+.properties__property-row.product span {
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 150%;
+	color: #232323;
+	margin-right: 5px;
+}
+.properties__property-row.product span:last-child {
+	color: #0036A0;
+	margin-right: 0;
+}
+.info-box__status-row {
+	display: flex;
+	align-items: center;
+}
+.info-box__status-row span.mark-row__text {
+	display: block;
+	margin-right: 15px;
+}
+.recents {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
+	padding-bottom: 80px;
+}
+.recents-title {
+	font-weight: 500;
+	font-size: 28px;
+	color: #232323;
+	margin-bottom: 30px;
 }
 @media (max-width: 1790px) {
 	:root {

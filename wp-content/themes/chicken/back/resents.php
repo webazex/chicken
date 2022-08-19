@@ -222,14 +222,14 @@ function __getCustomAdjacentPosts( $in_same_term = false, $excluded_terms = '', 
     }
     return $returned;
 }
-function getRecentsPosts():array{
+function getRecentsPosts($tax):array{
     $returned = [];
-    $prev_posts = __getCustomAdjacentPosts(false, '', true, 'community-cat', 1);
+    $prev_posts = __getCustomAdjacentPosts(false, '', true, $tax, 1);
     if(!empty($prev_posts)){
         foreach ($prev_posts as $prev_post){
             array_push($returned, $prev_post);
         }
-        $next_posts = __getCustomAdjacentPosts(false, '', false, 'community-cat', 2);
+        $next_posts = __getCustomAdjacentPosts(false, '', false, $tax, 2);
         switch (count($next_posts)){
             case 2:
                 foreach ($next_posts as $next_post){
@@ -240,13 +240,13 @@ function getRecentsPosts():array{
                 foreach ($next_posts as $next_post){
                     array_push($returned, $next_post);
                 }
-                $prev_posts = __getCustomAdjacentPosts(false, '', true, 'community-cat', 2);
+                $prev_posts = __getCustomAdjacentPosts(false, '', true, $tax, 2);
                 if(!empty($prev_posts[1])){
                     array_push($returned, $prev_posts[1]);
                 }
                 break;
             case 0:
-                $prev_posts = __getCustomAdjacentPosts(false, '', true, 'community-cat', 3);
+                $prev_posts = __getCustomAdjacentPosts(false, '', true, $tax, 3);
                 $returned = [];
                 foreach ($prev_posts as $prev_post){
                     array_push($returned, $prev_post);
@@ -256,7 +256,7 @@ function getRecentsPosts():array{
                 break;
         }
     }else {
-        $next_posts = __getCustomAdjacentPosts(false, '', false, 'community-cat', 3);
+        $next_posts = __getCustomAdjacentPosts(false, '', false, $tax, 3);
         if(!empty($next_posts)){
             foreach ($next_posts as $next_post){
                 array_push($returned, $next_post);
@@ -264,4 +264,36 @@ function getRecentsPosts():array{
         }
     }
     return $returned;
+}
+
+function getRecentsProducts(){
+    $data = getRecentsPosts('p-cats');
+    if(!empty($data)){
+        $posts = [];
+        foreach ($data as $post){
+            $dataPost = get_field('product-group', $post->ID);
+            if(!empty($dataPost['conditions'])){
+                $conditions = __fetchProperties($dataPost['conditions']);
+            }else{
+                $conditions = [];
+            }
+            if(!empty($dataPost['nutritional'])){
+                $nutritional = __fetchProperties($dataPost['nutritional']);
+            }else{
+                $nutritional = [];
+            }
+            array_push($posts, [
+                'id' => $post->ID,
+                'title' => $dataPost['title'],
+                'src' => $dataPost['image'],
+                'sku' => $dataPost['sku'],
+                'status' => $dataPost['product-status'],
+                'conditions' => $conditions,
+                'nutritional' => $nutritional,
+            ]);
+        }
+    }else{
+        $posts = [];
+    }
+    return $posts;
 }

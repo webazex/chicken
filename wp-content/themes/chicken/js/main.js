@@ -84,7 +84,7 @@ $(document).ready(function (){
          method: 'post',
          data: {
             action: 'get-data-posts',
-            tax: $(this).attr('data-cat-s'),
+            tax: $(this).attr('data-cat-id'),
             ptype: $(this).attr('data-post-type'),
          },
          success: function(data){

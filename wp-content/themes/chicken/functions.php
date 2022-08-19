@@ -89,4 +89,4 @@ $myposts = get_posts( [
     'taxonomy_name' => 'p-cats',
     'post_type' => 'tuska',
 ] );
-var_dump($myposts);
+//var_dump($myposts);
