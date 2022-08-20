@@ -297,3 +297,34 @@ function getRecentsProducts(){
     }
     return $posts;
 }
+
+function getRecentsNap(){
+    $data = getRecentsPosts('nap-tags');
+    if(!empty($data)){
+        $posts = [];
+        foreach ($data as $post){
+            $dataPost = get_field('nap-content', $post->ID);
+            $cats = [];
+            $terms = get_the_terms($post, 'nap-tags');
+            if(!is_wp_error($terms) and ($terms !== false)){
+                foreach ($terms as $termObj) {
+                    array_push($cats, [
+                        'id' => $termObj->term_id,
+                        'name' => $termObj->name,
+                        'slug' => $termObj->slug,
+                        'count' => $termObj->count,
+                    ]);
+                }
+            }
+            array_push($posts, [
+                'title' => $dataPost['title'],
+                'image' => $dataPost['image'],
+                'content' => $dataPost['content'],
+                'cats' => $cats,
+            ]);
+        }
+    }else{
+        $posts = [];
+    }
+    return $posts;
+}

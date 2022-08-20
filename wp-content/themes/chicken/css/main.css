@@ -110,6 +110,8 @@ h4, h4 span {
 .site-size-nap {
 	max-width: 1000px;
 	background-color: white;
+	padding-top: 70px;
+	padding-bottom: 70px;
 }
 .site-size__header-container, .site-size__footer-container {
 	width: 100%;

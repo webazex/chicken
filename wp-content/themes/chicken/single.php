@@ -8,9 +8,8 @@ switch (get_post_type()){
         wp_footer();
         break;
     case "nap":
-
-        $acfData = get_field('');
-        get_template_part('front/single/nap', '', $post);
+        $acfData = get_field('nap-content',$post->ID );
+        get_template_part('front/single/nap', '', $acfData);
         get_footer();
         break;
 }

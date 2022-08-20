@@ -9,7 +9,7 @@
  *
  * version 3.3.2
  */
-function kama_breadcrumbs( $sep = ' » ', $l10n = array(), $args = array() ){
+function kama_breadcrumbs( $sep = ' » ', $l10n = array(), $args = [] ){
     $kb = new Kama_Breadcrumbs;
     echo $kb->get_crumbs( $sep, $l10n, $args );
 }
