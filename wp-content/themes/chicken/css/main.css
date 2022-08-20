@@ -1868,6 +1868,15 @@ span.line-section-product {
 	color: #232323;
 	margin-bottom: 30px;
 }
+.site-size-nap__topped-row {
+	display: flex;
+	justify-content: space-between;
+}
+.topped-row__block-info {
+	display: flex;
+	justify-content: flex-start;
+	width: auto;
+}
 @media (max-width: 1790px) {
 	:root {
 		--container-paddings: 260px;
