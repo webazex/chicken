@@ -12,6 +12,7 @@ require_once 'back/products.php';
 require_once 'back/ajax.php';
 require_once 'back/breadcrumbs.php';
 require_once 'back/nap.php';
+require_once 'back/sharing.php';
 function getTaxes($tax, $parent = null){
     if(!empty($tax)){
         $args = [

@@ -2,7 +2,6 @@
     get_header();
     $content = $args['fields'];
     $tags = $args['cats'];
-    $recents = getRecentsNap();
 ?>
 <main>
     <section>
@@ -10,8 +9,11 @@
             <div class="site-size-nap__topped-row">
                 <div class="topped-row__breadcrumbs">
                     <?php
-                    $data['params'] = [
-                        'show_post_title' => false
+                    $data = [
+                        'params' => [
+                                'show_post_title' => false
+                            ],
+                        'sep' => " \\ "
                     ];
                         get_template_part('front/components/breadcrumbs', '', $data);
                     ?>
@@ -26,7 +28,7 @@
                         ?>
                     </div>
                     <?php endif;?>
-                    <?php echo get_the_date( pll__("d F Y"), $post->ID ); //the_time("d F Y");?>
+                    <span class="block-info__date"><?php echo get_the_date( "d F Y", $post->ID ); //the_time("d F Y");?></span>
                 </div>
             </div>
             <img src="<?php echo $content['image'];?>" alt="<?php echo $content['title'];?>" class="site-size-nap__image">
@@ -38,12 +40,26 @@
             </div>
             <div class="site-size-nap__bottomed-row">
                 <div class="bottomed-row__socials">
-
+                    <?php
+                        $sharedLinks = getSharedLinks($content['repost-content']);
+                        if(!empty($sharedLinks)){
+                            foreach ($sharedLinks as $sharedLink) {
+                                echo $sharedLink;
+                            }
+                        }
+                    ?>
                 </div>
-                <a href=""></a>
+                <a href="">Всі новини</a>
             </div>
             <h2 class="recents-title"><?php echo $content['recents-title'];?></h2>
-
+                <div class="recents">
+                    <?php
+                    $recents = getRecentsNap();
+                    foreach ($recents as $item):
+                        get_template_part('front/components/nap-item', '', $item);
+                    endforeach;
+                    ?>
+                </div>
         </div>
     </section>
 </main>
