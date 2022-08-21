@@ -30,7 +30,24 @@ switch (get_post_type()){
         break;
     case "recipes":
         get_header();
-        get_template_part('front/single/receipt');
+        $terms = get_the_terms($post->ID, 'r-tags');
+        $acfData = get_field('receipt-group',$post->ID );
+        $cats = [];
+        if(!is_wp_error($terms) and ($terms !== false)){
+            foreach ($terms as $termObj) {
+                array_push($cats, [
+                    'id' => $termObj->term_id,
+                    'name' => $termObj->name,
+                    'slug' => $termObj->slug,
+                    'count' => $termObj->count,
+                ]);
+            }
+        }
+        $data = [
+            'fields' => $acfData,
+            'cats' => $cats
+        ];
+        get_template_part('front/single/receipt', '', $data);
         get_footer();
 }
 

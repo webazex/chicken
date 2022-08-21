@@ -155,7 +155,7 @@ function register_post_types(){
         // '_builtin'              => false,
         //'update_count_callback' => '_update_post_term_count',
     ] );
-    register_taxonomy( 'штпкшвшутеы', [ 'recipes' ], [
+    register_taxonomy( 'ingridients', [ 'recipes' ], [
         'label'                 => '', // определяется параметром $labels->name
         'labels'                => [
             'name'              => __('Інгрідієнти', 'chicken'),
