@@ -26,7 +26,7 @@
                         ?>
                     </div>
                     <?php endif;?>
-                    <?php echo get_the_date( "d F Y", $post->ID ); //the_time("d F Y");?>
+                    <?php echo get_the_date( pll__("d F Y"), $post->ID ); //the_time("d F Y");?>
                 </div>
             </div>
             <img src="<?php echo $content['image'];?>" alt="<?php echo $content['title'];?>" class="site-size-nap__image">
