@@ -28,6 +28,10 @@ switch (get_post_type()){
         get_template_part('front/single/nap', '', $data);
         get_footer();
         break;
+    case "recipes":
+        get_header();
+        get_template_part('front/single/receipt');
+        get_footer();
 }
 
 ?>
