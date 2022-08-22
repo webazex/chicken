@@ -21,7 +21,7 @@ function register_post_types(){
 		],
 		'description'           => __('Products Categories', 'chicken'), // описание таксономии
 		'public'                => true,
-		// 'publicly_queryable'    => null, // равен аргументу public
+		 'publicly_queryable'    => true, // равен аргументу public
 		// 'show_in_nav_menus'     => true, // равен аргументу public
 		// 'show_ui'               => true, // равен аргументу public
 		// 'show_in_menu'          => true, // равен аргументу show_ui

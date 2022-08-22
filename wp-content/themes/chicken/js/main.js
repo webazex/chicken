@@ -93,18 +93,6 @@ $(document).ready(function (){
             // alert(data);
          }
       });
-      // $.ajax({
-      //    url: rajax.url,
-      //    method: 'post',
-      //    data: {
-      //       action: 'get-products-cats',
-      //       tcat: $(this).attr('data-cat-id'),
-      //    },
-      //    success: function(data){
-      //       $('.content__subtabs').html(data);
-      //       //alert(JSON.parse(data));
-      //    }
-      // });
    });
    $('.content__subtabs').on('click', '.subtabs__subtab', function (){
       $('.subtabs__subtab').removeClass('current');
@@ -126,18 +114,6 @@ $(document).ready(function (){
    $('.subtabs__subtab').click(function (){
       $('.subtabs__subtab').removeClass('current');
       $(this).addClass('current');
-      $.ajax({
-         url: rajax.url,
-         method: 'post',
-         data: {
-            action: 'get-products',
-            tax: $(this).attr('data-tag-s'),
-         },
-         success: function(data){
-            $('.targeted').html(data);
-            //alert(JSON.parse(data));
-         }
-      });
    });
 
    $('.filters-row__filters').on('submit', '.filters__filter-form', function (e){
@@ -192,14 +168,11 @@ $(document).ready(function (){
       }
 
    });
-   $('.form-column__c-form').submit(function (){
-      alert("Unexpected JSON position at 0 <");
-   });
+
    $('.filters__filter-form.order').click(function (e){
       e.preventDefault();
       let catId = $('input[name=filter]:checked').val();
       let statusId = $('input[name=status]:checked').val();
-
    });
    $('.contact-box__text-desc').click(function (){
       $('.popups').css({'display': 'flex'});

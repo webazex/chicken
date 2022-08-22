@@ -84,3 +84,22 @@ function getGradient($gradientField){
     }
     return $str;
 }
+//var_dump(get_query_var( 'page' ));
+$a = new WP_Query([
+    'posts_per_page' => 1,
+    'post_type' => 'products',
+    'order' => 'DESC',
+    'include_children' => true,
+//    'paged' => get_query_var( 'page' )?get_query_var( 'page' ): 1,
+//    'paged' =>  1,
+    'tax_query' => [
+        [
+            'taxonomy' => 'p-cats',
+            'field'    => 'id',
+//            'field'    => 'term_id',
+//            'terms'    => '20',
+            'terms'    => 20
+        ]
+    ]
+]);
+var_dump($a->posts);

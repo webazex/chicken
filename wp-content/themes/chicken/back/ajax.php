@@ -218,6 +218,7 @@ function getPostsForOneTax(){
                 ]
             ];
         }
+//        var_dump($tax);die();
         //forming args
         $args = [
             'posts_per_page' => $count,
@@ -227,7 +228,7 @@ function getPostsForOneTax(){
             'page' => $page,
             'tax_guery' => $tax
         ];
-        var_dump($args);die();
+
         $html = '';
         switch ($postType){
             case "nap":
