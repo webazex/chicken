@@ -30,7 +30,7 @@ function register_post_types(){
 		'hierarchical'          => true,
 
 		'rewrite'               => true,
-		//'query_var'             => $taxonomy, // название параметра запроса
+		'query_var'             => true, // название параметра запроса
 		'capabilities'          => array(),
 		'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
 		'show_admin_column'     => true, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
@@ -96,7 +96,7 @@ function register_post_types(){
 		],
 		'description'         => '',
 		'public'              => true,
-		// 'publicly_queryable'  => null, // зависит от public
+		 'publicly_queryable'  => true, // зависит от public
 		// 'exclude_from_search' => null, // зависит от public
 		// 'show_ui'             => null, // зависит от public
 		 'show_in_nav_menus'   => true, // зависит от public
@@ -109,12 +109,12 @@ function register_post_types(){
 		//'capability_type'   => 'post',
 		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
-		'hierarchical'        => false,
+		'hierarchical'        => true,
 		'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'page-attributes' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => [],
 		'has_archive'         => true,
 		'rewrite'             => true,
-		'query_var'           => true,
+//		'query_var'           => true,
 	] );
 
 	//receipes-tags
@@ -308,6 +308,6 @@ function register_post_types(){
 		'taxonomies'          => [],
 		'has_archive'         => true,
 		'rewrite'             => true,
-		'query_var'           => true,
+//		'query_var'           => true,
 	] );
 }

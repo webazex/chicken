@@ -8,10 +8,17 @@ function __fetchProperties($properties){
     return $result;
 }
 function getProducts($count = "all", array $property = [], $sorted = "DESC", $tax = []){
+    if(is_front_page()){
+        $paged = get_query_var('page') ? get_query_var('page') : 1;
+    }else{
+        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    }
 //    $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
-    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+//    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     if($count == "all"){
         $count = -1;
+    }elseif ($count = ""){
+        $count = get_option('posts_per_page');
     }
     $args = [
         'posts_per_page' => $count,
