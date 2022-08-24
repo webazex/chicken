@@ -29,7 +29,7 @@
                             </div>
                         <?php endforeach; ?>
                 </div>
-                <div class="content__subtabs">
+                <div class="content__subtabs subterms-target">
                     <div class="subtabs__subtab current">
                         <span class="subtab__text"><?php _e('Все', 'chicken'); ?></span>
                     </div>

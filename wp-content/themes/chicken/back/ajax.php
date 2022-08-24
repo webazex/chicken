@@ -171,8 +171,112 @@ function getPostsForOneTaxAndTerm(){
    }
 }
 
-add_action('wp_ajax_get-data-posts', 'getPostsForOneTax');
-add_action('wp_ajax_nopriv_get-data-posts', 'getPostsForOneTax');
+add_action('wp_ajax_get-data-posts', '__getDataPost');
+add_action('wp_ajax_nopriv_get-data-posts', '__getDataPost');
+function __getDataPost(){
+    if(!empty($_POST['pgd'])){
+        $paged = intval($_POST['pgd']);
+    }else{
+        if(is_front_page()){
+            $paged = get_query_var('page') ? get_query_var('page') : 1;
+        }else{
+            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+        }
+    }
+//    $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
+//    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    if($_POST['count'] == "all"){
+        $count = -1;
+    }elseif ($_POST['count'] = "" or empty($_POST['count'])){
+        $count = get_option('posts_per_page');
+    }else{
+        $count = intval($_POST['count']);
+    }
+    if(!empty($_POST['sorted'])){
+        $sorted = $_POST['sorted'];
+    }else{
+        $sorted = "DESC";
+    }
+    if(!empty($_POST['ptype'])){
+        $ptype = $_POST['ptype'];
+    }else{
+        $ptype = "any";
+    }
+    $args = [
+        'posts_per_page' => $count,
+        'post_type' => $ptype,
+        'order' => $sorted,
+        'paged' => $paged,
+    ];
+    $tax = $_POST['tax'];
+    if(!empty($tax)){
+        foreach ($tax as $k => $v){
+            if(intval($v) === 0){
+                $args['tax_query'] = [
+                    [
+                        'taxonomy' => $k,
+                        'field'    => 'slug',
+                        'terms'    => $v
+                    ]
+                ];
+            }else{
+                $args['tax_query'] = [
+                    [
+                        'taxonomy' => $k,
+                        'field'    => 'id',
+                        'terms'    => $v
+                    ]
+                ];
+            }
+
+        }
+    }
+    if(!empty($property)){
+//        print_r($property);
+        $meta = [];
+        foreach ($property as $prop){
+            $key = 'product-group_product-'.$prop;
+            array_push($meta, ['key' => $key]);
+        }
+        $args['meta_query']	= [
+            'relation' => 'AND',
+            $meta
+        ];
+        $args['orderby'] = 'meta_value_num';
+    }
+    $obj = new WP_Query($args);
+    if(!empty($obj->posts)){
+        $posts = [];
+        foreach ($obj->posts as $post){
+            $dataPost = get_field('product-group', $post->ID);
+            if(!empty($dataPost['conditions'])){
+                $conditions = __fetchProperties($dataPost['conditions']);
+            }else{
+                $conditions = [];
+            }
+            if(!empty($dataPost['nutritional'])){
+                $nutritional = __fetchProperties($dataPost['nutritional']);
+            }else{
+                $nutritional = [];
+            }
+            array_push($posts, [
+                'id' => $post->ID,
+                'title' => $dataPost['title'],
+                'src' => $dataPost['image'],
+                'sku' => $dataPost['sku'],
+                'status' => $dataPost['product-status'],
+                'conditions' => $conditions,
+                'nutritional' => $nutritional,
+            ]);
+        }
+    }else{
+        $posts = [];
+    }
+    foreach ($posts as $post) {
+         echo get_template_part('front/components/product-item', '', $post);
+    }
+    wp_die();
+}
 function getPostsForOneTax(){
     if(!empty($_POST['ptype'])){
         $postType = $_POST['ptype'];
@@ -368,7 +472,34 @@ function getPostsForOneTax(){
 }
 
 
+add_action('wp_ajax_get-terms', '__getTerms');
+add_action('wp_ajax_nopriv_get-terms', '__getTerms');
 
+function __getTerms(){
+    $terms = get_terms([
+        'taxonomy' => 'p-cats',
+        'hide_empty' => true,
+    ]);
+    $returned = [];
+    if(!empty($terms) and !is_wp_error($terms)){
+        foreach ($terms as $term) {
+            if($term->parent == $_POST['cpc']){
+                $icon = get_field('icon', $term->term_id);
+                if(empty($icon)){
+                    $icon = false;
+                }
+                array_push($returned, [
+                    'id' => $term->term_id,
+                    'slug' => $term->slug,
+                    'name' => $term->name,
+                    'count' => $term->count,
+                    'icon' => $icon,
+                ]);
+            }
+        }
+    }
+    wp_send_json($returned);
+}
 
 
 

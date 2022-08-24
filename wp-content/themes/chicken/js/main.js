@@ -84,13 +84,38 @@ $(document).ready(function (){
          method: 'post',
          data: {
             action: 'get-data-posts',
-            tax: $(this).attr('data-cat-id'),
+            tax: {'p-cats':$(this).attr('data-cat-id')},
             ptype: $(this).attr('data-post-type'),
          },
          success: function(data){
             $('.targeted-product').html(data);
             //alert(JSON.parse(data));
             // alert(data);
+         }
+      });
+      //get-terms
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-terms',
+            ptype: $(this).attr('data-post-type'),
+            cpc: $(this).attr('data-cat-id'),
+         },
+         success: function(data){
+            // $('.targeted-product').html(data);
+            let currentTab = $('.subtabs__subtab.current').attr('data-tag-id');
+            $('.subterms-target').children().slice(1).remove();
+            $.each(data, function (index, value){
+               let currentClass = "";
+               if(currentTab === value['id']){
+                  currentClass = "current";
+               }
+                  let item = '<div class="subtabs__subtab '+currentClass+'" data-tag-id="'+value['id']+'" data-tag-s="'+value['slug']+'">\n' +
+                      '   <span class="subtab__text">'+value['name']+'</span>\n' +
+                      '  </div>'
+                  $('.subterms-target').append(item);
+            });
          }
       });
    });
@@ -102,19 +127,21 @@ $(document).ready(function (){
          url: rajax.url,
          method: 'post',
          data: {
-            action: 'get-products',
-            tax: thisTab.attr('data-tag-s'),
+            action: 'get-data-posts',
+            tax: {'p-cats':$(this).attr('data-tag-id')},
+            ptype: $('.f.this-tab').attr('data-post-type'),
          },
          success: function(data){
-            $('.targeted').html(data);
+            $('.targeted-product').html(data);
             //alert(JSON.parse(data));
+            // alert(data);
          }
       });
    });
-   $('.subtabs__subtab').click(function (){
-      $('.subtabs__subtab').removeClass('current');
-      $(this).addClass('current');
-   });
+   // $('.subtabs__subtab').click(function (){
+   //    $('.subtabs__subtab').removeClass('current');
+   //    $(this).addClass('current');
+   // });
 
    $('.filters-row__filters').on('submit', '.filters__filter-form', function (e){
       e.preventDefault();
