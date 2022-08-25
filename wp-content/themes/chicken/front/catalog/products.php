@@ -32,7 +32,7 @@
                             </div>
                         <?php endforeach; endif;?>
                     </div>
-                    <div class="default-grid-container__filters-row">
+                    <form class="default-grid-container__filters-row" method="post">
                         <div class="filters-row__group">
                             <?php
                                 if(!empty($args['subcats'])):
@@ -45,15 +45,18 @@
                                     </svg>
 
                                 </div>
-                                <form class="filters__filter-form" method="post">
+                                <div class="filters__filter-form" method="post">
                                     <?php foreach ($args['subcats'] as $cat):?>
                                     <label>
                                         <input type="radio" name="filter" value="<?php echo $cat['id'];?>">
                                         <span><?php echo $cat['name']; ?></span>
                                     </label>
                                     <?php endforeach;?>
-                                    <button type="submit">Застосувати</button>
-                                </form>
+                                    <div class="btns-row">
+                                        <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
+                                        <button type="reset"><?php _e('Очистити', 'chicken'); ?></button>
+                                    </div>
+                                </div>
                             </div>
                             <?php endif;?>
                             <div class="filters-row__filters">
@@ -64,7 +67,7 @@
                                     </svg>
 
                                 </div>
-                                <form class="filters__filter-form">
+                                <div class="filters__filter-form">
                                     <label>
                                         <input type="radio" name="status" value="1">
                                         <span>Охолоджений</span>
@@ -74,8 +77,11 @@
                                         <input type="radio" name="status" value="2">
                                         <span>Заморожений</span>
                                     </label>
-                                    <button type="submit">Застосувати</button>
-                                </form>
+                                    <div class="btns-row">
+                                        <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
+                                        <button type="reset"><?php _e('Очистити', 'chicken'); ?></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -93,7 +99,7 @@
 <!--                            По дате добавления-->
 <!--                            Времени приготовления-->
 <!--                            Времени приготовления-->
-                            <form class="filters__filter-form order">
+                            <div class="filters__filter-form order">
                                 <label>
                                     <input type="radio" name="order" value="DESC">
                                     <span>Від більшого до меншого</span>
@@ -103,14 +109,17 @@
                                     <input type="radio" name="order" value="ASC">
                                     <span>Від меншого до більшого</span>
                                 </label>
-                                <button type="submit">Застосувати</button>
-                            </form>
+                                <div class="btns-row">
+                                    <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
+                                    <button type="reset"><?php _e('Очистити', 'chicken'); ?></button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="content__tabs">
                         <div class="tabs__tab"></div>
                         <div class="tabs__tab-contents targeted">
-                            <?php foreach ($args['products'] as $product) {
+                            <?php foreach ($args['products']['posts'] as $product) {
                                 get_template_part('front/components/product-item', '', $product);
                             }?>
                         </div>
@@ -119,5 +128,6 @@
             </div>
         </div>
     </section>
+    <?php var_dump($args['products']['pagination']); ?>
     <?php get_template_part('front/components/two-side');?>
 </main>

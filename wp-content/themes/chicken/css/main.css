@@ -1976,6 +1976,32 @@ span.line-section-product {
 	align-items: center;
 }
 .content-tabs__ingridient img {width: 100%;}
+div.filters__filter-form div.btns-row button {
+	margin: 0;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	height: 44px;
+}
+.btns-row {
+	margin-top: 15px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+div.filters__filter-form div.btns-row button[type="submit"] {
+	padding-left: 23.5px;
+	padding-right: 23.5px;
+	margin-right: 10px;
+}
+.btns-row button[type="reset"] {
+	padding-left: 10.5px;
+	padding-right: 10.5px;
+	margin-right: 10px;
+	background-color: #F0F0F0;
+	color: #232323;
+	cursor: pointer;
+}
 @media (max-width: 1790px) {
 	:root {
 		--container-paddings: 260px;
