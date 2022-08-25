@@ -120,6 +120,50 @@ $(document).ready(function (){
          }
       });
    });
+
+   $('.tabs-row__tab').click(function (){
+      $('.tabs-row__tab').removeClass('this-tab');
+      $(this).addClass('this-tab');
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-data-posts',
+            tax: {'p-cats':$(this).attr('data-cat-id')},
+            ptype: $(this).attr('data-post-type'),
+         },
+         success: function(data){
+            $('.targeted-product').html(data);
+            //alert(JSON.parse(data));
+            // alert(data);
+         }
+      });
+      //get-terms
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-terms',
+            ptype: $(this).attr('data-post-type'),
+            cpc: $(this).attr('data-cat-id'),
+         },
+         success: function(data){
+            // $('.targeted-product').html(data);
+            $('.filters__filter-form.cats').children().slice(1).remove();
+            $.each(data, function (index, value){
+               let currentClass = "";
+               if(currentTab === value['id']){
+                  currentClass = "current";
+               }
+               let item = '<label><input type="checkbox" name="filter" value="'+value['id']+'"><span>'+value['name']+'</span>'+
+                  '</label>';
+               $('.filters__filter-form.cats').append(item);
+            });
+         }
+      });
+   });
+
+
    $('.content__subtabs').on('click', '.subtabs__subtab', function (){
       $('.subtabs__subtab').removeClass('current');
       let thisTab = $(this);

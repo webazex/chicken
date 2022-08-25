@@ -45,10 +45,10 @@
                                     </svg>
 
                                 </div>
-                                <div class="filters__filter-form" method="post">
+                                <div class="filters__filter-form cats" method="post">
                                     <?php foreach ($args['subcats'] as $cat):?>
                                     <label>
-                                        <input type="radio" name="filter" value="<?php echo $cat['id'];?>">
+                                        <input type="checkbox" name="filter" value="<?php echo $cat['id'];?>">
                                         <span><?php echo $cat['name']; ?></span>
                                     </label>
                                     <?php endforeach;?>
