@@ -471,6 +471,176 @@ function getPostsForOneTax(){
     wp_die();
 }
 
+add_action('wp_ajax_get-filtered-data', 'getFilteredData');
+add_action('wp_ajax_nopriv_get-filtered-data', 'getFilteredData');
+function getFilteredData(){
+    if(!empty($_POST['pgd'])){
+        $paged = intval($_POST['pgd']);
+    }else{
+        if(is_front_page()){
+            $paged = get_query_var('page') ? get_query_var('page') : 1;
+        }else{
+            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+        }
+    }
+    switch ($_POST['ptype']){
+        case "products":
+            if(!empty($_POST['datafilter'])){
+                $terms = [];
+                $meta = [];
+                $order = "DESC";
+                foreach ($_POST['datafilter'] as $item) {
+                    switch ($item['name']){
+                        case "term":
+                            array_push($terms, $item['value']);
+                            break;
+                        case "meta":
+                            $key = explode('__', $item['value'])[1];
+                            $val = explode('__', $item['value'])[0];
+                            array_push($meta, [
+                                'key' => 'product-group_product-'.$key,
+                                'value' => $val
+                            ]);
+                            break;
+                        case "order":
+                            $order = $item['value'];
+                            break;
+                    }
+                }
+                $args = [
+                    'posts_per_page' => get_option('posts_per_page'),
+                    'post_type' => $_POST['ptype'],
+                    'order' => $order,
+                    'paged' => $paged,
+                ];
+                if(!empty($terms)){
+                    $tax_query = [
+                        [
+                            'taxonomy' => 'p-cats',
+                            'field' => 'id',
+                            'terms' => $terms
+                        ]
+                    ];
+                    $args['tax_query'] = $tax_query;
+                }
+                if(!empty($meta)){
+//                    $args['orderby'] = 'meta_value';
+//                    $args['meta_key'] = 'meta_value';
+                    $args['meta_query'] = $meta;
+                }
+//                var_dump($args);die();
+                $obj = new WP_Query($args);
+                if(!empty($obj->posts)){
+                    $posts = [];
+                    foreach ($obj->posts as $post){
+                        $dataPost = get_field('product-group', $post->ID);
+                        if(!empty($dataPost['conditions'])){
+                            $conditions = __fetchProperties($dataPost['conditions']);
+                        }else{
+                            $conditions = [];
+                        }
+                        if(!empty($dataPost['nutritional'])){
+                            $nutritional = __fetchProperties($dataPost['nutritional']);
+                        }else{
+                            $nutritional = [];
+                        }
+                        array_push($posts, [
+                            'id' => $post->ID,
+                            'title' => $dataPost['title'],
+                            'src' => $dataPost['image'],
+                            'sku' => $dataPost['sku'],
+                            'status' => $dataPost['product-status'],
+                            'conditions' => $conditions,
+                            'nutritional' => $nutritional,
+                        ]);
+                    }
+                }
+                foreach ($posts as $post){
+                    echo get_template_part('front/components/product-item', '', $post);
+                }
+            }
+            break;
+        case "nap":
+            break;
+        case "receipes":
+            break;
+        default:
+            echo "any";
+            break;
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_get-pagination', '__getPagination');
+add_action('wp_ajax_nopriv_get-pagination', '__getPagination');
+
+function __getPagination(){
+    if(!empty($_POST['pgd'])){
+        $paged = intval($_POST['pgd']);
+    }else{
+        if(is_front_page()){
+            $paged = get_query_var('page') ? get_query_var('page') : 1;
+        }else{
+            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+        }
+    }
+    switch ($_POST['ptype']){
+        case "products":
+            if(!empty($_POST['datafilter'])){
+                $terms = [];
+                $meta = [];
+                $order = "DESC";
+                foreach ($_POST['datafilter'] as $item) {
+                    switch ($item['name']){
+                        case "term":
+                            array_push($terms, $item['value']);
+                            break;
+                        case "meta":
+                            $key = explode('__', $item['value'])[1];
+                            $val = explode('__', $item['value'])[0];
+                            array_push($meta, [
+                                'key' => 'product-group_product-'.$key,
+                                'value' => $val
+                            ]);
+                            break;
+                        case "order":
+                            $order = $item['value'];
+                            break;
+                    }
+                }
+                $args = [
+                    'posts_per_page' => get_option('posts_per_page'),
+                    'post_type' => $_POST['ptype'],
+                    'order' => $order,
+                    'paged' => $paged,
+                ];
+                if(!empty($terms)){
+                    $tax_query = [
+                        [
+                            'taxonomy' => 'p-cats',
+                            'field' => 'id',
+                            'terms' => $terms
+                        ]
+                    ];
+                    $args['tax_query'] = $tax_query;
+                }
+                if(!empty($meta)){
+//                    $args['orderby'] = 'meta_value';
+//                    $args['meta_key'] = 'meta_value';
+                    $args['meta_query'] = $meta;
+                }
+//                var_dump($args);die();
+                $obj = new WP_Query($args);
+                $max_num_pages = ceil($obj->found_posts / $obj->query['posts_per_page']);
+                $links = [];
+                for ($i = 1; $i <= $max_num_pages; $i++){
+                    array_push($links, $i);
+                }
+            }
+        break;
+    }
+    wp_send_json($links);
+}
 
 add_action('wp_ajax_get-terms', '__getTerms');
 add_action('wp_ajax_nopriv_get-terms', '__getTerms');
