@@ -1,4 +1,4 @@
-<div class="grid-default__item news">
+<a href="<?php echo get_permalink($args['id']); ?>" class="grid-default__item news">
     <?php if(!empty($args['image'])):?>
         <img src="<?php echo $args['image']; ?>" alt="<?php echo $args['title'];?>">
     <?php endif;?>
@@ -11,4 +11,4 @@
             <span class="info-block__tag">#<?php echo $cat['name'];?></span>
         <?php endforeach; endif;?>
     </div>
-</div>
+</a>

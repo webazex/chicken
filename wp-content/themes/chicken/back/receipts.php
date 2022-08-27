@@ -56,6 +56,7 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
             $dataPost = get_field('receipt-group', $post->ID);
             if(!empty($dataPost['general-info'])){
                 $generalInfo = $dataPost['general-info'];
+                $posts[$post->ID]['id'] = $post->ID;
                 $posts[$post->ID]['title'] = $generalInfo['title'];
                 $posts[$post->ID]['subtitle'] = $generalInfo['subtitle'];
                 $posts[$post->ID]['image'] = $generalInfo['image'];

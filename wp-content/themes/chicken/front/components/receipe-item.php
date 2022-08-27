@@ -1,4 +1,4 @@
-<div class="grid-default__item recipes">
+<a href="<?php echo get_permalink($args['id']); ?>" class="grid-default__item recipes">
     <img src="<?php echo $args['image'];?>" alt="" class="receipes__img">
     <div class="receipes__info">
         <div class="info__title-row">
@@ -54,4 +54,4 @@
             <?php endif;?>
         </div>
     </div>
-</div>
+</a>

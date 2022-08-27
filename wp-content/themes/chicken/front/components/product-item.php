@@ -1,5 +1,5 @@
 <?php $product = $args; ?>
-<div class="tab-contents__card" data-card-id="<?php echo $product['id']; ?>">
+<a href="<?php the_permalink($product['id']);?>" class="tab-contents__card" data-card-id="<?php echo $product['id']; ?>">
     <img src="<?php echo $product['src'];?>" class="card__image" alt="">
     <div class="card__marks">
         <div class="marks__mark-row">
@@ -63,8 +63,8 @@
             </div>
         <?php endif; ?>
     </div>
-    <a href="<?php the_permalink($product['id']);?>" class="card__more">
+    <span class="card__more">
         <span class="more__text"><?php _e('Детальніше', 'chicken'); ?></span>
         <span class="more__icon"></span>
-    </a>
-</div>
+    </span>
+</a>

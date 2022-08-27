@@ -66,6 +66,7 @@ function getNaP($count = "all", $property = null, $sorted = 'DESC', $tax = []){
                 }
             }
             array_push($posts, [
+                'id' => $post->ID,
                 'title' => $dataPost['title'],
                 'image' => $dataPost['image'],
                 'content' => $dataPost['content'],

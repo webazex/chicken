@@ -39,7 +39,20 @@
 ?>
 <main>
     <section>
-        <div class="site-size">
+        <div class="site-size-nap">
+            <div class="site-size-nap__topped-row">
+                <div class="topped-row__breadcrumbs">
+                    <?php
+                    $data = [
+                        'params' => [
+                            'show_post_title' => false
+                        ],
+                        'sep' => " \\ "
+                    ];
+                    get_template_part('front/components/breadcrumbs', '', $data);
+                    ?>
+                </div>
+            </div>
             <div class="site-size__container-product">
                 <img src="<?php echo $args['image'];?>" alt="<?php echo $args['title'];?>" class="container-product__img">
                 <div class="container-product__info-box">
