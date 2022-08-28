@@ -22,6 +22,9 @@
             </button>
         </form>
     </div>
+    <div class="popups__product">
+
+    </div>
 </div>
 <footer>
     <div class="site-size">

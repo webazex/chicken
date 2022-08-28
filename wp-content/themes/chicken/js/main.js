@@ -252,8 +252,11 @@ $(document).ready(function (){
             // alert(data);
          }
       });
-
    });
+   $('.tab-contents__card').on('click', '.card__more', '', function (e){
+      e.preventDefault();
+      console.log($(this).parent('.tab-contents__card').attr('data-card-id'));
+   })
    // $('.filters-row__filters').on('submit', '.filters__filter-form', function (e){
    //    e.preventDefault();
    //    var dataForm = $(this).serializeArray();
