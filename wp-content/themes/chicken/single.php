@@ -31,7 +31,7 @@ switch (get_post_type()){
     case "recipes":
         get_header();
         $terms = get_the_terms($post->ID, 'r-tags');
-        $acfData = get_field('receipt-group',$post->ID );
+        $acfData = get_field('receipt-content-group',$post->ID );
         $cats = [];
         if(!is_wp_error($terms) and ($terms !== false)){
             foreach ($terms as $termObj) {

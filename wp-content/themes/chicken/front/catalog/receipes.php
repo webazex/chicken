@@ -148,7 +148,7 @@
                         </form>
                     </div>
                 </div>
-                <?php if(!empty($args['recipes'])):?>
+                <?php  if(!empty($args['recipes'])):?>
                 <div class="default-grid-container__grid-default targeted">
                     <?php foreach ($args['recipes'] as $recipe):
                         get_template_part('front/components/receipe-item', '', $recipe);

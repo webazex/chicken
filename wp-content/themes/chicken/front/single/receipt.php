@@ -48,7 +48,7 @@
                     </div>
                     <?php endif;?>
                     <?php
-                        if(!empty($content['receipe-group']['file'])):
+                        if(!empty($content['receipt-content-group']['file'])):
                             $parsed = parse_url( wp_get_attachment_url( $content['receipe-group']['file']) );
                             $url    = dirname( $parsed['path'] ) . '/' . rawurlencode( basename( $parsed['path'] ) );
                     ?>
@@ -98,26 +98,27 @@
                         </div>
                         <div class="receipt-tabs-section__content-tabs">
                             <?php
-                            if(!empty($content['f-ingrid'])):
-                            $ingridient = get_term($content['f-ingrid']['name'][0]);
-                            $iData = get_field('ihgrid-data', $ingridient);
+                            if(!empty($content['first-i'])):
+                            $ingridient = get_term($content['first-i']['text-group']['name']);
                                 ?>
                             <div class="content-tabs__ingridient">
-                                <img src="<?php echo $iData['image']?>" alt="<?php echo $iData['name']?>">
-                                <a href="<?php echo $iData['link'];?>"><?php echo $iData['name'];?></a>
-                                <span><?php echo $iData['count']?></span>
+                                <img src="<?php echo $content['first-i']['image']?>" alt="<?php echo $ingridient->name;?>">
+                                <a href="<?php echo $content['first-i']['text-group']['i-link'];?>"><?php echo $ingridient->name;?></a>
+                                <span><?php echo $content['first-i']['text-group']['count']?></span>
                             </div>
                             <?php
                             endif;
-                            $terms = get_the_terms(get_the_ID(), 'ingridients');
-                            if(!is_wp_error($terms) and $terms !== false){
-                                foreach($terms as $term){
+                            $otherIngridients = $content['others-ingridients'];
+//                            var_dump($content['others-ingridients']);
+                            if(!empty($otherIngridients)){
+                                foreach($otherIngridients as $otherIngridient){
+                                    $term = get_term($otherIngridient['ingridiyent']);
                                     $iData = get_field('ihgrid-data', $term);
                                     ?>
                                     <div class="content-tabs__ingridient">
                                         <img src="<?php echo $iData['image']?>" alt="<?php echo $iData['name']?>">
-                                        <span><?php echo $iData['name']?></span>
-                                        <span><?php echo $iData['count']?></span>
+                                        <span><?php echo $term->name;?></span>
+                                        <span><?php echo $otherIngridient['face']?></span>
                                     </div>
                                     <?php
                                 }

@@ -53,7 +53,8 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
     if(!empty($obj->posts)){
         $posts = [];
         foreach ($obj->posts as $post){
-            $dataPost = get_field('receipt-group', $post->ID);
+//            $dataPost = get_field('receipt-group', $post->ID);
+            $dataPost = get_field('receipt-content-group', $post->ID);
             if(!empty($dataPost['general-info'])){
                 $generalInfo = $dataPost['general-info'];
                 $posts[$post->ID]['id'] = $post->ID;
@@ -76,20 +77,36 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
                 $posts[$post->ID]['time'] = '';
                 $posts[$post->ID]['portioning'] = '';
             }
-            if(!empty($dataPost['ingridients'])){
-                $ingridients = $dataPost['ingridients'];
-                $ingridientsNotes = $dataPost['notes'];
-
-                $posts[$post->ID]['ingridients'] = $ingridients;
-                $posts[$post->ID]['notes'] = $ingridientsNotes;
+            if(!empty($dataPost['first-i'])){
+                $firstIngridient = $dataPost['first-i'];
+                $term = get_term($firstIngridient['text-group']['name']);
+                $posts[$post->ID]['first-i'] = [
+                    'name' => $term->name
+                ];
+//                $posts[$post->ID]['notes'] = $ingridientsNotes;
 
             }else{
-                $posts[$post->ID]['ingridients'] = [];
+                $posts[$post->ID]['first-i'] = [];
                 $posts[$post->ID]['notes'] = "";
             }
-
-            if(!empty($dataPost['receipe-group'])){
-                $receipeGroup = $dataPost['receipe-group'];
+            if(!empty($dataPost['others-ingridients'])){
+                $othersIngridients = $dataPost['others-ingridients'];
+                $ingridients = [];
+                foreach ($othersIngridients as $ingridient){
+                    $oTerm = get_term($firstIngridient['text-group']['name']);
+                    $image = get_field('ihgrid-data', $oTerm)['image'];
+                    array_push($ingridients, [
+                        'name' => $oTerm->name,
+                        'count' => $ingridient['face'],
+                        'src' => $image,
+                    ]);
+                }
+                $posts[$post->ID]['others-i'] = $ingridients;
+            }else{
+                $posts[$post->ID]['others-i'] = [];
+            }
+            if(!empty($dataPost['receipt-content-group'])){
+                $receipeGroup = $dataPost['receipt-content-group'];
 
                 $posts[$post->ID]['file'] = $receipeGroup['file'];
                 $posts[$post->ID]['receipe'] = $receipeGroup['receipe'];
