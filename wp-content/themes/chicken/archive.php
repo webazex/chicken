@@ -20,10 +20,8 @@ switch (get_post_type()){
         break;
     case "nap":
         $data = [
-            'cats' => getTaxes('p-cats'),
-            'subcats' => getTaxes('p-cats', "showAll"),
-            //'products' => getProducts(get_option( 'posts_per_page' ))
-            'products' => getProducts()
+            'cats' => getTaxes('nap-tags'),
+            'nap' => getNap()
         ];
         get_template_part('front/catalog/nap', '', $data);
         break;

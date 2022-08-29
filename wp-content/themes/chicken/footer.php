@@ -29,7 +29,7 @@
 <footer>
     <div class="site-size">
         <div class="site-size__footer-container">
-            <img src="img/lb.png" alt="" class="footer-container__logo">
+            <img src="<?php echo getMainLogo(); ?>" alt="" class="footer-container__logo">
             <div class="footer-container__col">
                 <div class="col__row-box">
                     <span class="row-box__title">Зателефонуйте</span>

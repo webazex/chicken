@@ -14,11 +14,11 @@
                 <img src="<?php echo getMainLogo();?>" class="header-container__logo" alt="logo" data-patch="img/">
             </a>
             <?php
-            get_template_part('front/components/header-menu');
-            get_template_part('front/components/search-field');
-            get_template_part('front/components/header-contacts');
+                get_template_part('front/components/header-menu');
+                get_template_part('front/components/search-field');
+                get_template_part('front/components/header-contacts');
+                get_template_part('front/components/lang-switcher');
             ?>
-            <div class="header-container__lang-switcher">lang</div>
             <button class="header-container__burger">
                 <span></span>
                 <span></span>
