@@ -118,34 +118,52 @@
                                 <span><?php _e('Як готувати', 'chicken'); ?></span>
                             </div>
                         </div>
-                        <div class="receipt-tabs-section__content-tabs">
-                            <?php
-                            if(!empty($content['first-i'])):
-                            $ingridient = get_term($content['first-i']['text-group']['name']);
-                                ?>
-                            <div class="content-tabs__ingridient">
-                                <img src="<?php echo $content['first-i']['image']?>" alt="<?php echo $ingridient->name;?>">
-                                <a href="<?php echo $content['first-i']['text-group']['i-link'];?>" class="ingridient__title-link"><?php echo $ingridient->name;?></a>
-                                <span class="ingridient__subtitle"><?php echo $content['first-i']['text-group']['count']?></span>
+                        <div class="tab-targeted">
+                            <div class="tab-targeted__item">
+                                <div class="receipt-tabs-section__content-tabs">
+                                    <?php
+                                    if(!empty($content['first-i'])):
+                                        $ingridient = get_term($content['first-i']['text-group']['name']);
+                                        ?>
+                                        <div class="content-tabs__ingridient">
+                                            <img src="<?php echo $content['first-i']['image']?>" alt="<?php echo $ingridient->name;?>">
+                                            <a href="<?php echo $content['first-i']['text-group']['i-link'];?>" class="ingridient__title-link"><?php echo $ingridient->name;?></a>
+                                            <span class="ingridient__subtitle"><?php echo $content['first-i']['text-group']['count']?></span>
+                                        </div>
+                                    <?php
+                                    endif;
+                                    $otherIngridients = $content['others-ingridients'];
+                                    //                            var_dump($content['others-ingridients']);
+                                    if(!empty($otherIngridients)){
+                                        foreach($otherIngridients as $otherIngridient){
+                                            $term = get_term($otherIngridient['ingridiyent']);
+                                            $iData = get_field('ihgrid-data', $term);
+                                            ?>
+                                            <div class="content-tabs__ingridient">
+                                                <img src="<?php echo $iData['image']?>" alt="<?php echo $iData['name']?>">
+                                                <span class="ingridient__title"><?php echo $term->name;?></span>
+                                                <span class="ingridient__subtitle"><?php echo $otherIngridient['face']?></span>
+                                            </div>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
                             </div>
                             <?php
-                            endif;
-                            $otherIngridients = $content['others-ingridients'];
-//                            var_dump($content['others-ingridients']);
-                            if(!empty($otherIngridients)){
-                                foreach($otherIngridients as $otherIngridient){
-                                    $term = get_term($otherIngridient['ingridiyent']);
-                                    $iData = get_field('ihgrid-data', $term);
-                                    ?>
-                                    <div class="content-tabs__ingridient">
-                                        <img src="<?php echo $iData['image']?>" alt="<?php echo $iData['name']?>">
-                                        <span class="ingridient__title"><?php echo $term->name;?></span>
-                                        <span class="ingridient__subtitle"><?php echo $otherIngridient['face']?></span>
-                                    </div>
-                                    <?php
-                                }
+                            if(!empty($content['receipe-group']['receipe'])){
+                                $editorContent = $content['receipe-group']['receipe'];
+                            }else{
+                                $editorContent = '<p class="empty-content">'._e("Даний рецепт вже пишеться, зачекайте будь-ласка", "chicken").'</p>';
                             }
                             ?>
+                            <div class="tab-targeted__item">
+                                <div class="receipt-tabs-section__content-second">
+                                    <div class="content-second__content">
+                                        <?php echo $editorContent;?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

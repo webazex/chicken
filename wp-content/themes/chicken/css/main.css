@@ -1615,6 +1615,33 @@ footer {
 .social-row__socials a:last-child {
 	margin-right: 0;
 }
+.tab-targeted__item {
+	display: none;
+}
+.tab-targeted__item:first-child {display: block;}
+.content-second__content p,
+.content-second__content p span,
+.content-second__content span,
+.content-second__content ul li,
+.content-second__content ol li {
+	font-style: normal;
+	font-weight: 400;
+	font-size: var(--default-font-size);
+	line-height: 150%;
+	color: #232323;
+}
+.content-second__content ul li,
+.content-second__content ol li {
+	margin-bottom: 20px;
+}
+.content-second__content ul li:last-child,
+.content-second__content ol li:last-child {
+	margin-bottom: 0px;
+}
+.content-second__content strong,
+.content-second__content b {
+	font-weight: 500;
+}
 .article__info-row {
 	margin-bottom: 50px;
 	width: 100%;

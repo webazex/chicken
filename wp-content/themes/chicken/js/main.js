@@ -315,6 +315,13 @@ $(document).ready(function (){
    //    let catId = $('input[name=filter]:checked').val();
    //    let statusId = $('input[name=status]:checked').val();
    // });
+
+
+   $('.row-tabs__tab').click(function (){
+      let number = $(this).index();
+      $('.tab-targeted').children().hide(300);
+      $('.tab-targeted').children().eq(number).show(300);
+   });
    $('.contact-box__text-desc').click(function (){
       $('.popups').css({'display': 'flex'});
       $('.popups__callback-form').css({'display': 'block'});
