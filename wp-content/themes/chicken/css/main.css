@@ -1173,7 +1173,7 @@ footer {
 .site-size__content-row {
 	width: 100%;
 	height: 100%;
-	padding-top: 150px;
+	padding-top: 115px;
 	padding-bottom: 50px;
 }
 .site-size__content-row > h1 {
@@ -1584,16 +1584,36 @@ footer {
 	order: 2;
 }
 /*====article=start====*/
-.article-container {
+.article-container, .receipt-container {
 	max-width: 1000px;
 	width: 100%;
 	margin: 0 auto;
 	padding-top: 100px;
 }
+.receipt-container {
+	max-width: 1040px;
+}
 .article-container__article {
 	padding: 50px 100px 70px 100px;
 	background-color: #FFFFFF;
 	border-radius: 0px 0px 15px 15px;
+}
+.receipt-container__article {
+	/*padding: 50px 100px 70px 100px;*/
+	/*background-color: #FFFFFF;*/
+	/*border-radius: 0px 0px 15px 15px;*/
+}
+.social-row__socials {
+	width: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.social-row__socials a {
+	margin-right: 15px;
+}
+.social-row__socials a:last-child {
+	margin-right: 0;
 }
 .article__info-row {
 	margin-bottom: 50px;
@@ -1991,6 +2011,32 @@ span.line-section-product {
 	grid-template-rows: auto;
 	grid-column-gap: 85px;
 	grid-row-gap: 40px;
+	padding: 40px 0;
+}
+.receipt-tabs-section__row-tabs {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 70px;
+	padding-bottom: 22px;
+	border-bottom: 1px solid #EFEFEF;
+}
+.row-tabs__tab {
+	width: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.row-tabs__tab span {
+	margin-left: 7px;
+	font-style: normal;
+	font-weight: 500;
+	font-size: var(--default-font-size);
+	line-height: 150%;
+	/* identical to box height, or 26px */
+	color: #E50746;
+	text-align: center;
 }
 .content-tabs__ingridient {
 	display: flex;
@@ -1998,7 +2044,30 @@ span.line-section-product {
 	justify-content: flex-start;
 	align-items: center;
 }
-.content-tabs__ingridient img {width: 100%;}
+.content-tabs__ingridient img {
+	width: 140px;
+	height: 140px;
+	margin-bottom: 15px;
+}
+.ingridient__title-link, .ingridient__title {
+	font-style: normal;
+	font-weight: 500;
+	font-size: var(--default-font-size);
+	color: #E50746;
+	margin-bottom: 10px;
+}
+.ingridient__title {
+	color: #232323;
+}
+.ingridient__subtitle {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 150%;
+	/* identical to box height, or 21px */
+	text-align: center;
+	color: #676767;
+}
 div.filters__filter-form div.btns-row button {
 	margin: 0;
 	outline: none;

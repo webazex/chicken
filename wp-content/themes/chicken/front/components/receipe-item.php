@@ -27,10 +27,10 @@
         </div>
         <div class="info__hidden-block">
             <p class="hidden-block__desc"><?php echo $args['desc'];?></p>
-            <?php var_dump($args['short-info']); if(!empty($args['short-info'])):?>
+            <?php if(!empty($args['short-info'])):?>
             <div class="hidden-block__row-props">
                 <?php
-                var_dump($args['short-info']);
+//                var_dump($args['short-info']);
                     foreach ($args['short-info'] as $k => $info):
                         if(!empty($info)): ?>
                 <div class="row-props__item">
