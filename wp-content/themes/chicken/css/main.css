@@ -126,7 +126,13 @@ h4, h4 span {
 	align-items: center;
 }
 .contact-box__text-desc, .link__text, .link-tel__text {color: #232323;}
-.contact-box__text-desc {color: #E50746;}
+.contact-box__text-desc {
+	color: #E50746;
+	cursor: pointer;
+}
+/*.contact-box__text-desc:hover {*/
+/*	text-decoration: underline;*/
+/*}*/
 header.main .contact-box__text-desc,
 header.main .link__text,
 header.main .link-tel__text {
@@ -617,11 +623,10 @@ header.second a{
 	border: 1px solid #E8E8E8;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-
 }
-.tab-contents__card:hover .card__title{
-	margin-top: 20px;
-}
+/*.tab-contents__card:hover .card__title{*/
+/*	margin-top: 20px;*/
+/*}*/
 .card__container-link {
 	position: initial;
 }
@@ -631,9 +636,9 @@ header.second a{
 .properties__property-row.product{
 	display: flex;
 }
-.tab-contents__card:hover .properties__property-row:last-child {
-	display: flex;
-}
+/*.tab-contents__card:hover .properties__property-row:last-child {*/
+/*	display: flex;*/
+/*}*/
 
 .card__image {
 	width: 100%;
@@ -651,10 +656,27 @@ header.second a{
 	justify-content: space-between;
 	align-items: center;
 }
+.state-row {
+	width: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.state-row:last-child {
+	margin-bottom: 0;
+}
+.state-row svg {opacity: 0.5;}
+.state-row.active-state svg {opacity: 1;}
 .marks__mark-row {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+}
+.marks__mark-row.p-item {
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
 }
 .marks__mark-row .mark-row__text {
 	margin-right: 10px;
@@ -731,8 +753,8 @@ header.second a{
 	z-index: 1;
 }
 
-.tab-contents__card:hover .card__more {display: flex;}
-.tab-contents__card:hover .mark-row__text {display: block;}
+/*.tab-contents__card:hover .card__more {display: flex;}*/
+/*.tab-contents__card:hover .state-row.active-state > .mark-row__text {display: block;}*/
 .property-row__property, .row__value, .box__property-name {
 	font-weight: 400;
 	font-size: 14px;
@@ -857,6 +879,9 @@ header.second a{
 	background-repeat: no-repeat;
 	margin-right: 5px;
 }
+.time {
+
+}
 .property-box__value {
 	color: #0036A0;
 	font-size: 14px;
@@ -908,14 +933,14 @@ header.second a{
 	font-weight: 400;
 	font-size: 12px;
 }
-.grid-default__item:hover .receipes__info{
-	position: absolute;
-	bottom: 0;
-}
-.grid-default__item:hover .info__hidden-block {
-	display: flex;
-	visibility: visible;
-}
+/*.grid-default__item:hover .receipes__info{*/
+/*	position: absolute;*/
+/*	bottom: 0;*/
+/*}*/
+/*.grid-default__item:hover .info__hidden-block {*/
+/*	display: flex;*/
+/*	visibility: visible;*/
+/*}*/
 /*===news=sections===*/
 .grid-default__item.news {
 	background-color: white;
@@ -1718,14 +1743,14 @@ article p:last-child {
 	border: 1px solid #F4F4F4;
 	box-shadow: 0px 3px 15px rgba(35, 35, 35, 0.05);
 }
-.recents-section__grid-posts .grid-default__item.recipes:hover .receipes__info{
-	position: relative;
-	bottom: unset;
-}
-.recents-section__grid-posts .grid-default__item.recipes:hover .info__hidden-block{
-	display: none;
-	visibility: hidden;
-}
+/*.recents-section__grid-posts .grid-default__item.recipes:hover .receipes__info{*/
+/*	position: relative;*/
+/*	bottom: unset;*/
+/*}*/
+/*.recents-section__grid-posts .grid-default__item.recipes:hover .info__hidden-block{*/
+/*	display: none;*/
+/*	visibility: hidden;*/
+/*}*/
 .info-row__properties {
 	width: auto;
 	display: flex;
@@ -2122,6 +2147,23 @@ div.filters__filter-form div.btns-row button[type="submit"] {
 	cursor: pointer;
 }
 .s-input {display: none;}
+.filters-row__filters {cursor: pointer;}
+.link-to-top {
+	width: 34px;
+	height: 24px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	z-index: 2;
+	right: 20px;
+	bottom: 20px;
+}
+.link-to-top > svg {transform: rotate(180deg);}
+.showed {display: flex;}
+.cats-container label:hover {cursor: pointer;}
+filters__filter-form input:hover {cursor: pointer;}
+.popups__product {}
 @media (max-width: 1790px) {
 	:root {
 		--container-paddings: 260px;

@@ -272,6 +272,10 @@ function getRecentsProducts(){
         $posts = [];
         foreach ($data as $post){
             $dataPost = get_field('product-group', $post->ID);
+            $states = [];
+            if(!empty($dataPost['product-states'])){
+                $states = $dataPost['product-states'];
+            }
             if(!empty($dataPost['conditions'])){
                 $conditions = __fetchProperties($dataPost['conditions']);
             }else{
@@ -284,11 +288,10 @@ function getRecentsProducts(){
             }
             array_push($posts, [
                 'id' => $post->ID,
-                'title' => $dataPost['title'],
+                'title' => $dataPost['text-group']['title'],
                 'src' => $dataPost['image'],
-                'sku' => $dataPost['sku'],
-                'status' => $dataPost['product-status'],
-                'conditions' => $conditions,
+                'sku' => $dataPost['text-group']['sku'],
+                'states' => $states,
                 'nutritional' => $nutritional,
             ]);
         }

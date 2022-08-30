@@ -1,6 +1,7 @@
 <?php
     $cats = $args['cats'];
     $naps = $args['nap'];
+    getBrokenData();
 ?>
 <main>
     <section class="page-gradient-bg">
@@ -39,24 +40,22 @@
                         <form class="filters__filter-form">
                             <label>
                                 <input type="radio" name="filter" value="date">
-                                <span>Датою</span>
+                                <span><?php _e('За замовчуванням', 'chicken');?></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="filter" value="date">
+                                <span>А - Я</span>
                             </label>
 
                             <label>
                                 <input type="radio" name="filter" value="timec">
-                                <span>Часом приготування</span>
+                                <span>Я - А</span>
                             </label>
 
                             <label>
                                 <input type="radio" name="filter" value="lvl">
-                                <span>Складністю</span>
+                                <span>Датою</span>
                             </label>
-
-                            <label>
-                                <input type="radio" name="filter" value="h">
-                                <span>Популярністю</span>
-                            </label>
-
                             <button type="submit">Застосувати</button>
                         </form>
                     </div>

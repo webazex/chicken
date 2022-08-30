@@ -6,7 +6,7 @@
             <div class="info__peppers"></div>
         </div>
 
-        <p class="info__desc"><?php echo $args['desc'];?></p>
+        <p class="info__desc"><?php echo $args['subtitle'];?></p>
         <div class="info__properties-row">
             <div class="properties-row__property-box">
                 <span class="property-box__icon time"></span>

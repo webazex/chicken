@@ -249,10 +249,9 @@ function __getDataPost(){
         $posts = [];
         foreach ($obj->posts as $post){
             $dataPost = get_field('product-group', $post->ID);
-            if(!empty($dataPost['conditions'])){
-                $conditions = __fetchProperties($dataPost['conditions']);
-            }else{
-                $conditions = [];
+            $states = [];
+            if(!empty($dataPost['product-states'])){
+                $states = $dataPost['product-states'];
             }
             if(!empty($dataPost['nutritional'])){
                 $nutritional = __fetchProperties($dataPost['nutritional']);
@@ -261,9 +260,9 @@ function __getDataPost(){
             }
             array_push($posts, [
                 'id' => $post->ID,
-                'title' => $dataPost['title'],
+                'title' => $dataPost['text-group']['title'],
                 'src' => $dataPost['image'],
-                'sku' => $dataPost['sku'],
+                'sku' => $dataPost['text-group']['sku'],
                 'status' => $dataPost['product-status'],
                 'conditions' => $conditions,
                 'nutritional' => $nutritional,
@@ -736,3 +735,17 @@ function __getTerms(){
 //    echo $html;
 //    wp_die();
 //}
+
+
+add_action('wp_ajax_get-product-by-id', 'getProductById');
+add_action('wp_ajax_nopriv_get-product-by-id', 'getProductById');
+
+function getProductById(){
+    if(!empty($_POST['pid'])){
+        $product = getPostById($_POST['pid']);
+        echo get_template_part('front/components/popup-product', '', $product);
+    }else{
+        wp_die();
+    }
+    wp_die();
+}

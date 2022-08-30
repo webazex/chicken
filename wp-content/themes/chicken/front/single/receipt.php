@@ -123,11 +123,11 @@
                                 <div class="receipt-tabs-section__content-tabs">
                                     <?php
                                     if(!empty($content['first-i'])):
-                                        $ingridient = get_term($content['first-i']['text-group']['name']);
+//                                        $ingridient = get_term($content['first-i']['text-group']['name']);
                                         ?>
                                         <div class="content-tabs__ingridient">
-                                            <img src="<?php echo $content['first-i']['image']?>" alt="<?php echo $ingridient->name;?>">
-                                            <a href="<?php echo $content['first-i']['text-group']['i-link'];?>" class="ingridient__title-link"><?php echo $ingridient->name;?></a>
+                                            <img src="<?php echo $content['first-i']['image']?>" alt="<?php echo $content['first-i']['text-group']['name'];?>">
+                                            <a href="<?php echo $content['first-i']['text-group']['i-link'];?>" class="ingridient__title-link"><?php echo $content['first-i']['text-group']['name'];?></a>
                                             <span class="ingridient__subtitle"><?php echo $content['first-i']['text-group']['count']?></span>
                                         </div>
                                     <?php

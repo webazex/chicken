@@ -85,6 +85,7 @@ $(document).ready(function (){
          method: 'post',
          data: {
             action: 'get-data-posts',
+            count: "all",
             tax: {'p-cats':$(this).attr('data-cat-id')},
             ptype: $(this).attr('data-post-type'),
          },
@@ -129,6 +130,7 @@ $(document).ready(function (){
          method: 'post',
          data: {
             action: 'get-data-posts',
+            count: "all",
             tax: {'p-cats':$(this).attr('data-cat-id')},
             ptype: $(this).attr('data-post-type'),
          },
@@ -170,6 +172,7 @@ $(document).ready(function (){
          method: 'post',
          data: {
             action: 'get-data-posts',
+            count: "all",
             tax: {'p-cats':$(this).attr('data-tag-id')},
             ptype: $('.f.this-tab').attr('data-post-type'),
          },
@@ -255,8 +258,29 @@ $(document).ready(function (){
    });
    $('.tab-contents__card').on('click', '.card__more', '', function (e){
       e.preventDefault();
-      console.log($(this).parent('.tab-contents__card').attr('data-card-id'));
-   })
+      let thisProductId = $(this).parent('.tab-contents__card').attr('data-card-id');
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-product-by-id',
+            pid: thisProductId,
+         },
+         success: function(data){
+            console.log(data);
+            $('.product__container-popup').html(data);
+            setTimeout(function (){
+               $('.popups').css({'display' : 'flex'});
+               $('.popups__product').css({'display' : 'block'});
+            }, 3000);
+            //alert(JSON.parse(data));
+         }
+      });
+   });
+   $('.btn-close').click(function (){
+      $('.popups').css({'display': 'none'});
+      $('.popups__product').css({'display': 'none'});
+   });
    // $('.filters-row__filters').on('submit', '.filters__filter-form', function (e){
    //    e.preventDefault();
    //    var dataForm = $(this).serializeArray();
@@ -319,8 +343,8 @@ $(document).ready(function (){
 
    $('.row-tabs__tab').click(function (){
       let number = $(this).index();
-      $('.tab-targeted').children().hide(300);
-      $('.tab-targeted').children().eq(number).show(300);
+      $('.tab-targeted').children().hide();
+      $('.tab-targeted').children().eq(number).show();
    });
    $('.contact-box__text-desc').click(function (){
       $('.popups').css({'display': 'flex'});
@@ -329,5 +353,24 @@ $(document).ready(function (){
    $('.callback-form__close').click(function (){
       $('.popups').css({'display': 'none'});
       $('.popups__callback-form').css({'display': 'none'});
+   });
+   var btn = $('#btntotop');
+   $(window).scroll(function() {
+      if ($(window).scrollTop() > 300) {
+         btn.addClass('showed');
+      } else {
+         btn.removeClass('showed');
+      }
+   });
+   btn.on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop:0}, '300');
+   });
+
+   $('.p-item .state-row').click(function (e){
+      e.preventDefault();
+      $(this).parent('.marks__mark-row.p-item').children('.state-row').removeClass('active-state');
+      $(this).addClass('active-state');
+      $(this).prependTo($(this).parent('.marks__mark-row.p-item'));
    });
 });

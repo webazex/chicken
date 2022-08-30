@@ -15,11 +15,13 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
     }
 //    $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
 //    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
     if($count == "all"){
         $count = -1;
-    }elseif ($count = ""){
+    }elseif ($count == ""){
         $count = get_option('posts_per_page');
     }
+
     $args = [
         'posts_per_page' => $count,
         'post_type' => 'products',
@@ -66,11 +68,31 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
         $posts = [];
         foreach ($obj->posts as $post){
             $dataPost = get_field('product-group', $post->ID);
-            if(!empty($dataPost['conditions'])){
-                $conditions = __fetchProperties($dataPost['conditions']);
-            }else{
-                $conditions = [];
+            $states = [];
+            if(!empty($dataPost['product-states'])){
+                foreach ($dataPost['product-states'] as $state){
+//                    var_dump($state);die();
+                    $conditions = [];
+                    if(!empty($state['conditions'])){
+                        foreach ($state['conditions'] as $condition) {
+                            array_push($conditions, [
+                                'property' => $condition['property'],
+                                'value' => $condition['value'],
+                            ]);
+                        }
+                    }
+                    array_push($states, [
+                        'key' => $state['acf_fc_layout'],
+                        'text' => $state['name'],
+                        'conditions' => $conditions,
+                    ]);
+                }
             }
+//            if(!empty($dataPost['conditions'])){
+//                $conditions = __fetchProperties($dataPost['conditions']);
+//            }else{
+//                $conditions = [];
+//            }
             if(!empty($dataPost['nutritional'])){
                 $nutritional = __fetchProperties($dataPost['nutritional']);
             }else{
@@ -78,11 +100,10 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
             }
             array_push($posts, [
                'id' => $post->ID,
-               'title' => $dataPost['title'],
+               'title' => $dataPost['text-group']['title'],
                'src' => $dataPost['image'],
-               'sku' => $dataPost['sku'],
-               'status' => $dataPost['product-status'],
-                'conditions' => $conditions,
+               'sku' => $dataPost['text-group']['sku'],
+               'states' => $states,
                 'nutritional' => $nutritional,
             ]);
         }
@@ -210,4 +231,47 @@ function getProductsForVal($count = "all", array $property = [], $sorted = "DESC
         $posts = [];
     }
     return $posts;
+}
+
+function getPostById($id){
+    if(!empty($id)){
+        $post = get_post(intval($id));
+        $dataPost = get_field('product-group', $post->ID);
+        $states = [];
+        if(!empty($dataPost['product-states'])){
+            foreach ($dataPost['product-states'] as $state){
+//                    var_dump($state);die();
+                $conditions = [];
+                if(!empty($state['conditions'])){
+                    foreach ($state['conditions'] as $condition) {
+                        array_push($conditions, [
+                            'property' => $condition['property'],
+                            'value' => $condition['value'],
+                        ]);
+                    }
+                }
+                array_push($states, [
+                    'key' => $state['acf_fc_layout'],
+                    'text' => $state['name'],
+                    'conditions' => $conditions,
+                ]);
+            }
+        }
+        if(!empty($dataPost['nutritional'])){
+            $nutritional = __fetchProperties($dataPost['nutritional']);
+        }else{
+            $nutritional = [];
+        }
+        $returned = [
+            'id' => $post->ID,
+            'title' => $dataPost['text-group']['title'],
+            'src' => $dataPost['image'],
+            'sku' => $dataPost['text-group']['sku'],
+            'states' => $states,
+            'nutritional' => $nutritional,
+        ];
+        return $returned;
+    }else{
+        return [];
+    }
 }

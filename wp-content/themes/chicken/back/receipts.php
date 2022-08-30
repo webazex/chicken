@@ -79,9 +79,9 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
             }
             if(!empty($dataPost['first-i'])){
                 $firstIngridient = $dataPost['first-i'];
-                $term = get_term($firstIngridient['text-group']['name']);
+//                $term = get_term($firstIngridient['text-group']['name']);
                 $posts[$post->ID]['first-i'] = [
-                    'name' => $term->name
+                    'name' => $firstIngridient['text-group']['name']
                 ];
 //                $posts[$post->ID]['notes'] = $ingridientsNotes;
 
