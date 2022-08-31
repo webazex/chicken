@@ -753,8 +753,8 @@ header.second a{
 	z-index: 1;
 }
 
-/*.tab-contents__card:hover .card__more {display: flex;}*/
-/*.tab-contents__card:hover .state-row.active-state > .mark-row__text {display: block;}*/
+.tab-contents__card:hover .card__more {display: flex;}
+.tab-contents__card:hover .state-row.active-state > .mark-row__text {display: block;}
 .property-row__property, .row__value, .box__property-name {
 	font-weight: 400;
 	font-size: 14px;

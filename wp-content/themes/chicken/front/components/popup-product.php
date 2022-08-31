@@ -42,6 +42,7 @@
 <div class="recents">
     <?php
     $recents = getRecentsProducts();
+    var_dump($recents);
     foreach ($recents as $product):
         get_template_part('front/components/product-item', '', $product);
     endforeach;
