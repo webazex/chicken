@@ -221,9 +221,11 @@ $(document).ready(function (){
             $('.site-size__paginations').html('');
             console.log(data.length);
             if(data.length > 1){
+               $('.site-size__paginations').append('<span class="pg-item prev"><</span>');
                $.each(data, function (index, value){
                   $('.site-size__paginations').append('<span data-page="'+value+'" class="pg-item">'+value+'</span>');
                });
+               $('.site-size__paginations').append('<span class="pg-item next">></span>');
             }
             // $('.site-size__paginations').html(data);
             //alert(JSON.parse(data));

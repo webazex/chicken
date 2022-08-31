@@ -2177,6 +2177,39 @@ div.filters__filter-form div.btns-row button[type="submit"] {
 .cats-container label:hover {cursor: pointer;}
 filters__filter-form input:hover {cursor: pointer;}
 .popups__product {}
+
+.navigation.pagination, .site-size__paginations {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.nav-links {display: flex;}
+.page-numbers, .pg-item {
+	width: 44px;
+	height: 44px;
+	border-radius: 15px;
+	margin-right: 15px;
+	color: #676767;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: var(--default-font-size);
+}
+.page-numbers:last-child {margin-right: 0;}
+.next.page-numbers, .prev.page-numbers,
+.pg-item.prev, .pg-item.next{
+	width: 44px;
+	height: 44px;
+	background: #E50746;
+	color: white;
+}
+.page-numbers.current {
+	background-color: #F0F0F0;
+	color: #E50746;
+}
+.pg-item:last-child {
+	margin-right: 0;
+}
 @media (max-width: 1790px) {
 	:root {
 		--container-paddings: 260px;
