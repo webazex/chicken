@@ -872,12 +872,9 @@ header.second a{
 	justify-content: flex-start;
 	align-items: center;
 }
-.property-box__icon {
+img.property-box__icon {
 	width: 16px;
 	height: 16px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	margin-right: 5px;
 }
 .time {
 
@@ -1820,6 +1817,21 @@ article p.desc {
 	font-size: var(--default-font-size);
 	margin: 40px 0;
 	border-radius: 15px;
+}
+h1.title-row__receipe-title {
+	font-style: normal;
+	font-weight: 500;
+	font-size: var(--h2-font-size);
+	line-height: 140%;
+	/* identical to box height, or 62px */
+	color: #0036A0;
+}
+.receipt-container__article > h2 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: var(--h3-font-size);
+	line-height: 150%;
+	color: #0036A0;
 }
 /*====contacts=page===*/
 .site-size__container-contact {

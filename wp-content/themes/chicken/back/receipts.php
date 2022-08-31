@@ -68,14 +68,31 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
             }
             if(!empty($dataPost['properties'])){
                 $props = $dataPost['properties'];
+                $propsArr = [];
+                if(!empty($props)){
+                    foreach ($props as $prop) {
+                        if(!empty($prop['complexity']) and !empty($prop['icon'])){
+                            if((($prop['complexity'] !== false) and ($prop['icon'] !== false))){
+                                array_push($propsArr, $prop);
+                            }
+                        }
+                        if(!empty($prop['portioning']) and !empty($prop['icon'])){
+                            if((($prop['portioning'] !== false) and ($prop['icon'] !== false))){
+                                array_push($propsArr, $prop);
+                            }
+                        }
+                        if(!empty($prop['time']) and !empty($prop['icon'])){
+                            if((($prop['time'] !== false) and ($prop['icon'] !== false))){
+                                array_push($propsArr, $prop);
+                            }
+                        }
+                    }
+                }
                 $posts[$post->ID]['desc'] = $dataPost['properties-desc'];
-                $posts[$post->ID]['complexity'] = $props['complexity'];
-                $posts[$post->ID]['time'] = $props['time'];
-                $posts[$post->ID]['portioning'] = $props['portioning'];
+                $posts[$post->ID]['props'] = $propsArr;
             }else{
-                $posts[$post->ID]['complexity'] = 1;
-                $posts[$post->ID]['time'] = '';
-                $posts[$post->ID]['portioning'] = '';
+                $posts[$post->ID]['props'] = [];
+                $posts[$post->ID]['desc'] = "";
             }
             if(!empty($dataPost['first-i'])){
                 $firstIngridient = $dataPost['first-i'];

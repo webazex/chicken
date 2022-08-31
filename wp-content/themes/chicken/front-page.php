@@ -24,7 +24,7 @@ if(!empty($pageContent)):
             if(!empty($pageContent['receipes-group'])){
                 $data = [
                     'acf' => $pageContent['receipes-group'],
-                    'posts' => getReceipts(4)
+                    'posts' => getReceipts()
                 ];
                 get_template_part('front/sections/front-page/receipes-group', '', $data);
             }
