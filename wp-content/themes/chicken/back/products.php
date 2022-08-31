@@ -112,24 +112,33 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
     }
     $returned = [];
     if($paginate){
+        var_dump($obj->found_posts);
+        var_dump($obj->query['posts_per_page']);
+        var_dump($count);
         $max_num_pages = ceil($obj->found_posts / $obj->query['posts_per_page']);
-        $pagination = get_the_posts_pagination( [
-            'show_all'           => false, // показаны все страницы участвующие в пагинации
-            'end_size'           => 1,     // количество страниц на концах
-            'mid_size'           => 1,     // количество страниц вокруг текущей
-            'prev_next'          => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
-            'prev_text'          => __('<'),
-            'next_text'          => __('>'),
-            'add_args'           => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
-            'add_fragment'       => '',     // Текст который добавиться ко всем ссылкам.
-            'screen_reader_text' => __( '' ),
-            'aria_label'         => __( '' ), // aria-label="" для nav элемента. С WP 5.3
-            'class'              => 'pagination',  // class="" для nav элемента. С WP 5.5
-        ] );
-        if($count == -1 ){
+        var_dump($max_num_pages);
+//        $pagination = get_the_posts_pagination( [
+//            'show_all'           => false, // показаны все страницы участвующие в пагинации
+//            'end_size'           => 1,     // количество страниц на концах
+//            'mid_size'           => 1,     // количество страниц вокруг текущей
+//            'prev_next'          => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
+//            'prev_text'          => __('<'),
+//            'next_text'          => __('>'),
+//            'add_args'           => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
+//            'add_fragment'       => '',     // Текст который добавиться ко всем ссылкам.
+//            'screen_reader_text' => __( '' ),
+//            'aria_label'         => __( '' ), // aria-label="" для nav элемента. С WP 5.3
+//            'class'              => 'pagination',  // class="" для nav элемента. С WP 5.5
+//        ] );
+        if($count == -1 or $max_num_pages == 1){
             $returned['pagination'] = false;
         }else{
-            $returned['pagination'] = $pagination;
+            $links = '<span class="pg-item prev"><</span>';
+            for ($i = 1; $i <= $max_num_pages; $i++){
+                $links .= '<span data-page="'.$i.'" class="pg-item">'.$i.'</span>';
+            }
+            $links .= '<span class="pg-item next">></span>';
+            $returned['pagination'] = $links;
         }
         $returned['posts'] = $posts;
     }else{
