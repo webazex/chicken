@@ -76,7 +76,27 @@ $(document).ready(function (){
          $(this).siblings('.filters__filter-form').addClass('open');
       }
    });
-
+   $('.tabs__nap-tab').click(function (){
+      var dataForm = $('.filters__filter-form').serializeArray();
+      console.log(dataForm);
+      $('.tabs__nap-tab').removeClass('current');
+      $(this).addClass('current');
+      $.ajax({
+         url: rajax.url,
+         method: 'post',
+         data: {
+            action: 'get-nap-posts',
+            tax: {'nap-tags':$(this).attr('data-cat-id')},
+            ptype: $(this).attr('data-post-type'),
+            datafilter: dataForm
+         },
+         success: function(data){
+            $('.targeted-nap').html(data);
+            //alert(JSON.parse(data));
+            // alert(data);
+         }
+      });
+   });
    $('.tabs-row__tab.f').click(function (){
       $('.tabs-row__tab').removeClass('this-tab');
       $(this).addClass('this-tab');
@@ -161,7 +181,9 @@ $(document).ready(function (){
          }
       });
    });
+   $('.tabs__nap-tab').click(function (){
 
+   });
 
    $('.content__subtabs').on('click', '.subtabs__subtab', function (){
       $('.subtabs__subtab').removeClass('current');

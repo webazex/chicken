@@ -827,3 +827,44 @@ function __paginated(){
         $args['orderby'] = 'meta_value_num';
     }
 }
+
+add_action('wp_ajax_get-nap-posts', '__getNapPosts');
+add_action('wp_ajax_nopriv_get-nap-posts', '__getNapPosts');
+function __getNapPosts(){
+    $args = [
+        'posts_per_page' => get_option('posts_per_page'),
+        'post_type' => 'nap',
+        'order' => 'DESC'
+    ];
+    if(!empty($_POST['datafilter'])){
+        foreach ($_POST['datafilter'] as $sorted) {
+            switch ($sorted['name']){
+                case "date":
+                    $args['order'] = $sorted['value'];
+                    break;
+                case "title":
+                    $args['meta_query'] = [
+                        'relation' => 'OR',
+                        [
+                            'key' => 'nap-content_'.$sorted['name'],
+                        ],
+                        'orderby' => 'meta_value',
+                        'order' => $sorted['value']
+                    ];
+                    break;
+            }
+        }
+    }
+    if(!empty($_POST['tags'])){
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'nap-tags',
+                'field'    => 'id',
+                'terms'    => 30
+            ]
+        ];
+    }
+    print_r($args);die();
+    $obj = new WP_Query($args);
+    var_dump($obj->post_count);
+}

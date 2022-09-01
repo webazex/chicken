@@ -3,6 +3,8 @@ function getNaP($count = "all", $property = null, $sorted = 'DESC', $tax = []){
     $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
     if($count == "all"){
         $count = -1;
+    }elseif ($count == ''){
+        $count = get_option('posts_per_page');
     }
 
     if(is_string($property)){

@@ -18,11 +18,11 @@
             <div class="site-size__default-grid-container">
                 <div class="default-grid-container__filters-row">
                     <div class="filters-row__tabs">
-                        <div class="tabs__tab">
+                        <div class="tabs__nap-tab current" data-post-type="nap">
                             <span>Все</span>
                         </div>
                         <?php if(!empty($cats)): foreach ($cats as $cat):?>
-                        <div class="tabs__tab" data-cat-id="<?php echo $cat['id']; ?>" data-post-type="nap">
+                        <div class="tabs__nap-tab" data-cat-id="<?php echo $cat['id']; ?>" data-post-type="nap">
                             <img src="<?php echo $cat['icon']; ?>" alt="icon"
                             <span><?php echo $cat['name']; ?></span>
                         </div>
@@ -38,85 +38,36 @@
                         </div>
                         <form class="filters__filter-form">
                             <label>
-                                <input type="radio" name="filter" value="date">
+                                <input type="radio" name="date" value="DESC" checked="checked">
                                 <span><?php _e('За замовчуванням', 'chicken');?></span>
                             </label>
                             <label>
-                                <input type="radio" name="filter" value="date">
+                                <input type="radio" name="title" value="DESC">
                                 <span>А - Я</span>
                             </label>
 
                             <label>
-                                <input type="radio" name="filter" value="timec">
+                                <input type="radio" name="title" value="ASC">
                                 <span>Я - А</span>
                             </label>
 
                             <label>
-                                <input type="radio" name="filter" value="lvl">
+                                <input type="radio" name="date" value="DESC">
                                 <span>Датою</span>
                             </label>
                             <button type="submit">Застосувати</button>
                         </form>
                     </div>
                 </div>
-                <div class="default-grid-container__grid-default">
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
-                    <div class="grid-default__item news">
-                        <img src="img/photo2.jpg" alt="">
-                        <div class="news__info-block">
-                            <span class="info-block__title">Купуй звичайну + мариновану курку, та отримай -15% на чек</span>
-                            <span class="info-block__date">20 червень 2022</span>
-                            <span class="info-block__tag">#Акція</span>
-                        </div>
-                    </div>
+                <?php if(!empty($naps)):?>
+                <div class="default-grid-container__grid-default targeted-nap">
+                  <?php
+                  foreach ($naps as $nap) {
+                      get_template_part('front/components/nap-item', '', $nap);
+                    }
+                  ?>
                 </div>
+                <?php endif;?>
             </div>
         </div>
     </section>
