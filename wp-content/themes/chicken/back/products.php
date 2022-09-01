@@ -112,11 +112,7 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
     }
     $returned = [];
     if($paginate){
-        var_dump($obj->found_posts);
-        var_dump($obj->query['posts_per_page']);
-        var_dump($count);
         $max_num_pages = ceil($obj->found_posts / $obj->query['posts_per_page']);
-        var_dump($max_num_pages);
 //        $pagination = get_the_posts_pagination( [
 //            'show_all'           => false, // показаны все страницы участвующие в пагинации
 //            'end_size'           => 1,     // количество страниц на концах
@@ -133,11 +129,16 @@ function getProducts($count = "all", array $property = [], $sorted = "DESC", $ta
         if($count == -1 or $max_num_pages == 1){
             $returned['pagination'] = false;
         }else{
-            $links = '<span class="pg-item prev"><</span>';
+            $links = '<span class="pg-item-btn prev"><</span>';
             for ($i = 1; $i <= $max_num_pages; $i++){
-                $links .= '<span data-page="'.$i.'" class="pg-item">'.$i.'</span>';
+                if($i == 1){
+                    $class = 'cp';
+                }else{
+                    $class = "";
+                }
+                $links .= '<span data-page="'.$i.'" class="pg-item '.$class.'">'.$i.'</span>';
             }
-            $links .= '<span class="pg-item next">></span>';
+            $links .= '<span class="pg-item-btn next">></span>';
             $returned['pagination'] = $links;
         }
         $returned['posts'] = $posts;

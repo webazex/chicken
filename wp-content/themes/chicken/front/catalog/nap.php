@@ -1,7 +1,6 @@
 <?php
     $cats = $args['cats'];
     $naps = $args['nap'];
-    getBrokenData();
 ?>
 <main>
     <section class="page-gradient-bg">

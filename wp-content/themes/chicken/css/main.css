@@ -2192,7 +2192,7 @@ filters__filter-form input:hover {cursor: pointer;}
 	justify-content: center;
 }
 .nav-links {display: flex;}
-.page-numbers, .pg-item {
+.page-numbers, .pg-item, .pg-item-btn {
 	width: 44px;
 	height: 44px;
 	border-radius: 15px;
@@ -2202,16 +2202,18 @@ filters__filter-form input:hover {cursor: pointer;}
 	justify-content: center;
 	align-items: center;
 	font-size: var(--default-font-size);
+	cursor: pointer;
 }
 .page-numbers:last-child {margin-right: 0;}
 .next.page-numbers, .prev.page-numbers,
-.pg-item.prev, .pg-item.next{
+.pg-item-btn.prev, .pg-item-btn.next{
 	width: 44px;
 	height: 44px;
 	background: #E50746;
 	color: white;
+	cursor: pointer;
 }
-.page-numbers.current {
+.page-numbers.current, .pg-item.cp {
 	background-color: #F0F0F0;
 	color: #E50746;
 }

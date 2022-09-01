@@ -245,11 +245,16 @@ $(document).ready(function (){
             $('.site-size__paginations').html('');
             console.log(data.length);
             if(data.length > 1){
-               $('.site-size__paginations').append('<span class="pg-item prev"><</span>');
+               $('.site-size__paginations').append('<span class="pg-item-btn prev"><</span>');
                $.each(data, function (index, value){
-                  $('.site-size__paginations').append('<span data-page="'+value+'" class="pg-item">'+value+'</span>');
+                  if(index == 1){
+                     var currentClass = 'cp';
+                  }else {
+                     var currentClass = '';
+                  }
+                  $('.site-size__paginations').append('<span data-page="'+value+'" class="pg-item '+currentClass+'">'+value+'</span>');
                });
-               $('.site-size__paginations').append('<span class="pg-item next">></span>');
+               $('.site-size__paginations').append('<span class="pg-item-btn next">></span>');
             }
             // $('.site-size__paginations').html(data);
             //alert(JSON.parse(data));
@@ -262,21 +267,30 @@ $(document).ready(function (){
    $('.site-size__paginations').on('click', '.pg-item', '', function (){
       let ptype = $('.tabs-row__tab.this-tab').attr('data-post-type');
       let parentCat = $('.tabs-row__tab.this-tab').attr('data-cat-id');
-      $('.default-grid-container__filters-row input:checkbox:checked').each(function (){
-         let named = $(this).attr('name');
-         let val = $(this).val();
-      });
+      $('.pg-item').removeClass('cp');
+      $(this).addClass('cp');
+      // $('.default-grid-container__filters-row input:checkbox:checked').each(function (){
+      //    alert("dfsd");
+      //    let named = $(this).attr('name');
+      //    let val = $(this).val();
+      //    console.log(named);
+      //    console.log(val);
+      // });
+      let dataForm = $('.default-grid-container__filters-row').serializeArray();
+      console.log(dataForm);
       $.ajax({
          url: rajax.url,
          method: 'post',
          data: {
-            action: 'get-data-posts',
-            tax: {'p-cats':$(this).attr('data-tag-id')},
+            action: 'paginated',
+            filters: dataForm,
             pCat: parentCat,
             ptype: ptype,
+            page: $(this).attr('data-page'),
          },
          success: function(data){
-            $('.targeted-product').html(data);
+            // $('.targeted-product').html(data);
+            $('.targeted').html(data);
             //alert(JSON.parse(data));
             // alert(data);
          }

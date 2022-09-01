@@ -222,7 +222,7 @@ function __getDataPost(){
 //    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     if($_POST['count'] == "all"){
         $count = -1;
-    }elseif ($_POST['count'] = "" or empty($_POST['count'])){
+    }elseif ($_POST['count'] == "" or empty($_POST['count'])){
         $count = get_option('posts_per_page');
     }else{
         $count = intval($_POST['count']);
@@ -299,7 +299,6 @@ function __getDataPost(){
                 'src' => $dataPost['image'],
                 'sku' => $dataPost['text-group']['sku'],
                 'status' => $dataPost['product-status'],
-                'conditions' => $conditions,
                 'nutritional' => $nutritional,
             ]);
         }
@@ -783,4 +782,48 @@ function getProductById(){
         wp_die();
     }
     wp_die();
+}
+
+add_action('wp_ajax_paginated', '__paginated');
+add_action('wp_ajax_nopriv_paginated', '__paginated');
+
+function __paginated(){
+    print_r($_POST['filters']);
+    $args = [];
+    $terms = [];
+    $metas = [];
+    if(!empty($_POST['filters'])){
+        foreach ($_POST['filters'] as $filter){
+            switch ($filter['name']){
+                case "order":
+                    $order = $filter['value'];
+                    break;
+                case "meta":
+                    $metas = $filter['value'];
+                    break;
+                case "term":
+                    array_push($terms, $filter['value']);
+                    break;
+            }
+        }
+        $meta = [];
+        foreach ($metas as $prop){
+            if($_POST['ptype'] == "products"){
+                $key = 'product-group_product-'.$prop;
+            }elseif ($_POST['ptype'] == "recipes"){
+                $key = 'product-group_product-'.$prop;
+            }elseif ($_POST['ptype'] == "nap"){
+                $key = 'product-group_product-'.$prop;
+            }else{
+                $key = 'product-group_product-'.$prop;
+            }
+
+            array_push($meta, ['key' => $key]);
+        }
+        $args['meta_query']	= [
+            'relation' => 'AND',
+            $meta
+        ];
+        $args['orderby'] = 'meta_value_num';
+    }
 }

@@ -103,13 +103,16 @@
 <!--                            Времени приготовления-->
                             <div class="filters__filter-form order">
                                 <label>
-                                    <input type="radio" name="order" value="DESC">
-                                    <span>Від більшого до меншого</span>
+                                    <input type="radio" name="order" value="DESC" checked="checked">
+                                    <span><?php _e('За замовчуванням', 'chicken');?></span>
                                 </label>
-
+                                <label>
+                                    <input type="radio" name="order" value="DESC">
+                                    <span>А - Я</span>
+                                </label>
                                 <label>
                                     <input type="radio" name="order" value="ASC">
-                                    <span>Від меншого до більшого</span>
+                                    <span>Я - А</span>
                                 </label>
                                 <div class="btns-row">
                                     <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
