@@ -14,7 +14,7 @@
                         <span class="h-t-placeholder"><?php _e('Ваш email', 'chicken'); ?></span>
                     </label>
                     <label for="email">
-                        <input name="email" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); ?>">
+                        <input name="phone" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); ?>">
                         <span class="h-t-placeholder"><?php _e('Номер телефону', 'chicken'); ?></span>
                     </label>
                     <textarea placeholder="<?php _e('Повідомлення тут', 'chicken'); ?>...">

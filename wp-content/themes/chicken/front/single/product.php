@@ -65,7 +65,7 @@ if(!empty($states)){
     $nutritional = $args['nutritional'];
 ?>
 <main>
-    <section>
+    <section class="section-product">
         <div class="site-size-nap">
             <div class="site-size-nap__topped-row">
                 <div class="topped-row__breadcrumbs">
@@ -103,7 +103,6 @@ if(!empty($states)){
                         ?>
                         <span class="line"></span>
                         <p class="properties__title"><?php _e('Харчова цінність', 'chicken');?></p>
-
                             <?php foreach ($nutritional as $nutrition): ?>
                                 <div class="properties__property-row product">
                                 <?php foreach ($nutrition as $item):?>

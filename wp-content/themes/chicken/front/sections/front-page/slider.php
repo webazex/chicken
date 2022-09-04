@@ -70,6 +70,8 @@
                 if(!empty($slider)):
             ?>
             <div class="recipes-grid-container__slider-container">
+                <div class="slider-container__slider-prev"></div>
+                <div class="slider-container__slider-next"></div>
                 <div class="slider-container__slider">
                     <!--							==start=slide==-->
                     <?php foreach ($slider as $slide): ?>

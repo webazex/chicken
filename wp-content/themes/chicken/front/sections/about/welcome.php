@@ -26,7 +26,7 @@
             if(!empty($args['advantages'])):
             ?>
             <div class="about-welcome-section__row-content">
-                <img src="<?php echo $args['advantages']['image'];?>" class="row-content__img" alt="">
+                <img src="<?php echo wp_get_attachment_image_url($args['advantages']['image'], 'full');?>" class="row-content__img" alt="">
                 <div class="row-content__text-box">
                     <h3><?php echo $args['advantages']['title'];?></h3>
                     <p>
