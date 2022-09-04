@@ -69,21 +69,76 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
             if(!empty($dataPost['properties'])){
                 $props = $dataPost['properties'];
                 $propsArr = [];
+                $icons = get_field('general-settings', 'options')['receipt-propertys-icons'];
                 if(!empty($props)){
                     foreach ($props as $prop) {
-                        if(!empty($prop['complexity']) and !empty($prop['icon'])){
-                            if((($prop['complexity'] !== false) and ($prop['icon'] !== false))){
-                                array_push($propsArr, $prop);
+                        if(!empty($prop['complexity'])){
+                            if(($prop['complexity'] !== false)){
+                                if(!empty($icons)){
+                                    if(!empty($prop['complexity'])){
+                                        $lvl = $prop['complexity']['value'];
+                                        if(!empty($icons['icons-levels'])){
+                                            $levelIcons = $icons['icons-levels'];
+                                        }else{
+                                            $levelIcons = [];
+                                        }
+                                        switch ($lvl){
+                                            case "1":
+                                                if(!empty($levelIcons['low'])){
+                                                    $icon = $levelIcons['low'];
+                                                }else{
+                                                    $icon = '';
+                                                }
+                                                break;
+                                            case "2":
+                                                if(!empty($levelIcons['normal'])){
+                                                    $icon = $levelIcons['normal'];
+                                                }else{
+                                                    $icon = '';
+                                                }
+                                                break;
+                                            case "3":
+                                                if(!empty($levelIcons['hard'])){
+                                                    $icon = $levelIcons['hard'];
+                                                }else{
+                                                    $icon = '';
+                                                }
+                                                break;
+                                        }
+                                    }
+                                }else{
+                                    $icon = '';
+                                }
+                                array_push($propsArr, [
+                                    'prop' => $prop,
+                                    'icon' => $icon
+                                ]);
                             }
                         }
-                        if(!empty($prop['portioning']) and !empty($prop['icon'])){
-                            if((($prop['portioning'] !== false) and ($prop['icon'] !== false))){
-                                array_push($propsArr, $prop);
+                        if(!empty($prop['portioning'])){
+                            if(($prop['portioning'] !== false)){
+                                if(!empty($icons['icon-p'])){
+                                    $icon = $icons['icon-p'];
+                                }else{
+                                    $icon = '';
+                                }
+                                array_push($propsArr, [
+                                    'prop' => $prop,
+                                    'icon' => $icon
+                                ]);
                             }
                         }
-                        if(!empty($prop['time']) and !empty($prop['icon'])){
-                            if((($prop['time'] !== false) and ($prop['icon'] !== false))){
-                                array_push($propsArr, $prop);
+                        if(!empty($prop['time'])){
+                            if(($prop['time'] !== false)){
+                                if(!empty($icons['icon-time'])){
+                                    $icon = $icons['icon-time'];
+                                }else{
+                                    $icon = '';
+                                }
+                                array_push($propsArr, [
+                                    'prop' => $prop,
+                                    'icon' => $icon
+                                ]);
                             }
                         }
                     }

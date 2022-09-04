@@ -1,6 +1,7 @@
 <?php
     $content = $args['fields'];
     $properties = $content['properties'];
+    $icons = $args['icons'];
 ?>
 <main>
     <section>
@@ -14,22 +15,47 @@
                                 $src = $property['icon'];
                                 foreach ($property as $k => $item):
                                 switch ($k):
-                                    case "complexity":?>
+                                    case "complexity":
+                                        $levelsIcon = $icons['icons-levels'];
+                                        switch ($item['value']){
+                                            case "1":
+                                                if(!empty($levelsIcon['low'])){
+                                                    $icon = $levelsIcon['low'];
+                                                }else{
+                                                    $icon = '';
+                                                }
+                                                break;
+                                            case "2":
+                                                if(!empty($levelsIcon['normal'])){
+                                                    $icon = $levelsIcon['normal'];
+                                                }else{
+                                                    $icon = '';
+                                                }
+                                                break;
+                                            case "3":
+                                                if(!empty($levelsIcon['hard'])){
+                                                    $icon = $levelsIcon['hard'];
+                                                }else{
+                                                    $icon = '';
+                                                }
+                                                break;
+                                        }
+                                        ?>
                                         <div class="properties__property">
-                                            <img src="<?php echo $src;?>" class="property__icon" alt="icon">
+                                            <img src="<?php echo $icon;?>" class="property__icon" alt="icon">
                                             <span><?php echo $item['label'];?></span>
                                         </div>
                                         <?php
                                     break;
                                     case "time": ?>
                                         <div class="properties__property">
-                                            <img src="<?php echo $src;?>" class="property__icon" alt="icon">
-                                            <span><?php echo $item; ?></span>
+                                            <img src="<?php echo $icons['icon-time'];;?>" class="property__icon" alt="icon">
+                                            <span><?php echo $item ?></span>
                                         </div>
                         <?php break;
                         case "portioning": ?>
                         <div class="properties__property">
-                            <img src="<?php echo $src;?>" class="property__icon" alt="icon">
+                            <img src="<?php echo $icons['icon-p'];?>" class="property__icon" alt="icon">
                             <span><?php echo $item;?></span>
                         </div>
                         <?php break; endswitch; endforeach; endforeach;?>

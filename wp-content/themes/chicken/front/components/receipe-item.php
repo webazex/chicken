@@ -12,13 +12,14 @@
             <?php foreach ($props as $prop):?>
             <div class="properties-row__property-box">
                 <?php
-                    $key = array_key_first($prop);
+                    $propItem = $prop['prop'];
+                    $key = array_key_first($propItem);
                     switch ($key){
                         case "complexity":
-                            $text = $prop[$key]['label'];
+                            $text = $prop['prop'][$key]['label'];
                             break;
                         default:
-                            $text = $prop[$key];
+                            $text = $prop['prop'][$key];
                             break;
                     }
                 ?>

@@ -43,8 +43,10 @@ switch (get_post_type()){
                 ]);
             }
         }
+        $icons = get_field('general-settings', 'options')['receipt-propertys-icons'];
         $data = [
             'fields' => $acfData,
+            'icons' => $icons,
             'cats' => $cats
         ];
         get_template_part('front/single/receipt', '', $data);

@@ -102,7 +102,7 @@ if(!empty($states)){
                             endforeach;  endif;
                         ?>
                         <span class="line"></span>
-                        <p class="properties__title"><?php echo $args['block-title-two'];?></p>
+                        <p class="properties__title">Харчова цінність<?php //echo $args['block-title-two'];?></p>
 
                             <?php foreach ($nutritional as $nutrition): ?>
                                 <div class="properties__property-row product">
