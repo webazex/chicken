@@ -65,7 +65,7 @@ if(!empty($states)){
     $nutritional = $args['nutritional'];
 ?>
 <main>
-    <section>
+    <section class="section-product">
         <div class="site-size-nap">
             <div class="site-size-nap__topped-row">
                 <div class="topped-row__breadcrumbs">
@@ -102,8 +102,9 @@ if(!empty($states)){
                             endforeach;  endif;
                         ?>
                         <span class="line"></span>
-                        <p class="properties__title"><?php echo $args['block-title-two'];?></p>
-
+                        <?php foreach($args['product-states'] as $subtitle): ?>
+                            <p class="properties__title"><?php echo $subtitle['block-subtitle'];?></p>
+                        <?php endforeach; ?>
                             <?php foreach ($nutritional as $nutrition): ?>
                                 <div class="properties__property-row product">
                                 <?php foreach ($nutrition as $item):?>
@@ -119,7 +120,7 @@ if(!empty($states)){
                 </div>
             </div>
             <span class="line-section-product"></span>
-            <h3 class="recents-title"><?php the_field('recents-title');?></h3>
+            <h3 class="recents-title">Вас також може зацікавити</h3>
             <div class="recents">
                 <?php
                     $recents = getRecentsProducts();

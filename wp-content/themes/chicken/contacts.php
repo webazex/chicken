@@ -6,7 +6,7 @@ $contactData = get_field('contacts', 'options');
 $socialData = get_field('socials', 'options');
 ?>
 <main>
-    <section>
+    <section class="top-contacts">
         <div class="site-size">
             <div class="site-size__content-row">
                 <div class="content-row__breadcrumbs-row contacts">
@@ -15,7 +15,7 @@ $socialData = get_field('socials', 'options');
             </div>
         </div>
     </section>
-    <section>
+    <section class="content-contacts">
         <div class="site-size">
             <h2><?php echo $contentData['title-contacts']; ?></h2>
             <div class="site-size__container-contact">
@@ -89,7 +89,7 @@ $socialData = get_field('socials', 'options');
                             <span class="h-t-placeholder"><?php _e('Ваш email', 'chicken'); ?></span>
                         </label>
                         <label for="email">
-                            <input name="email" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); ?>">
+                            <input name="phone" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); ?>">
                             <span class="h-t-placeholder"><?php _e('Номер телефону', 'chicken'); ?></span>
                         </label>
                         <textarea placeholder="<?php _e('Повідомлення тут', 'chicken'); ?>...">
