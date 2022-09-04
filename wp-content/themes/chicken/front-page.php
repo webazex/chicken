@@ -50,6 +50,9 @@ if(!empty($pageContent)):
             if(!empty($pageContent['contact-form'])){
                 get_template_part('front/sections/front-page/form', '', $pageContent['contact-form']);
             }
+            if(!empty($pageContent['seo-text'])){
+                get_template_part('front/sections/front-page/seo-text', '', $pageContent['seo-text']);
+            }
         ?>
 
 

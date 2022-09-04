@@ -433,4 +433,14 @@ $(document).ready(function (){
       $(this).addClass('active-state');
       $(this).prependTo($(this).parent('.marks__mark-row.p-item'));
    });
+
+   $('.show-collapse-btn').click(function (){
+      if($(this).prev().children('.seo-text__content').hasClass('uncollapsed')){
+         $(this).prev().children('.seo-text__content').removeClass('uncollapsed');
+         $(this).text($(this).prev().attr('data-s-text'));
+      }else{
+         $(this).prev().children('.seo-text__content').addClass('uncollapsed');
+         $(this).text($(this).prev().attr('data-h-text'));
+      }
+   });
 });

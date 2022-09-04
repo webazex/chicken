@@ -2221,6 +2221,37 @@ filters__filter-form input:hover {cursor: pointer;}
 	margin-right: 0;
 }
 .product__container-popup {background-color: white;}
+
+.seo-text__content {
+	padding: 50px 0;
+	height: 222px;
+	overflow: hidden;
+	transition: height 0.5s ease-in-out;
+}
+.seo-text__content.uncollapsed {
+	padding: 50px 0;
+	height: auto;
+	overflow: hidden;
+	transition: height 0.5s ease-in-out;
+}
+.seo-text__content p {
+	font-size: var(--default-font-size);
+	line-height: 150%;
+	margin-bottom: 20px;
+}
+.seo-text__content p:last-child {
+	margin-bottom: 0;
+}
+.show-collapse-btn {
+	margin-left: auto;
+	max-width: 150px;
+	width: 100%;
+	display: block;
+	color: #E50746;
+	font-weight: 500;
+	cursor: pointer;
+	text-align: right;
+}
 @media (max-width: 1790px) {
 	:root {
 		--container-paddings: 260px;
