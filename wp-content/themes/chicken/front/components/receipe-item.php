@@ -5,8 +5,9 @@
             <span class="title-row__text"><?php echo $args['title'];?></span>
             <div class="info__peppers"></div>
         </div>
-
-        <p class="info__desc"><?php echo $args['subtitle'];?></p>
+        <?php if(!empty($args['subtitle'])):?>
+            <p class="info__desc"><?php echo $args['subtitle'];?></p>
+        <?php endif;?>
         <?php if(!empty($props)):?>
         <div class="info__properties-row">
             <?php foreach ($props as $prop):?>
@@ -30,7 +31,9 @@
         </div>
         <?php endif;?>
         <div class="info__hidden-block">
+            <?php if(!empty($args['desc'])):?>
             <p class="hidden-block__desc"><?php echo $args['desc'];?></p>
+            <?php endif;?>
             <?php if(!empty($args['short-info'])):?>
             <div class="hidden-block__row-props">
                 <?php
