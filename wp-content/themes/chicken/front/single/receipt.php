@@ -114,7 +114,7 @@
                                         ?>
                                         <div class="content-tabs__ingridient">
                                             <img src="<?php echo $content['first-i']['image']?>" alt="<?php echo $content['first-i']['text-group']['name'];?>">
-                                            <a href="<?php echo $content['first-i']['text-group']['i-link'];?>" class="ingridient__title-link"><?php echo $content['first-i']['text-group']['name'];?></a>
+                                            <a href="<?php echo $content['first-i']['text-group']['i-link'];?>" class="ingridient__title-link"><?php echo $content['first-i']['text-group']['name'];?><span class="ingridient__title-link-icon"></span></a>
                                             <span class="ingridient__subtitle"><?php echo $content['first-i']['text-group']['count']?></span>
                                         </div>
                                     <?php
