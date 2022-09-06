@@ -21,7 +21,7 @@
                                 $class = '';
                             endif;
                             ?>
-                            <div class="tabs-row__tab f <?php echo $class;?>" data-post-type="products" data-cat-id="<?php echo $cat['id']; ?>" data-p="true">
+                            <div class="tabs-row__tab f <?php echo $class;?>" data-count="-1" data-post-type="products" data-cat-id="<?php echo $cat['id']; ?>" data-p="true">
                                 <?php if(!empty($cat['icon'])):?>
                                     <img src="<?php echo $cat['icon']; ?>" alt="icon">
                                 <?php endif; ?>

@@ -285,3 +285,40 @@ function getPostById($id){
         return [];
     }
 }
+
+function renderProduct($post){
+    $dataPost = get_field('product-group', $post->ID);
+    $states = [];
+    if(!empty($dataPost['product-states'])){
+        foreach ($dataPost['product-states'] as $state){
+//                    var_dump($state);die();
+            $conditions = [];
+            if(!empty($state['conditions'])){
+                foreach ($state['conditions'] as $condition) {
+                    array_push($conditions, [
+                        'property' => $condition['property'],
+                        'value' => $condition['value'],
+                    ]);
+                }
+            }
+            array_push($states, [
+                'key' => $state['acf_fc_layout'],
+                'text' => $state['name'],
+                'conditions' => $conditions,
+            ]);
+        }
+    }
+    if(!empty($dataPost['nutritional'])){
+        $nutritional = __fetchProperties($dataPost['nutritional']);
+    }else{
+        $nutritional = [];
+    }
+    return [
+        'id' => $post->ID,
+        'title' => $dataPost['text-group']['title'],
+        'src' => $dataPost['image'],
+        'sku' => $dataPost['text-group']['sku'],
+        'states' => $states,
+        'nutritional' => $nutritional,
+    ];
+}
