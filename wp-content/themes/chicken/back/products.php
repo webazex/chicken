@@ -286,12 +286,11 @@ function getPostById($id){
     }
 }
 
-function renderProduct($post){
+function __getDataProduct($post){
     $dataPost = get_field('product-group', $post->ID);
     $states = [];
     if(!empty($dataPost['product-states'])){
         foreach ($dataPost['product-states'] as $state){
-//                    var_dump($state);die();
             $conditions = [];
             if(!empty($state['conditions'])){
                 foreach ($state['conditions'] as $condition) {
