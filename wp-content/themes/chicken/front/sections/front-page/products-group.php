@@ -21,7 +21,7 @@
                                 $class = '';
                             endif;
                             ?>
-                            <div class="tabs-row__tab f <?php echo $class;?>" data-count="-1" data-post-type="products" data-cat-id="<?php echo $cat['id']; ?>" data-p="true">
+                            <div class="tabs-row__tab f <?php echo $class;?>" data-count="-1" data-post-type="products" data-cat-id="<?php echo $cat['id']; ?>" data-p="false">
                                 <?php if(!empty($cat['icon'])):?>
                                     <img src="<?php echo $cat['icon']; ?>" alt="icon">
                                 <?php endif; ?>
@@ -30,11 +30,11 @@
                         <?php endforeach; ?>
                 </div>
                 <div class="content__subtabs subterms-target">
-                    <div class="subtabs__subtab current">
+                    <div class="subtabs__subtab current" data-count="-1" data-post-type="products"  data-p="false">
                         <span class="subtab__text"><?php _e('Все', 'chicken'); ?></span>
                     </div>
                     <?php foreach ($args['subcats'] as $subcat): if($subcat['parent'] !== 0):?>
-                        <div class="subtabs__subtab" data-tag-id="<?php echo $subcat['id']; ?>" data-tag-s="<?php echo $subcat['slug']; ?>">
+                        <div class="subtabs__subtab" data-tag-id="<?php echo $subcat['id']; ?>" data-tag-s="<?php echo $subcat['slug']; ?>" data-count="-1" data-post-type="products"  data-p="false">
                             <span class="subtab__text"><?php echo $subcat['name']; ?></span>
                         </div>
                     <?php endif; endforeach; ?>
