@@ -6,7 +6,7 @@ switch (get_post_type()){
         $data = [
             'cats' => getTaxes('p-cats'),
             'subcats' => getTaxes('p-cats', 2),
-            'products' => getProducts(2, [], [], ['p-cats' => 2], true)
+            'products' => getProducts('', [], [], ['p-cats' => 2], true)
         ];
         get_template_part('front/catalog/products', '', $data);
         break;

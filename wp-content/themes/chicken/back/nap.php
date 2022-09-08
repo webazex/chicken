@@ -81,3 +81,26 @@ function getNaP($count = "all", $property = null, $sorted = 'DESC', $tax = []){
     return $posts;
 //    'receipt-group'
 }
+
+function __getDataNap($post){
+    $dataPost = get_field('nap-content', $post->ID);
+    $cats = [];
+    $terms = get_the_terms($post, 'nap-tags');
+    if(!is_wp_error($terms) and ($terms !== false)){
+        foreach ($terms as $termObj) {
+            array_push($cats, [
+                'id' => $termObj->term_id,
+                'name' => $termObj->name,
+                'slug' => $termObj->slug,
+                'count' => $termObj->count,
+            ]);
+        }
+    }
+    return [
+        'id' => $post->ID,
+        'title' => $dataPost['title'],
+        'image' => $dataPost['image'],
+        'content' => $dataPost['content'],
+        'cats' => $cats,
+    ];
+}
