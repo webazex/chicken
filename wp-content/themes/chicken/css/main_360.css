@@ -634,7 +634,7 @@
     .receipt-tabs-section__content-tabs {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
-        grid-column-gap: 50px;
+        grid-column-gap: 35px;
         grid-row-gap: 20px;
         padding: 20px 0;
     }
@@ -950,5 +950,8 @@
     }
     .properties__property {
         margin-right: 10px;
+    }
+    .mark-row__text {
+        display: inline-block;
     }
 }
