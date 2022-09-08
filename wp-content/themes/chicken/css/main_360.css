@@ -522,4 +522,31 @@
         justify-content: center;
         flex-wrap: wrap;
     }
+    .page-nap .default-grid-container__grid-default {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .page-nap .filters-row__filters {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+    .tabs__nap-tab {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        justify-content: flex-start;
+        margin-right: 25px;
+        padding: 15px 0;
+        font-family: 'Graphik LCG';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 150%;
+        color: #E50746;
+        opacity: 0.5;
+        transition: opacity 300ms;
+        cursor: pointer;
+    }
 }
