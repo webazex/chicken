@@ -2,6 +2,7 @@
 {
     body {
         font-size: 15px;
+        overflow-x: hidden !important;
     }
     :root {
         --h1-font-size: 24px;
@@ -310,10 +311,23 @@
     }
     .card__image {
         height: 148px;
+        width: 200px;
+        margin: 15px 15px;
+    }
+    .tabs__tab-contents.targeted-product {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-right: 10vw;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        width: calc(100vw - 30px);
     }
     .tab-contents__card {
         width: 311px;
         min-width: 311px;
+        padding: 38px;
     }
     .title-box__subtitle {
         font-size: 15px;
@@ -328,6 +342,16 @@
     }
     .default-grid-container__grid-default {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .default-grid-container__grid-default.targeted {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-right: 10vw;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        width: calc(100vw - 30px);
     }
     .title-row__text {
         font-size: 15px;
@@ -527,6 +551,7 @@
     }
     .container-product__img {
         margin-right: 30px;
+        max-width: 50%;
     }
     .container-product__info-box {
         margin-top: 1px;
@@ -548,7 +573,7 @@
         padding-bottom: 0;
     }
     .recents .card__image {
-        height: 188px;
+        height: 148px;
     }
     .receipt-container {
         max-width: 718px;
@@ -899,6 +924,9 @@
     }
     .about-welcome-section__content {
         grid-template-columns: minmax(300px, 320px) 320px;
+    }
+    .mark-row__text {
+        display: inline-block;
     }
     .lang-item {
         font-size: 24px;
