@@ -1,5 +1,5 @@
 <?php $pageContent = get_field('page-content', get_option('page_on_front'))['slider'];?>
-<section>
+<section class="section-two-side">
     <div class="site-size">
         <div class="site-size__recipes-grid-container">
             <?php

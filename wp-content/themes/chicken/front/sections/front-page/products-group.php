@@ -50,6 +50,11 @@
                     </div>
                 </div>
             </div>
+            <?php if(!empty($args['acf']['link']['url'])): ?>
+                <a href="<?php echo $args['acf']['link']['url']; ?>" class="title-row__link_mobile">
+                    <span class="link__text products-link link-color"><?php echo $args['acf']['link']['title']; ?></span>
+                </a>
+            <?php endif;?>
         </div>
     </div>
 </section>
