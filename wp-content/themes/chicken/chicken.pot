@@ -18,11 +18,11 @@ msgstr ""
 
 #: back/cpt.php:17
 msgid "Add New Category"
-msgstr ""
+msgstr "Sss"
 
 #: back/cpt.php:135
 msgid "Add new tag"
-msgstr ""
+msgstr "Tag"
 
 #: back/cpt.php:166
 msgid "Add news or promotion"
