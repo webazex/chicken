@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section class="page-receipes">
         <div class="site-size">
             <div class="site-size__default-grid-container">
                 <div class="default-grid-container__filters-row" style="">
