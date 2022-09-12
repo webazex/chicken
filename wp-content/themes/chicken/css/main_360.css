@@ -3,6 +3,8 @@
     body {
         font-size: 15px;
         overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
     :root {
         --h1-font-size: 24px;
