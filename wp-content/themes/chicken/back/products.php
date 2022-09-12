@@ -285,7 +285,6 @@ function getPostById($id){
         return [];
     }
 }
-
 function __getDataProduct($post){
     $dataPost = get_field('product-group', $post->ID);
     $states = [];

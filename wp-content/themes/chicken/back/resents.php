@@ -27,6 +27,10 @@ function __getCustomAdjacentPosts( $in_same_term = false, $excluded_terms = '', 
     global $wpdb;
 
     $post = get_post();
+    if ( ! $post && $_POST['pid'])
+    {
+        $post = get_post(intval($_POST['pid']));
+    }
     if ( ! $post || ! taxonomy_exists( $taxonomy ) ) {
         return null;
     }
