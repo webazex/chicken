@@ -320,7 +320,7 @@
         overflow-y: hidden;
         flex-wrap: nowrap;
         padding-right: 10vw;
-        width: calc(100vw - 45px);
+        width: calc(100vw - 47px);
     }
     .tab-contents__card {
         width: 300px;
@@ -342,7 +342,7 @@
         overflow-y: hidden;
         flex-wrap: nowrap;
         padding-right: 10vw;
-        width: calc(100vw - 45px);
+        width: calc(100vw - 47px);
     }
     .grid-default__item, .grid-posts__post {
         width: 300px;
