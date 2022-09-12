@@ -285,6 +285,10 @@ function getPostById($id){
         return [];
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> phpeditor/dev
 function __getDataProduct($post){
     $dataPost = get_field('product-group', $post->ID);
     $states = [];

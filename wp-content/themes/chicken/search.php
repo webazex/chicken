@@ -24,27 +24,64 @@ get_header();
                     </div>
                 </form>
                 <div class="form-search-content">
-
-                    <div class="form-search-item">
-                        <a href="/" class="form-search-item-name">Печінка курчат бойлерів</a>
-                        <div class="form-search-item-desc">Фарш «Домашній» кулінарний із м′яса курчат-бройлерів напівфабрикат посічений, у малиновому маринаді</div>
-                    </div>
-                    <div class="form-search-item">
-                        <a href="/" class="form-search-item-name">Печінка курчат бойлерів</a>
-                        <div class="form-search-item-desc">Фарш «Домашній» кулінарний із м′яса курчат-бройлерів напівфабрикат посічений, у малиновому маринаді</div>
-                    </div>
-                    <div class="form-search-item">
-                        <a href="/" class="form-search-item-name">Печінка курчат бойлерів</a>
-                        <div class="form-search-item-desc">Фарш «Домашній» кулінарний із м′яса курчат-бройлерів напівфабрикат посічений, у малиновому маринаді</div>
-                    </div>
-
+                    <?php
+                    $searchString = $_GET['s'];
+                    $args = array(
+                        "post_type"      => array("products", "nap", "recipes"), // Тип записи: post, page, кастомный тип записи
+                        "post_status"    => "publish",
+                        "order"          => "DESC",
+                        "orderby"        => "date",
+                        "s"              => $searchString,
+                        "posts_per_page" => 50
+                    );
+                    $searchObj = new WP_Query($args);
+                    $arr = [];
+                    if (count($searchObj->posts)){
+                        foreach ($searchObj->posts as $postObj) {
+                            $link = get_permalink($postObj);
+                            switch (get_post_type($postObj)){
+                                case "nap":
+                                    $title = get_field('nap-content', $postObj)['title'];
+                                    $falseCrumbRow = __('Головна', 'chicken')." - ".__('Новини та акції', 'chicken');
+                                    array_push($arr, [
+                                        'title' => $title,
+                                        'breadcrumbs' => $falseCrumbRow,
+                                        'link' => $link,
+                                    ]);
+                                    break;
+                                case "products":
+                                    $title = get_field('product-group', $postObj)['text-group']['title'];
+                                    $falseCrumbRow = __('Головна', 'chicken')." - ".__('Продукція', 'chicken');
+                                    array_push($arr, [
+                                        'title' => $title,
+                                        'breadcrumbs' => $falseCrumbRow,
+                                        'link' => $link,
+                                    ]);
+                                    break;
+                                case "recipes":
+                                    $title = get_field('receipt-content-group', $postObj)['general-info']['title'];
+                                    $falseCrumbRow = __('Головна', 'chicken')." - ".__('Рецепти', 'chicken');
+                                    array_push($arr, [
+                                        'title' => $title,
+                                        'breadcrumbs' => $falseCrumbRow,
+                                        'link' => $link,
+                                    ]);
+                                    break;
+                            }
+                        }
+                    }
+                    if (count($arr)) {
+                        foreach($arr as $data) {
+                        ?>
+                        <div class="form-search-item">
+                            <a href="<?php echo $data['link']; ?>" class="form-search-item-name"><?php echo $data['title']; ?></a>
+                            <div class="form-search-item-desc"><?php echo $data['breadcrumbs']; ?></div>
+                        </div>
+                        <?php
+                        }
+                    }
+                    ?>
                 </div>
-                <div class="form-search-pagination">
-                    <?php echo($args['search']['pagination']); ?>
-                </div>
-                <?php while ( have_posts() ) : the_post();
-
-                endwhile; ?>
             </div>
         </section>
     </main>
