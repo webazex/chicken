@@ -11,7 +11,7 @@ get_header();
                     <div class="content-row__breadcrumbs-row">
                         <?php get_template_part('front/components/breadcrumbs');?>
                     </div>
-                    <h1>Пошук на сайті</h1>
+                    <h1><? _e('Пошук на сайті', 'chicken'); ?></h1>
                 </div>
             </div>
         </section>
