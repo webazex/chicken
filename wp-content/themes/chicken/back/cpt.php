@@ -246,7 +246,7 @@ function register_post_types(){
 			'parent_item_colon' => __('Parent tag:', 'chicken'),
 			'edit_item'         => __('Редагувати тег', 'chicken'),
 			'update_item'       => __('Оновити тег', 'chicken'),
-			'add_new_item'      => __('Додати новий те', 'chicken'),
+			'add_new_item'      => __('Додати новий тег', 'chicken'),
 			'new_item_name'     => __('Новий тег', 'chicken'),
 			'menu_name'         => __('Теги', 'chicken'),
 			'back_to_items'     => __('← Повернутись до тегів', 'chicken'),
