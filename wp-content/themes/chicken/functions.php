@@ -84,7 +84,7 @@ function getGradient($gradientField){
     }
     return $str;
 }
-var_dump(get_field('product-group_product-states', 914));
+//var_dump(get_field('product-group_product-states', 914));
 function get_meta_values( $meta_key, $post_type = 'post' ) {
 
     $posts = new WP_Query(
@@ -95,13 +95,13 @@ function get_meta_values( $meta_key, $post_type = 'post' ) {
         )
     );
     $meta_values = array();
-    foreach ( $posts as $post ) {
-        $meta_values[] = get_field('product-group_product-states', $post->ID)[0][0]['acf_fc_layout'];
-        var_dump($meta_values);
-//        $meta_values[] = get_post_meta( $post->ID, $meta_key, true );
+    foreach ( $posts->posts as $post ) {
+        $arrStatus = get_field('product-group_product-states', $post->ID);
+        foreach ($arrStatus as $item) {
+            array_push($meta_values, $item['name']);
+        }
     }
     return array_unique( $meta_values );
-
 }
 $args = [
     'post_per_page' => get_option('posts_per_page'),

@@ -77,17 +77,14 @@
                                     <span class="filter__text-row-select-name"><?php _e('Стан', 'chicken'); ?>: <span class="filter__text-row-select-counter"></span></span>
                                     <div class="filter__text-row-select-clear"></div>
                                 </div>
-                                <?php print_r(get_meta_values('product-group_product-states', 'products'));?>
+                                <?php $productsStatus = get_meta_values('product-group_product-states', 'products');?>
                                 <div class="filters__filter-form">
+                                    <?php foreach ($productsStatus as $status):?>
                                     <label>
-                                        <input type="radio" name="meta" value="1__status">
-                                        <span><?php _e('Охолоджений', 'chicken'); ?></span>
+                                        <input type="radio" name="meta" value="<?php echo $status; ?>">
+                                        <span><?php _e($status, 'chicken'); ?></span>
                                     </label>
-
-                                    <label>
-                                        <input type="radio" name="meta" value="2__status" >
-                                        <span><?php _e('Заморожений', 'chicken'); ?></span>
-                                    </label>
+                                    <?php endforeach; ?>
                                     <div class="btns-row">
                                         <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
                                         <button type="reset"><?php _e('Очистити', 'chicken'); ?></button>
@@ -145,7 +142,7 @@
     </section>
     <section>
         <div class="site-size">
-            <div class="site-size__paginations">
+            <div class="site-size__paginations" style="display: none!important;">
                 <?php echo($args['products']['pagination']); ?>
             </div>
         </div>
