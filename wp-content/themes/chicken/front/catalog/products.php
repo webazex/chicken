@@ -142,7 +142,7 @@
     </section>
     <section>
         <div class="site-size">
-            <div class="site-size__paginations" style="display: none!important;">
+            <div class="site-size__paginations" style="">
                 <?php echo($args['products']['pagination']); ?>
             </div>
         </div>
