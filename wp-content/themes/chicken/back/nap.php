@@ -1,5 +1,5 @@
 <?php
-function getNaP($count = "all", $property = null, $sorted = 'DESC', $tax = []){
+function getNaP($count = "", $property = null, $sorted = 'DESC', $tax = [], $paginate = true){
     $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
     if($count == "all"){
         $count = -1;
@@ -52,6 +52,26 @@ function getNaP($count = "all", $property = null, $sorted = 'DESC', $tax = []){
         }
     }
     if(!empty($obj->posts)) {
+        if(is_front_page()){
+            $paged = get_query_var('page') ? get_query_var('page') : 1;
+        }else{
+            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+        }
+        $max_num_pages = ceil($obj->found_posts / $obj->query['posts_per_page']);
+        if($max_num_pages <=1){
+            $links = '';
+        }else{
+            $links = '<span class="pg-item-btn prev"><</span>';
+            for ($i = 1; $i <= $max_num_pages; $i++){
+                if($i == 1){
+                    $class = 'cp';
+                }else{
+                    $class = "";
+                }
+                $links .= '<span data-page="'.$i.'" class="pg-item '.$class.'">'.$i.'</span>';
+            }
+            $links .= '<span class="pg-item-btn next">></span>';
+        }
         $posts = [];
         foreach ($obj->posts as $post) {
             $dataPost = get_field('nap-content', $post->ID);
@@ -75,10 +95,21 @@ function getNaP($count = "all", $property = null, $sorted = 'DESC', $tax = []){
                 'cats' => $cats,
             ]);
         }
+        if(!empty($links)){
+            $returned['pagination'] = $links;
+        }
+        if(!empty($_POST['npage'])){
+            if(is_front_page()){
+                $args['page'] = $_POST['npage'];
+            }else{
+                $args['paged'] = $_POST['npage'];
+            }
+        }
+        $returned['posts'] = $posts;
     }else{
         $posts = [];
     }
-    return $posts;
+    return $returned;
 //    'receipt-group'
 }
 

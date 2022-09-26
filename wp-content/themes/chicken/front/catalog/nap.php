@@ -38,24 +38,19 @@
                         </div>
                         <form class="filters__filter-form">
                             <label>
-                                <input type="radio" name="date" value="DESC" checked="checked">
+                                <input type="radio" name="orderby" value="DEF" checked="checked">
                                 <span><?php _e('За замовчуванням', 'chicken');?></span>
                             </label>
                             <label>
-                                <input type="radio" name="title" value="DESC">
-                                <span>А - Я</span>
+                                <input type="radio" name="orderby" value="DESC">
+                                <span><?php _e('А - Я', 'chicken'); ?></span>
                             </label>
 
                             <label>
-                                <input type="radio" name="title" value="ASC">
-                                <span>Я - А</span>
+                                <input type="radio" name="orderby" value="ASC">
+                                <span><?php _e('Я - А', 'chicken'); ?></span>
                             </label>
-
-                            <label>
-                                <input type="radio" name="date" value="DESC">
-                                <span>Датою</span>
-                            </label>
-                            <button type="submit">Застосувати</button>
+                            <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
                         </form>
                     </div>
                 </div>
@@ -69,6 +64,7 @@
                 </div>
                 <?php endif;?>
             </div>
+            <div class="site-size__paginations"><?php if(!empty($args['pagination'])): echo $args['pagination']; endif;?></div>
         </div>
     </section>
     <?php get_template_part('front/components/two-side'); ?>

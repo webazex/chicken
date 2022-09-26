@@ -32,7 +32,7 @@
                             </div>
                         <?php endforeach; endif;?>
                     </div>
-                    <form class="default-grid-container__filters-row" method="post">
+                    <form class="default-grid-container__filters-row ff" method="post">
                         <div class="filters-row__group">
                             <?php
                                 if(!empty($args['subcats'])):

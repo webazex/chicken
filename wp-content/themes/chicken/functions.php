@@ -96,9 +96,17 @@ function get_meta_values( $meta_key, $post_type = 'post' ) {
     );
     $meta_values = array();
     foreach ( $posts->posts as $post ) {
-        $arrStatus = get_field('product-group_product-states', $post->ID);
-        foreach ($arrStatus as $item) {
-            array_push($meta_values, $item['name']);
+        if($post_type == "products"){
+            $arrStatus = get_field('product-group_product-states', $post->ID);
+        }else{
+            $arrStatus = get_field($meta_key, $post->ID);
+        }
+        if(is_array($arrStatus)){
+            foreach ($arrStatus as $item) {
+                array_push($meta_values, $item['name']);
+            }
+        }else{
+            array_push($meta_values, $arrStatus);
         }
     }
     return array_unique( $meta_values );

@@ -21,7 +21,8 @@ switch (get_post_type()){
     case "nap":
         $data = [
             'cats' => getTaxes('nap-tags'),
-            'nap' => getNap()
+            'nap' => getNap()['posts'],
+            'pagination' => getNap()['pagination'],
         ];
         get_template_part('front/catalog/nap', '', $data);
         break;
