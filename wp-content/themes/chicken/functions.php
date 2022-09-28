@@ -103,10 +103,50 @@ function get_meta_values( $meta_key, $post_type = 'post' ) {
         }
         if(is_array($arrStatus)){
             foreach ($arrStatus as $item) {
-                array_push($meta_values, $item['name']);
+
+                if(!empty($item['name'])){
+                    array_push($meta_values, $item['name']);
+                }
             }
         }else{
             array_push($meta_values, $arrStatus);
+        }
+    }
+    return array_unique( $meta_values );
+}
+
+function getUniqDataForPost($meta_key, $post_type = 'post'){
+    $posts = new WP_Query(
+        array(
+            'post_type'      => $post_type,
+            'meta_key'       => $meta_key,
+            'posts_per_page' => - 1,
+        )
+    );
+    $meta_values = array();
+    foreach ( $posts->posts as $post ) {
+        if($post_type == "products"){
+            $arrStatus = get_field('product-group_product-states', $post->ID);
+        }elseif($post_type == "recipes"){
+            $arrStatus = get_field($meta_key, $post->ID);
+            if(is_array($arrStatus)){
+               array_push($meta_values, serialize($arrStatus));
+
+            }else{
+                if(is_array($arrStatus)){
+                    foreach ($arrStatus as $item) {
+                        if(!empty($item['name'])){
+                            array_push($meta_values, $item['name']);
+                        }
+                    }
+
+                }else{
+                    array_push($meta_values, $arrStatus);
+                }
+            }
+
+        }else{
+            $arrStatus = get_field($meta_key, $post->ID);
         }
     }
     return array_unique( $meta_values );

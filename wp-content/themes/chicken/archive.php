@@ -14,7 +14,8 @@ switch (get_post_type()){
         $data = [
             'tags' => getTaxes('r-tags'),
             //'products' => getProducts(get_option( 'posts_per_page' ))
-            'recipes' => getReceipts()
+            'recipes' => getReceipts($count = get_option('posts_per_page'), $property = null, $sorted = 'DESC', $tax = [], $pagination = true)['posts'],
+            'pagination' => getReceipts($count = get_option('posts_per_page'), $property = null, $sorted = 'DESC', $tax = [], $pagination = true)['pagination'],
         ];
         get_template_part('front/catalog/receipes', '', $data);
         break;

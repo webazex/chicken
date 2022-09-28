@@ -130,7 +130,7 @@
                     </form>
                     <div class="content__tabs">
                         <div class="tabs__tab"></div>
-                        <div class="tabs__tab-contents targeted">
+                        <div class="tabs__tab-contents targeted" data-post-type="products">
                             <?php foreach ($args['products']['posts'] as $product) {
                                 get_template_part('front/components/product-item', '', $product);
                             }?>

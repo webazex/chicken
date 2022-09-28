@@ -1,8 +1,13 @@
 <?php
-function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = []){
+function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = [], $pagination = true){
     $paged = (!empty($_POST['paged'])) ? $_POST['paged'] : 1;
-    if($count == "all"){
-        $count = -1;
+    if(!empty($count)){
+        if($count == "all"){
+            $count = -1;
+            $pagination = false;
+        }
+    }else{
+        $count = get_option('posts_per_page');
     }
 
     if(is_string($property)){
@@ -49,7 +54,26 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
             $args[$k] = $v;
         }
     }
-//    print_r($obj);
+    if(is_front_page()){
+        $paged = get_query_var('page') ? get_query_var('page') : 1;
+    }else{
+        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    }
+    $max_num_pages = ceil($obj->found_posts / $obj->query['posts_per_page']);
+    if($max_num_pages <=1){
+        $links = '';
+    }else{
+        $links = '<span class="pg-item-btn prev"><</span>';
+        for ($i = 1; $i <= $max_num_pages; $i++){
+            if($i == 1){
+                $class = 'cp';
+            }else{
+                $class = "";
+            }
+            $links .= '<span data-page="'.$i.'" class="pg-item '.$class.'">'.$i.'</span>';
+        }
+        $links .= '<span class="pg-item-btn next">></span>';
+    }
     if(!empty($obj->posts)){
         $posts = [];
         foreach ($obj->posts as $post){
@@ -200,7 +224,16 @@ function getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = 
     }else{
         $posts = [];
     }
-    return $posts;
+    $returned = [];
+    if($pagination){
+        if(!empty($links)){
+            $returned['pagination'] = $links;
+            $returned['posts'] = $posts;
+        }
+    }else{
+        $returned['posts'] = $posts;
+    }
+    return $returned;
 //    'receipt-group'
 }
 
