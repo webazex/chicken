@@ -18,7 +18,7 @@
                         <span class="h-t-placeholder">Ваш email</span>
                     </label>
                     <label for="email">
-                        <input name="email" id="phone" placeholder="Номер телефону">
+                        <input name="phone" id="phone" placeholder="Номер телефону">
                         <span class="h-t-placeholder">Номер телефону</span>
                     </label>
                     <textarea placeholder="Повідомлення тут...">
