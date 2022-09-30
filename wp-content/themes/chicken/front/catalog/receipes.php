@@ -37,7 +37,7 @@ foreach ($typesDish as $objDish) {
                         <div class="filters-row__filters">
                             <form class="default-grid-container__filters-row r" method="post" data-post-type="recipes">
                                 <div class="filters-row__group">
-                                        <div id="filter-type" class="filters-row__filters">
+                                        <div id="filter-time" class="filters-row__filters">
                                             <div class="filter__text-row">
                                                 <span><?php _e('Тип мяса', 'chicken'); ?></span>
                                                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@ foreach ($typesDish as $objDish) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="filter-state" class="filters-row__filters">
+                                        <div id="filter-type" class="filters-row__filters">
                                             <div class="filter__text-row">
                                                 <span><?php _e('Вид страви', 'chicken'); ?></span>
                                                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +89,7 @@ foreach ($typesDish as $objDish) {
                                                 </div>
                                             </div>
                                         </div>
-                                    <div id="filter-time" class="filters-row__filters">
+                                    <div id="filter-state" class="filters-row__filters">
                                         <div class="filter__text-row">
                                             <span><?php _e('Складність', 'chicken'); ?></span>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
