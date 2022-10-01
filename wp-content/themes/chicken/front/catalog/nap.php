@@ -36,18 +36,22 @@
                             </svg>
 
                         </div>
-                        <form class="filters__filter-form">
+                        <form class="filters__filter-form nap">
                             <label>
-                                <input type="radio" name="orderby" value="DEF" checked="checked">
-                                <span><?php _e('За замовчуванням', 'chicken');?></span>
+                                <input type="radio" name="sorted" value="date###DESC" checked="checked">
+                                <span><?php _e('По даті (А - Я)', 'chicken');?></span>
                             </label>
                             <label>
-                                <input type="radio" name="orderby" value="DESC">
+                                <input type="radio" name="sorted" value="date###ASC">
+                                <span><?php _e('По даті (Я - А)', 'chicken');?></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="sorted" value="title###DESC">
                                 <span><?php _e('А - Я', 'chicken'); ?></span>
                             </label>
 
                             <label>
-                                <input type="radio" name="orderby" value="ASC">
+                                <input type="radio" name="sorted" value="title###ASC">
                                 <span><?php _e('Я - А', 'chicken'); ?></span>
                             </label>
                             <button type="submit"><?php _e('Застосувати', 'chicken'); ?></button>
@@ -55,7 +59,7 @@
                     </div>
                 </div>
                 <?php if(!empty($naps)):?>
-                <div class="default-grid-container__grid-default targeted-nap">
+                <div class="default-grid-container__grid-default targeted" data-post-type="nap">
                   <?php
                   foreach ($naps as $nap) {
                       get_template_part('front/components/nap-item', '', $nap);
