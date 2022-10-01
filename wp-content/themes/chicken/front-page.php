@@ -32,7 +32,7 @@ if(!empty($pageContent)):
             if(!empty($pageContent['np-group'])){
                 $data = [
                     'acf' => $pageContent['np-group'],
-                    'posts' => getNaP()
+                    'posts' => getNaP()['posts']
                 ];
                 get_template_part('front/sections/front-page/nap', '', $data);
             }
