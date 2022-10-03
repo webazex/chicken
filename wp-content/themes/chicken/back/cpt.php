@@ -122,7 +122,7 @@ function register_post_types(){
         'label'                 => '', // определяется параметром $labels->name
         'labels'                => [
             'name'              => __('Types of dish', 'chicken'),
-            'singular_name'     => __('Type of dish', 'chicken'),
+            'singular_name'     => __('Типи страв', 'chicken'),
             'search_items'      => __('Search type', 'chicken'),
             'all_items'         => __('All types', 'chicken'),
             'view_item '        => __('View types', 'chicken'),
