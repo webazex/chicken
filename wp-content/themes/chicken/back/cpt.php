@@ -121,7 +121,7 @@ function register_post_types(){
     register_taxonomy( 'r-tags', [ 'recipes' ], [
         'label'                 => '', // определяется параметром $labels->name
         'labels'                => [
-            'name'              => __('Types of dish', 'chicken'),
+            'name'              => __('Типи страв', 'chicken'),
             'singular_name'     => __('Типи страв', 'chicken'),
             'search_items'      => __('Search type', 'chicken'),
             'all_items'         => __('All types', 'chicken'),
