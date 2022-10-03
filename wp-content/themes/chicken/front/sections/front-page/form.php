@@ -13,7 +13,7 @@
                         <input name="email" id="email" placeholder="<?php _e('Ваш email', 'chicken'); ?>">
                         <span class="h-t-placeholder"><?php _e('Ваш email', 'chicken'); ?></span>
                     </label>
-                    <label for="phone">
+                    <label for="email">
                         <input name="phone" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); ?>">
                         <span class="h-t-placeholder"><?php _e('Номер телефону', 'chicken'); ?></span>
                     </label>

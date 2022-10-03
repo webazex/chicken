@@ -1,11 +1,6 @@
 /******/ (function() { // webpackBootstrap
-
 /******/ 	"use strict";
-
 /******/ 	
-
 /******/ 	
-
 /******/ })()
-
 ;

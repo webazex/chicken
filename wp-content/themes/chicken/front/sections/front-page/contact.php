@@ -17,7 +17,7 @@
                         <input name="email" id="email" placeholder="Ваш email">
                         <span class="h-t-placeholder">Ваш email</span>
                     </label>
-                    <label for="phone">
+                    <label for="email">
                         <input name="phone" id="phone" placeholder="Номер телефону">
                         <span class="h-t-placeholder">Номер телефону</span>
                     </label>
