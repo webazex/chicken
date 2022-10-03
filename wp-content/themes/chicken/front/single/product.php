@@ -88,6 +88,7 @@ if(!empty($states)){
                     </div>
                     <h2 class="info-box__title"><?php echo $args['text-group']['title'];?></h2>
                     <p class="info-box__sku"><?php echo $args['text-group']['sku'];?></p>
+                    <p class="info-box__packing-type"><?php echo $args['text-group']['packing-type'];?></p>
                     <span class="line"></span>
                     <div class="info-box__properties">
                         <p class="properties__title"><?php echo $blockTitle;?></p>
