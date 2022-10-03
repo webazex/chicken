@@ -22,10 +22,10 @@ if(!empty($dataContent)):?>
         <section class="anchors-row">
             <div class="site-size">
                 <div class="site-size__anchors">
-                    <a href="" class="anchors__item">Цикл виробництва</a>
+                    <a href="#circle" class="anchors__item">Цикл виробництва</a>
                     <a href="#serts" class="anchors__item">Сертифікати</a>
-                    <a href="" class="anchors__item">Контроль якості</a>
-                    <a href="" class="anchors__item">Соціальна відповідальність</a>
+                    <a href="#quality" class="anchors__item">Контроль якості</a>
+                    <a href="#soc" class="anchors__item">Соціальна відповідальність</a>
                 </div>
             </div>
         </section>
