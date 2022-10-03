@@ -6,7 +6,7 @@
                 <p><?php echo $args['desc']; ?></p>
                 <form class="form-column__c-form" id="c-form" method="post">
                     <label for="fio">
-                        <input name="fio" id="fio" placeholder="<?php _e('Ваше імя', 'chicken'); ?>">
+                        <input name="fio" id="fio" placeholder="<?php _e('Ваше імя', 'chicken'); echo ' *'; ?>" required="required">
                         <span class="h-t-placeholder"><?php _e('Ваше імя', 'chicken'); ?></span>
                     </label>
                     <label for="email">
@@ -14,7 +14,7 @@
                         <span class="h-t-placeholder"><?php _e('Ваш email', 'chicken'); ?></span>
                     </label>
                     <label for="phone">
-                        <input name="phone" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); ?>">
+                        <input name="phone" id="phone" placeholder="<?php _e('Номер телефону', 'chicken'); echo ' *'; ?>" required="required">
                         <span class="h-t-placeholder"><?php _e('Номер телефону', 'chicken'); ?></span>
                     </label>
                     <textarea placeholder="<?php _e('Повідомлення тут', 'chicken'); ?>...">

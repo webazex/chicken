@@ -33,20 +33,14 @@ $socialData = get_field('socials', 'options');
                     ?>
                 </div>
                 <div class="container-contact__block">
-                    <span class="row-box__title"><?php echo $contentData['mail-subtitle']; ?></span>
-                    <a href="mail:<?php echo $contactData['mail'];?>"><?php echo $contactData['mail'];?></a>
+                    <span class="row-box__title"><?php echo $contentData['workime-subtitle']; ?></span>
+                    <p>
+                        <?php echo $contactData['text'];?>
+                    </p>
                 </div>
                 <div class="container-contact__block">
-                    <span class="row-box__title"><?php echo $contentData['soc-subtitle']; ?></span>
-                    <?php if(!empty($socialData)):?>
-                    <div class="social-row">
-                        <?php foreach ($socialData as $social): ?>
-                            <a href="<?php echo $social['link']?>" class="social-row__icon">
-                                <img src="<?php echo $social['icon'];?>" alt="<?php echo $social['title'];?>">
-                            </a>
-                        <?php endforeach;?>
-                    </div>
-                    <?php endif;?>
+                    <span class="row-box__title"><?php echo $contentData['mail-subtitle']; ?></span>
+                    <a href="mail:<?php echo $contactData['mail'];?>"><?php echo $contactData['mail'];?></a>
                 </div>
 <!--                ====-->
                 <div class="container-contact__block">
@@ -59,10 +53,16 @@ $socialData = get_field('socials', 'options');
                     <p><?php echo $contactData['other-link']['title'];?></p>
                 </div>
                 <div class="container-contact__block">
-                    <span class="row-box__title"><?php echo $contentData['workime-subtitle']; ?></span>
-                    <p>
-                       <?php echo $contactData['text'];?>
-                    </p>
+                    <span class="row-box__title"><?php echo $contentData['soc-subtitle']; ?></span>
+                    <?php if(!empty($socialData)):?>
+                        <div class="social-row">
+                            <?php foreach ($socialData as $social): ?>
+                                <a href="<?php echo $social['link']?>" class="social-row__icon">
+                                    <img src="<?php echo $social['icon'];?>" alt="<?php echo $social['title'];?>">
+                                </a>
+                            <?php endforeach;?>
+                        </div>
+                    <?php endif;?>
                 </div>
                 <img src="<?php echo $contentData['img']; ?>" class="container-contact__img" alt="">
             </div>
