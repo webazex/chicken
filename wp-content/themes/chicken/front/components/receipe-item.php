@@ -3,7 +3,20 @@
     <div class="receipes__info">
         <div class="info__title-row">
             <span class="title-row__text"><?php echo $args['title'];?></span>
-            <div class="info__peppers"></div>
+            <?php
+            if(!empty($props)): foreach ($props as $prop):
+            $propItem = $prop['prop'];
+            $key = array_key_first($propItem);
+            $val = 1;
+            if($key == "complexity"):
+                $val = $prop['prop'][$key]['value'];
+            endif;
+            endforeach;
+            ?>
+            <div class="info__peppers">
+<!--               peppers.php-->
+            </div>
+            <?php endif;?>
         </div>
         <?php if(!empty($args['subtitle'])):?>
             <p class="info__desc"><?php echo $args['subtitle'];?></p>

@@ -17,22 +17,22 @@ if(!empty($pageContent)):
                     'acf' => $pageContent['products-group'],
                     'cats' => getTaxes('p-cats'),
                     'subcats' => getTaxes('p-cats', "showAll"),
-                    'products' => getProducts("", [], 'DESC', ['p-cats' => 2], true )['posts'],
-                    'pagination' => getProducts("", [], 'DESC', ['p-cats' => 2], true )['pagination']
+                    'products' => getProducts(8, [], 'DESC', ['p-cats' => 2], true )['posts'],
+                    'pagination' => getProducts(8, [], 'DESC', ['p-cats' => 2], true )['pagination']
                 ];
                 get_template_part('front/sections/front-page/products-group', '', $data);
             }
             if(!empty($pageContent['receipes-group'])){
                 $data = [
                     'acf' => $pageContent['receipes-group'],
-                    'posts' => getReceipts($count = "all", $property = null, $sorted = 'DESC', $tax = [], $pagination = false)
+                    'posts' => getReceipts($count = 4, $property = null, $sorted = 'DESC', $tax = [], $pagination = false)
                 ];
                 get_template_part('front/sections/front-page/receipes-group', '', $data);
             }
             if(!empty($pageContent['np-group'])){
                 $data = [
                     'acf' => $pageContent['np-group'],
-                    'posts' => getNaP()['posts']
+                    'posts' => getNaP(4)['posts']
                 ];
                 get_template_part('front/sections/front-page/nap', '', $data);
             }

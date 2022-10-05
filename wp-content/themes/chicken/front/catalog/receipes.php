@@ -25,7 +25,7 @@ foreach ($typesDish as $objDish) {
                 <div class="content-row__breadcrumbs-row">
                     <?php get_template_part('front/components/breadcrumbs');?>
                 </div>
-                <h1><?php __('Рецепти', 'chicken'); ?></h1>
+                <h1><?php _e('Рецепти', 'chicken'); ?></h1>
             </div>
         </div>
     </section>

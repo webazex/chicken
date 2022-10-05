@@ -17,7 +17,7 @@ $socialData = get_field('socials', 'options');
     </section>
     <section class="content-contacts">
         <div class="site-size">
-            <h2><?php echo $contentData['title-contacts']; ?></h2>
+            <h1 class="contacts-ht-title"><?php echo $contentData['title-contacts']; ?></h1>
             <div class="site-size__container-contact">
                 <div class="container-contact__block">
                     <span class="row-box__title"><?php echo $contentData['phone-subtitle']; ?></span>

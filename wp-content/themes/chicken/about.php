@@ -9,12 +9,9 @@ if(!empty($dataContent)):?>
                 <div class="site-size">
                     <div class="site-size__content-row">
                         <div class="content-row__breadcrumbs-row">
-                            <div class="breadcrumbs-row__item">
-                                <span class="item__crumb">Home</span>
-                                <span class="item__sep">/</span>
-                            </div>
+                            <?php get_template_part('front/components/breadcrumbs');?>
                         </div>
-                        <h1>Про компанію</h1>
+                        <h1><?php _e('Про компанію', 'chicken'); ?></h1>
                     </div>
                 </div>
             </div>

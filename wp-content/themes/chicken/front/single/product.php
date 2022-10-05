@@ -103,9 +103,7 @@ if(!empty($states)){
                             endforeach;  endif;
                         ?>
                         <span class="line"></span>
-                        <?php foreach($args['product-states'] as $subtitle): ?>
-                            <p class="properties__title"><?php echo $subtitle['block-subtitle'];?></p>
-                        <?php endforeach; ?>
+                            <p class="properties__title"><?php _e('Харчова цінність', 'chicken');?></p>
                             <?php foreach ($nutritional as $nutrition): ?>
                                 <div class="properties__property-row product">
                                 <?php foreach ($nutrition as $item):?>
